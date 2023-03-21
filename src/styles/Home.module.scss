@@ -1,0 +1,59 @@
+.main {
+  background-color: white;
+}
+
+.firstsection {
+  background-color: #e7f2f6;
+  background-image: url("/external.87fdc6ca.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+}
+
+.insideFirstSection {
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.secondSection {
+  padding-bottom: 5%;
+}
+
+.secondSectionContents {
+  padding-left: 20%;
+  padding-right: 20%;
+  background: linear-gradient(
+    to bottom,
+    rgb(218, 239, 247, 0.8) 0%,
+    rgb(250, 250, 246) 20%
+  );
+}
+.feature {
+  background: linear-gradient(
+    to right,
+    rgb(218, 239, 247) 0%,
+
+    rgb(197, 209, 247) 10%
+  );
+}
+
+.secondSectionInsideContents {
+  background-color: #eeeeee;
+}
+
+.btn {
+  border: 0px solid transparent;
+  padding: 0.8rem 1.5rem;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-delay: 0.1s;
+  &:hover {
+    cursor: pointer;
+
+    transform: translateY(-1vh);
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
