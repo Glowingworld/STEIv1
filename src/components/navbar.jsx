@@ -52,6 +52,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import Link from "next/link";
 
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -177,7 +178,7 @@ export default function ButtonAppBar() {
             variant="h5"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block", color: "darkblue" } }}
           >
             STEI
           </Typography>
@@ -191,7 +192,7 @@ export default function ButtonAppBar() {
               color: " rgba(0, 0, 0, 0.5)",
             }}
           >
-            Home
+            <Link href="/">Home</Link>
           </Typography>
           <Typography
             variant="h7"
@@ -206,7 +207,7 @@ export default function ButtonAppBar() {
               },
             }}
           >
-            Property
+            <Link href="/Property">Property</Link>
           </Typography>
           <Typography
             variant="h7"
@@ -221,7 +222,7 @@ export default function ButtonAppBar() {
               },
             }}
           >
-            AboutUs
+            <Link href="/AboutUs"> AboutUs</Link>
           </Typography>
           <Typography
             variant="h7"
