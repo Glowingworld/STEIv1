@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import { useState } from "react";
 //import Card from "@/components/houseCard";
-
 import Footer from "@/components/footer";
 import {
   Button,
@@ -32,53 +31,69 @@ const Properties = () => {
         </Box>
         <Container className={styles.properySearch}>
           <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }}>
-            <Grid container spacing={1}>
-              <Grid item xs={12} md={3}>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  id="fname"
-                  label="City"
-                  name="fname"
-                  autoComplete="name"
-                  autoFocus
-                />
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}>
+                <Grid container spacing={1}>
+                  <Grid item xs={12} md={4}>
+                    <TextField
+                      margin="normal"
+                      fullWidth
+                      id="fname"
+                      label="City"
+                      name="fname"
+                      autoComplete="name"
+                      autoFocus
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <TextField
+                      margin="normal"
+                      fullWidth
+                      id="fname"
+                      label="Rent"
+                      name="fname"
+                      autoComplete="name"
+                      autoFocus
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <TextField
+                      margin="normal"
+                      fullWidth
+                      id="fname"
+                      label="City"
+                      name="fname"
+                      autoComplete="name"
+                      autoFocus
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} md={4}>
+                    <TextField
+                      margin="normal"
+                      fullWidth
+                      id="fname"
+                      label="City"
+                      name="fname"
+                      autoComplete="name"
+                      autoFocus
+                    />
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={3}>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  id="fname"
-                  label="Rent"
-                  name="fname"
-                  autoComplete="name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  id="fname"
-                  label="City"
-                  name="fname"
-                  autoComplete="name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <button className={styles.btn}>Search</button>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  id="fname"
-                  label="City"
-                  name="fname"
-                  autoComplete="name"
-                  autoFocus
-                />
+              <Grid item xs={12} md={6}>
+                <Box paddingTop="3.5%">
+                  <button
+                    style={{
+                      backgroundColor: "blue",
+                      color: "white",
+                      borderRadius: "4px",
+                    }}
+                    className={styles.btn}
+                  >
+                    Search
+                  </button>
+                </Box>
               </Grid>
             </Grid>
           </Box>

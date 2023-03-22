@@ -19,15 +19,33 @@ import SearchForm from "@/components/homeSearchForm";
 import Card from "@/components/houseCard";
 import ButtonAppBar from "@/components/navbar";
 
-const AboutUs = () => {
+const Properties = () => {
+  function handleSubmit() {}
+  const card = [1, 2];
   return (
     <Box>
       <ButtonAppBar />
       <Box className={styles.testColor}></Box>
+      <Box className={styles.property}>
+        <Box paddingTop="7%" paddingBottom="5%" color="black">
+          <Typography variant="h4">About Us</Typography>
+        </Box>
 
+        <Box className={styles.allProperties}>
+          <Grid container spacing={1} rowSpacing={3}>
+            {card.map((c) => {
+              return (
+                <Grid item>
+                  <Card />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
+      </Box>
       <Footer />
     </Box>
   );
 };
 
-export default AboutUs;
+export default Properties;

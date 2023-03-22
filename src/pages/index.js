@@ -82,9 +82,6 @@ const Home = () => {
               <Grid item>
                 <Card />
               </Grid>
-              <Grid item>
-                <Card />
-              </Grid>
             </Grid>
             <Box
               display="flex"
