@@ -50,6 +50,7 @@ const Home = () => {
           </Grid>
         </Box>
       </Box>
+      <Box className={styles.testColor}></Box>
       <Box className={styles.secondSection}>
         <Box className={styles.secondSectionContents}>
           <Box style={{ paddingBottom: "6%" }}>
@@ -71,7 +72,7 @@ const Home = () => {
               </Typography>
             </Box>
 
-            <Grid container spacing={1}>
+            <Grid container spacing={1} rowSpacing={2}>
               <Grid item>
                 <Card />
               </Grid>
@@ -81,9 +82,9 @@ const Home = () => {
               <Grid item>
                 <Card />
               </Grid>
-              {/* <Grid item>
+              <Grid item>
                 <Card />
-              </Grid> */}
+              </Grid>
             </Grid>
             <Box
               display="flex"

@@ -24,11 +24,18 @@
 .secondSectionContents {
   padding-left: 20%;
   padding-right: 20%;
+
   background: linear-gradient(
     to bottom,
-    rgb(218, 239, 247, 0.8) 0%,
-    rgb(250, 250, 246) 20%
+    rgba(193, 210, 247, 1) 0%,
+    rgba(193, 211, 247, 1) 0%,
+    rgba(246, 246, 246, 1) 3%
   );
+  // background: linear-gradient(
+  //   to bottom,
+  //   rgb(218, 239, 247, 0.8) 0%,
+  //   rgb(250, 250, 246) 20%
+  // );
 }
 .feature {
   background: linear-gradient(
@@ -56,4 +63,42 @@
     transform: scale(1.2);
     opacity: 0.8;
   }
+}
+
+.property {
+  height: 100%;
+  padding-left: 20%;
+  padding-right: 20%;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(193, 210, 247, 1) 0%,
+    rgba(193, 211, 247, 1) 0%,
+    rgba(246, 246, 246, 1) 5%
+  );
+}
+
+.testColor {
+  height: 40px;
+  background: rgb(192, 206, 247);
+  background: linear-gradient(
+    86deg,
+    rgba(192, 206, 247, 1) 0%,
+    rgba(194, 232, 247, 1) 16%,
+    rgba(192, 208, 247, 1) 43%,
+    rgba(194, 233, 247, 1) 61%,
+    rgba(192, 207, 247, 1) 87%,
+    rgba(194, 234, 247, 1) 100%
+  );
+}
+
+.properySearch {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2%;
+}
+
+.allProperties {
+  padding-top: 5%;
+  padding-bottom: 10%;
 }
