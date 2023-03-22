@@ -12,6 +12,7 @@
   bottom: 0px;
   height: 70px;
   width: 100%;
+  z-index: 3;
 }
 
 .searchform {
@@ -27,7 +28,7 @@
 }
 
 .card {
-  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 10%);
+  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 50%);
   height: 500px;
   width: 350px;
   background-color: #edeef0;
@@ -38,7 +39,7 @@
 
   &:hover {
     transform: scale(1.01);
-
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 70%);
     transform: translateY(-1.5vh);
   }
 }
@@ -110,4 +111,12 @@
 .properySearch {
   background-color: #edeef0;
   border-radius: 8px;
+}
+
+.detailImage {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);
+  height: 400px;
+  width: 590px;
 }
