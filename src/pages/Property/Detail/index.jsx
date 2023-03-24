@@ -27,7 +27,7 @@ const Detail = () => {
   const car = [{}];
 
   return (
-    <Box style={{ paddingBottom: "10%" }}>
+    <Box style={{ paddingBottom: "0%" }}>
       <ButtonAppBar />
       <Box className={styles.testColor}></Box>
       <Box className={styles.detail}>
@@ -57,11 +57,11 @@ const Detail = () => {
                     Nyumba nzuri ya kupanga kwa familia
                   </Typography>
                 </Box>
-                <Box>
-                  <Typography variant="h6">
+                <Box sx={{ color: " rgba(0, 0, 0, 0.5)" }}>
+                  <MenuItem>
                     <PlaceIcon />
-                    Arusha
-                  </Typography>
+                    <Typography variant="h6">Arusha</Typography>
+                  </MenuItem>
                 </Box>
               </Grid>
               <Grid item xs={12} md={3}>
@@ -91,8 +91,9 @@ const Detail = () => {
                 <Box
                   style={{
                     backgroundColor: "white",
-                    borderRadius: "2px",
+                    borderRadius: "4px",
                     height: "200px",
+                    boxShadow: "0 0.125rem 0.3125rem rgb(0 0 0 / 10%)",
                   }}
                 >
                   <Grid container>
@@ -132,11 +133,25 @@ const Detail = () => {
                   </Grid>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={8}>
+              <Grid
+                item
+                xs={12}
+                md={8}
+                style={{
+                  paddingBottom: "5%",
+                  borderBottom: "1px solid #dee2e6",
+                }}
+              >
                 <Box style={{ paddingBottom: "3%", paddingLeft: "3%" }}>
                   <Typography variant="h5">Description</Typography>
                 </Box>
-                <Box style={{ paddingBottom: "3%", paddingLeft: "3%" }}>
+                <Box
+                  style={{
+                    paddingBottom: "3%",
+                    paddingLeft: "3%",
+                    color: " rgba(0, 0, 0, 0.5)",
+                  }}
+                >
                   <Typography>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Facilis amet velit impedit autem pariatur magnam enim earum,
@@ -198,12 +213,17 @@ const Detail = () => {
                   })}
                 </Box>
 
-                <Box style={{ paddingBottom: "3%", paddingLeft: "3%" }}>
+                <Box
+                  style={{
+                    paddingBottom: "3%",
+                    paddingLeft: "3%",
+                  }}
+                >
                   <Box style={{ paddingBottom: "5%" }}>
-                    <Typography variant="h4">Features</Typography>
+                    <Typography variant="h5">Features</Typography>
                   </Box>
 
-                  <Box>
+                  <Box sx={{ color: " rgba(0, 0, 0, 0.5)" }}>
                     <Grid container spacing={1}>
                       <Grid item xs={12} md={3}>
                         <Box>
@@ -280,6 +300,36 @@ const Detail = () => {
                     </Grid>
                   </Box>
                   <Box></Box>
+                </Box>
+
+                <Box style={{ paddingBottom: "3%", paddingLeft: "3%" }}>
+                  <Box style={{ paddingBottom: "5%" }}>
+                    <Typography variant="h5">Features</Typography>
+                  </Box>
+                  <Grid
+                    container
+                    spacing={1}
+                    sx={{ color: " rgba(0, 0, 0, 0.5)" }}
+                  >
+                    <Grid item xs={12} md={4}>
+                      <MenuItem>
+                        <PlaceIcon />
+                        Electricity
+                      </MenuItem>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                      <MenuItem>
+                        <PlaceIcon />
+                        Fence
+                      </MenuItem>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                      <MenuItem>
+                        <PlaceIcon />
+                        Water
+                      </MenuItem>
+                    </Grid>
+                  </Grid>
                 </Box>
               </Grid>
             </Grid>
