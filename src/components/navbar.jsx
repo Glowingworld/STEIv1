@@ -255,7 +255,7 @@ export default function ButtonAppBar() {
                 color: " rgba(0, 0, 0, 0.5)",
               }}
             >
-              <a>Login</a>
+              <Link href="/Login">Login</Link>
             </Typography>
 
             <Typography

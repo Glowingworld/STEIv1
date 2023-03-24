@@ -74,7 +74,7 @@
     to bottom,
     rgba(193, 210, 247, 1) 0%,
     rgba(193, 211, 247, 1) 0%,
-    rgba(246, 246, 246, 1) 5%
+    rgba(246, 246, 246, 1) 8%
   );
 }
 
@@ -125,6 +125,8 @@
 }
 
 .secondDetail {
+  padding-bottom: 5%;
   border-top: 2px solid #e4e4e4;
   background-color: #f6f6f6;
+  height: 100%;
 }
