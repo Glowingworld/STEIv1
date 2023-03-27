@@ -27,7 +27,7 @@ export default function Login() {
             <Box
               display="flex"
               justifyContent="center"
-              style={{ paddingBottom: "5%", color: " rgba(0, 0, 0, 0.5)" }}
+              style={{ paddingBottom: "5%", color: "rgba(0, 0, 0, 0.5)" }}
             >
               <Typography variant="h5">Login</Typography>
             </Box>

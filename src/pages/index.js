@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import { Button, Grid, Typography, Box } from "@mui/material";
 import SearchForm from "@/components/homeSearchForm";
 import Card from "@/components/houseCard";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 const Home = () => {
@@ -112,7 +113,7 @@ const Home = () => {
                 className={styles.btn}
                 style={{ backgroundColor: "black", color: "white" }}
               >
-                Submit your own property
+                <Link href="/Property/Submit">Submit your own property</Link>
               </button>
             </Box>
           </Box>

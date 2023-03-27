@@ -174,14 +174,14 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography
+          {/* <Typography
             variant="h5"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block", color: "darkblue" } }}
           >
             STEI
-          </Typography>
+          </Typography> */}
           <Typography
             variant="h7"
             noWrap
@@ -192,7 +192,7 @@ export default function ButtonAppBar() {
               color: " rgba(0, 0, 0, 0.5)",
             }}
           >
-            <Link href="/">Home</Link>
+            <Link href="/">STEI</Link>
           </Typography>
           <Typography
             variant="h7"
@@ -255,7 +255,7 @@ export default function ButtonAppBar() {
                 color: " rgba(0, 0, 0, 0.5)",
               }}
             >
-              <Link href="/Login">Login</Link>
+              <Link href="/Auth/Login">Login</Link>
             </Typography>
 
             <Typography
@@ -268,7 +268,7 @@ export default function ButtonAppBar() {
                 color: " rgba(0, 0, 0, 0.5)",
               }}
             >
-              <a>Register</a>
+              <Link href="/Auth/Register">Register</Link>
             </Typography>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
