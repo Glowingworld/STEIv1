@@ -17,7 +17,7 @@ export default function Login() {
   return (
     <Box>
       <ButtonAppBar />
-      <Box className={styles.testColor}></Box>
+      {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.property}>
         <Box paddingTop="3%" paddingBottom="2%" color="#191919">
           <Typography variant="h4">Login</Typography>
@@ -66,6 +66,7 @@ export default function Login() {
                   <Box display="flex" justifyContent="space-between">
                     <Box>
                       <Checkbox />
+                      Remember me?
                     </Box>
                     <Box>
                       <Button

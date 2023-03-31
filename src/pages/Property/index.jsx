@@ -21,6 +21,7 @@ import ButtonAppBar from "@/components/navbar";
 const Properties = () => {
   function handleSubmit() {}
   const card = [1, 2, 2, 3];
+
   return (
     <Box>
       <ButtonAppBar />

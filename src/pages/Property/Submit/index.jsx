@@ -32,7 +32,6 @@ const Submit = () => {
                 height: "100%",
                 width: "100%",
                 borderTop: "3px solid #dee2e6",
-                borderBottom: "1px solid #dee2e6",
               }}
             >
               <Box component="form" onSubmit={handleSubmit} paddingTop="2%">
@@ -77,7 +76,7 @@ const Submit = () => {
                       fullWidth
                       margin="normal"
                       id="title"
-                      label="Title"
+                      label="Rooms"
                       name="title"
                       type="text"
                       autoFocus
@@ -88,7 +87,7 @@ const Submit = () => {
                       fullWidth
                       margin="normal"
                       id="price"
-                      label="Price"
+                      label="Type"
                       name="prices"
                       type="number"
                       autoFocus
@@ -99,7 +98,7 @@ const Submit = () => {
                       fullWidth
                       margin="normal"
                       id="span"
-                      label="For(Annual/Monthly)"
+                      label="Status"
                       name="span"
                       type="text"
                       autoFocus
@@ -228,15 +227,39 @@ const Submit = () => {
                 >
                   <Typography variant="h7">Features</Typography>
                 </Box>
-                {/* <Box display="flex" justifyContent="space-between">
-                  <Box>
-                    <Checkbox />
-                  </Box>
+                <Grid container>
+                  <Grid item xs={12} md={4}>
+                    <Box>
+                      <Checkbox />
+                      Electicity
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <Box>
+                      <Checkbox />
+                      Water
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <Box>
+                      <Checkbox />
+                      Fence
+                    </Box>
+                  </Grid>
+                </Grid>
+                <Box paddingBottom="3%" paddingTop="3%">
+                  <hr color="#dee2e6"></hr>
+                </Box>
+
+                <Box display="flex" justifyContent="end">
                   <Box>
                     <Button
                       type="submit"
                       variant="contained"
                       sx={{
+                        marginLeft: 3,
+                        paddingLeft: 3,
+                        paddingRight: 3,
                         mt: 3,
                         mb: 2,
                         pt: 1,
@@ -244,10 +267,10 @@ const Submit = () => {
                         background: "#0000ff",
                       }}
                     >
-                      LOGIN
+                      SUBMIT
                     </Button>
                   </Box>
-                </Box> */}
+                </Box>
               </Box>
             </Container>
           </Box>

@@ -1,5 +1,6 @@
 .main {
   background-color: white;
+  height: 100%;
 }
 
 .firstsection {
@@ -74,7 +75,7 @@
     to bottom,
     rgba(193, 210, 247, 1) 0%,
     rgba(193, 211, 247, 1) 0%,
-    rgba(246, 246, 246, 1) 10%
+    rgba(246, 246, 246, 1) 30%
   );
 }
 
@@ -85,6 +86,7 @@
 }
 
 .testColor {
+  z-index: -1;
   height: 40px;
   background: rgb(192, 206, 247);
   background: linear-gradient(
@@ -99,7 +101,7 @@
 }
 
 .properySearch {
-  background-color: white;
+  background-color: white; //#0c0b0e
   border-radius: 8px;
   padding: 2%;
   box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);

@@ -51,7 +51,7 @@ const Home = () => {
           </Grid>
         </Box>
       </Box>
-      <Box className={styles.testColor}></Box>
+      {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.secondSection}>
         <Box className={styles.secondSectionContents}>
           <Box style={{ paddingBottom: "6%" }}>
@@ -89,7 +89,9 @@ const Home = () => {
               justifyContent="center"
               style={{ paddingTop: "3%" }}
             >
-              <button className={styles.btn}>Show All properties</button>
+              <button className={styles.btn}>
+                <Link href="/Property">Show All properties</Link>
+              </button>
             </Box>
           </Box>
           <Box className={styles.secondSectionInsideContents}>

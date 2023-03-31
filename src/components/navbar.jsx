@@ -165,7 +165,7 @@ export default function ButtonAppBar() {
         }}
       >
         <Toolbar>
-          {/* <IconButton
+          <IconButton
             size="large"
             edge="start"
             color="white"
@@ -173,15 +173,8 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton> */}
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block", color: "darkblue" } }}
-          >
-            STEI
-          </Typography> */}
+          </IconButton>
+
           <Typography
             variant="h7"
             noWrap
@@ -271,22 +264,8 @@ export default function ButtonAppBar() {
               <Link href="/Auth/Register">Register</Link>
             </Typography>
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
     </Box>
   );
 }
