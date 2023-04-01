@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import styles from "@/styles/components.module.scss";
+import { CircularProgress } from "@mui/material";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Padding } from "@mui/icons-material";
@@ -31,7 +32,7 @@ export default function searchForm() {
   return (
     <ThemeProvider theme={theme}>
       <Container className={styles.searchform} component="main" maxWidth="xs">
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         <Box
           sx={{
             display: "flex",

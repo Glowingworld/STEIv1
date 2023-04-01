@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import { Button, Grid, Typography, Box } from "@mui/material";
 import SearchForm from "@/components/homeSearchForm";
 import Card from "@/components/houseCard";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 const Home = () => {
@@ -34,7 +35,7 @@ const Home = () => {
                 <img src="/wordmark.svg" width="50%" />
               </Box>
               <Box>
-                <Typography className={styles.fonttwo} variant="h4">
+                <Typography className={styles.fonttwo} variant="h5">
                   <i>" How about staying with us "</i>
                 </Typography>
               </Box>
@@ -50,7 +51,7 @@ const Home = () => {
           </Grid>
         </Box>
       </Box>
-      <Box className={styles.testColor}></Box>
+      {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.secondSection}>
         <Box className={styles.secondSectionContents}>
           <Box style={{ paddingBottom: "6%" }}>
@@ -72,7 +73,7 @@ const Home = () => {
               </Typography>
             </Box>
 
-            <Grid container spacing={1} rowSpacing={2}>
+            <Grid container spacing={1} rowSpacing={12}>
               <Grid item>
                 <Card />
               </Grid>
@@ -88,7 +89,9 @@ const Home = () => {
               justifyContent="center"
               style={{ paddingTop: "3%" }}
             >
-              <button className={styles.btn}>Show All properties</button>
+              <button className={styles.btn}>
+                <Link href="/Property">Show All properties</Link>
+              </button>
             </Box>
           </Box>
           <Box className={styles.secondSectionInsideContents}>
@@ -112,7 +115,7 @@ const Home = () => {
                 className={styles.btn}
                 style={{ backgroundColor: "black", color: "white" }}
               >
-                Submit your own property
+                <Link href="/Property/Submit">Submit your own property</Link>
               </button>
             </Box>
           </Box>

@@ -1,132 +1,306 @@
 .main {
   background-color: white;
+  height: 100%;
 }
 
-.firstsection {
-  background-color: #e7f2f6;
-  background-image: url("/external.87fdc6ca.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 70vh;
-}
+@media screen and (min-width: 600px) {
+  .firstsection {
+    background-color: #e7f2f6;
+    background-image: url("/external.87fdc6ca.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+  }
 
-.insideFirstSection {
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 10%;
-  padding-bottom: 10%;
-}
+  .insideFirstSection {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
 
-.secondSection {
-  padding-bottom: 5%;
-}
+  .secondSection {
+    padding-bottom: 5%;
+  }
 
-.secondSectionContents {
-  padding-left: 20%;
-  padding-right: 20%;
+  .secondSectionContents {
+    padding-left: 20%;
+    padding-right: 20%;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(193, 210, 247, 1) 0%,
-    rgba(193, 211, 247, 1) 0%,
-    rgba(246, 246, 246, 1) 3%
-  );
-  // background: linear-gradient(
-  //   to bottom,
-  //   rgb(218, 239, 247, 0.8) 0%,
-  //   rgb(250, 250, 246) 20%
-  // );
-}
-.feature {
-  background: linear-gradient(
-    to right,
-    rgb(218, 239, 247) 0%,
+    background: linear-gradient(
+      to bottom,
+      rgba(193, 210, 247, 1) 0%,
+      rgba(193, 211, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 3%
+    );
+    // background: linear-gradient(
+    //   to bottom,
+    //   rgb(218, 239, 247, 0.8) 0%,
+    //   rgb(250, 250, 246) 20%
+    // );
+  }
+  .feature {
+    background: linear-gradient(
+      to right,
+      rgb(218, 239, 247) 0%,
 
-    rgb(197, 209, 247) 10%
-  );
-}
+      rgb(197, 209, 247) 10%
+    );
+  }
 
-.secondSectionInsideContents {
-  background-color: #eeeeee;
-}
+  .secondSectionInsideContents {
+    background-color: #eeeeee;
+  }
 
-.btn {
-  border: 0px solid transparent;
-  padding: 0.8rem 1.5rem;
-  transition-property: transform;
-  transition-duration: 0.5s;
-  transition-delay: 0.1s;
-  &:hover {
-    cursor: pointer;
+  .btn {
+    border: 0px solid transparent;
+    padding: 0.8rem 1.5rem;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+    &:hover {
+      cursor: pointer;
 
-    transform: translateY(-1vh);
-    transform: scale(1.2);
-    opacity: 0.8;
+      transform: translateY(-1vh);
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  .property {
+    height: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(193, 210, 247, 1) 0%,
+      rgba(193, 211, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 30%
+    );
+  }
+
+  .propert {
+    height: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .testColor {
+    z-index: -1;
+    height: 40px;
+    background: rgb(192, 206, 247);
+    background: linear-gradient(
+      86deg,
+      rgba(192, 206, 247, 1) 0%,
+      rgba(194, 232, 247, 1) 16%,
+      rgba(192, 208, 247, 1) 43%,
+      rgba(194, 233, 247, 1) 61%,
+      rgba(192, 207, 247, 1) 87%,
+      rgba(194, 234, 247, 1) 100%
+    );
+  }
+
+  .properySearch {
+    background-color: white; //#0c0b0e
+    border-radius: 8px;
+    padding: 2%;
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);
+  }
+
+  .allProperties {
+    padding-top: 5%;
+    padding-bottom: 10%;
+  }
+
+  .detail {
+    background: linear-gradient(
+      to bottom,
+      rgba(193, 210, 247, 1) 0%,
+      rgba(193, 211, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 5%
+    );
+  }
+
+  .detailscard {
+    padding: 1%;
+    padding-top: 5%;
+  }
+
+  .secondDetail {
+    padding-bottom: 5%;
+    border-top: 2px solid #e4e4e4;
+    background-color: #f6f6f6;
+    height: 100%;
+  }
+
+  .submit {
+    background: linear-gradient(
+      to bottom,
+
+      rgba(194, 232, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 7%
+    );
+  }
+
+  .loginFormWidth {
+    height: "300px";
+    width: 500px;
+    border-top: 3px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .formTitle {
+    padding-bottom: 5%;
+    color: rgba(0, 0, 0, 0.5);
   }
 }
 
-.property {
-  height: 100%;
-  padding-left: 20%;
-  padding-right: 20%;
+@media screen and (max-width: 606px) {
+  .firstsection {
+    background-color: #e7f2f6;
+    background-image: url("/external.87fdc6ca.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
 
-  background: linear-gradient(
-    to bottom,
-    rgba(193, 210, 247, 1) 0%,
-    rgba(193, 211, 247, 1) 0%,
-    rgba(246, 246, 246, 1) 8%
-  );
-}
+  .insideFirstSection {
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
 
-.propert {
-  height: 100%;
-  padding-left: 20%;
-  padding-right: 20%;
-}
+  .secondSection {
+    padding-bottom: 5%;
+  }
 
-.testColor {
-  height: 40px;
-  background: rgb(192, 206, 247);
-  background: linear-gradient(
-    86deg,
-    rgba(192, 206, 247, 1) 0%,
-    rgba(194, 232, 247, 1) 16%,
-    rgba(192, 208, 247, 1) 43%,
-    rgba(194, 233, 247, 1) 61%,
-    rgba(192, 207, 247, 1) 87%,
-    rgba(194, 234, 247, 1) 100%
-  );
-}
+  .secondSectionContents {
+    padding-left: 2%;
+    padding-right: 2%;
 
-.properySearch {
-  background-color: white;
-  border-radius: 8px;
-  padding: 2%;
-  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);
-}
+    background: linear-gradient(
+      to bottom,
+      rgba(193, 210, 247, 1) 0%,
+      rgba(193, 211, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 3%
+    );
+  }
 
-.allProperties {
-  padding-top: 5%;
-  padding-bottom: 10%;
-}
+  .feature {
+    background: linear-gradient(
+      to right,
+      rgb(218, 239, 247) 0%,
 
-.detail {
-  background: linear-gradient(
-    to bottom,
-    rgba(193, 210, 247, 1) 0%,
-    rgba(193, 211, 247, 1) 0%,
-    rgba(246, 246, 246, 1) 5%
-  );
-}
+      rgb(197, 209, 247) 10%
+    );
+  }
 
-.detailscard {
-  padding: 1%;
-  padding-top: 5%;
-}
+  .secondSectionInsideContents {
+    background-color: #eeeeee;
+  }
 
-.secondDetail {
-  padding-bottom: 5%;
-  border-top: 2px solid #e4e4e4;
-  background-color: #f6f6f6;
-  height: 100%;
+  .btn {
+    border: 0px solid transparent;
+    padding: 0.8rem 1.5rem;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+    &:hover {
+      cursor: pointer;
+
+      transform: translateY(-1vh);
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  .property {
+    height: 100%;
+    padding-left: 5%;
+    padding-right: 0%;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(193, 210, 247, 1) 0%,
+      rgba(193, 211, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 30%
+    );
+  }
+
+  .propert {
+    height: 100%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .testColor {
+    z-index: -1;
+    height: 40px;
+    background: rgb(192, 206, 247);
+    background: linear-gradient(
+      86deg,
+      rgba(192, 206, 247, 1) 0%,
+      rgba(194, 232, 247, 1) 16%,
+      rgba(192, 208, 247, 1) 43%,
+      rgba(194, 233, 247, 1) 61%,
+      rgba(192, 207, 247, 1) 87%,
+      rgba(194, 234, 247, 1) 100%
+    );
+  }
+
+  .properySearch {
+    background-color: white; //#0c0b0e
+    border-radius: 8px;
+    padding: 2%;
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);
+  }
+
+  .allProperties {
+    padding-top: 5%;
+    padding-bottom: 10%;
+  }
+
+  .detail {
+    background: linear-gradient(
+      to bottom,
+      rgba(193, 210, 247, 1) 0%,
+      rgba(193, 211, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 5%
+    );
+  }
+
+  .detailscard {
+    padding: 1%;
+    padding-top: 5%;
+  }
+
+  .secondDetail {
+    padding-bottom: 5%;
+    border-top: 2px solid #e4e4e4;
+    background-color: #f6f6f6;
+    height: 100%;
+  }
+
+  .submit {
+    background: linear-gradient(
+      to bottom,
+
+      rgba(194, 232, 247, 1) 0%,
+      rgba(246, 246, 246, 1) 7%
+    );
+  }
+
+  .loginFormWidth {
+    height: 300px;
+    width: 390px;
+    border-top: 3px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .formTitle {
+    display: none;
+    padding-bottom: 5%;
+  }
 }
