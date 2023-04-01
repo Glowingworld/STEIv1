@@ -10,14 +10,27 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import styles from "@/styles/components.module.scss";
-import { CircularProgress } from "@mui/material";
+import {
+  CircularProgress,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  FormHelperText,
+} from "@mui/material";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Padding } from "@mui/icons-material";
+import { useState } from "react";
 
 const theme = createTheme();
 
 export default function searchForm() {
+  const [City, setCity] = useState("");
+  const [Type, setType] = useState("");
+  const [Status, setStatus] = useState("");
+  const [age, setAge] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -27,6 +40,9 @@ export default function searchForm() {
     let position = data.get("position");
     let year = new Date();
     year = year.getFullYear();
+    setCity("");
+    setStatus("");
+    setType("");
   };
 
   return (
@@ -37,7 +53,7 @@ export default function searchForm() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "start",
+            alignItems: "center",
           }}
         >
           <Typography
@@ -53,43 +69,99 @@ export default function searchForm() {
             noValidate
             sx={{ mt: 1 }}
           >
-            <TextField
-              margin="normal"
-              fullWidth
-              id="fname"
-              label="City"
-              name="fname"
-              autoComplete="name"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="lname"
-              label="Type"
-              name="lname"
-              autoComplete="lname"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="pos"
-              label="Status"
-              name="position"
-              autoComplete="pos"
-              autoFocus
-            />
+            <FormControl sx={{ m: 1, minWidth: "100%" }}>
+              <InputLabel id="city">CITY</InputLabel>
+              <Select
+                fullWidth
+                labelId="city"
+                id="slage"
+                value={City}
+                label="City"
+                onChange={(e) => setCity(e.target.value)}
+              >
+                <MenuItem value={10}>Dar-es-Salaam</MenuItem>
+                <MenuItem value={20}>Arusha</MenuItem>
+                <MenuItem value={30}>Mwanza</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl sx={{ m: 1, width: "100%" }}>
+              <InputLabel id="stat">STATUS</InputLabel>
+              <Select
+                fullWidth
+                labelId="stat"
+                id="sltype"
+                value={Status}
+                label="Status"
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <MenuItem value={"appartment"}>Appartment</MenuItem>
+                <MenuItem value={"single room"}>Single room</MenuItem>
+                <MenuItem value={"Full house"}>Full house</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl sx={{ m: 1, minWidth: "100%" }}>
+              {" "}
+              <InputLabel id="type">TYPE</InputLabel>
+              <Select
+                fullWidth
+                labelId="type"
+                id="sltype"
+                value={Type}
+                label="Type"
+                onChange={(e) => setType(e.target.value)}
+              >
+                <MenuItem value={"rent"}>Rent</MenuItem>
+                <MenuItem value={"sell"}>Sell</MenuItem>
+              </Select>
+            </FormControl>
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, pt: 1, pb: 1, background: "#0000ff" }}
-            >
-              Search
-            </Button>
+            <FormControl sx={{ m: 1, minWidth: "100%" }}>
+              {" "}
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, pt: 1, pb: 1, background: "#0000ff" }}
+              >
+                Search
+              </Button>
+            </FormControl>
           </Box>
+
+          {/* <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+            <FormHelperText>With label + helper text</FormHelperText>
+          </FormControl>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Select
+              value={age}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+            <FormHelperText>Without label</FormHelperText>
+          </FormControl> */}
         </Box>
       </Container>
     </ThemeProvider>

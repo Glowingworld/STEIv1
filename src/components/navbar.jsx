@@ -134,7 +134,10 @@ export default function ButtonAppBar() {
   // );
 
   return (
-    <Box sx={{ flexGrow: 1, backgroundColor: "white" }}>
+    <Box
+      sx={{ flexGrow: 1, backgroundColor: "white" }}
+      className={styles.navbar}
+    >
       <AppBar position="static" className={styles.appbar}>
         <Toolbar>
           <IconButton

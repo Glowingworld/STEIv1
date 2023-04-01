@@ -9,6 +9,7 @@ import { Button, Grid, Typography, Box } from "@mui/material";
 import SearchForm from "@/components/homeSearchForm";
 import Card from "@/components/houseCard";
 import Link from "next/link";
+import TypewriterComponent from "typewriter-effect";
 
 const inter = Inter({ subsets: ["latin"] });
 const Home = () => {
@@ -19,31 +20,32 @@ const Home = () => {
       <ButtonAppBar />
       <Box className={styles.firstsection}>
         <Box className={styles.insideFirstSection}>
-          <Grid container spacing={1}>
+          <Grid container spacing={1} rowSpacing={6}>
             <Grid
               item
               xs={12}
               md={6}
               style={{
-                paddingTop: "10%",
+                paddingTop: "8%",
               }}
             >
               <Box>
-                {/* <Typography className={styles.fontOne} variant="h2">
-                  STEI
-                </Typography> */}
-                <img src="/wordmark.svg" width="50%" />
+                <img src="/wordmark.svg" className={styles.logo} />
               </Box>
-              <Box>
-                <Typography className={styles.fonttwo} variant="h5">
-                  <i>" How about staying with us "</i>
-                </Typography>
+              <Box className={styles.fontOne}>
+                <TypewriterComponent
+                  options={{
+                    strings: ["Hey ", "'How about staying with us!'"],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
               </Box>
-              <Box style={{ paddingTop: "5%" }}>
+              {/* <Box style={{ paddingTop: "5%" }}>
                 <button className={styles.btn} style={{ borderRadius: "2px" }}>
                   Show properties
                 </button>
-              </Box>
+              </Box> */}
             </Grid>
             <Grid item xs={12} md={6}>
               <SearchForm />
@@ -72,22 +74,20 @@ const Home = () => {
                 Featured Properties
               </Typography>
             </Box>
-
-            <Grid container spacing={1} rowSpacing={12}>
-              <Grid item>
-                <Card />
+            <Box paddingBottom="10px">
+              <Grid container spacing={4} rowSpacing={6}>
+                <Grid item>
+                  <Card />
+                </Grid>
+                <Grid item>
+                  <Card />
+                </Grid>
               </Grid>
-              <Grid item>
-                <Card />
-              </Grid>
-              <Grid item>
-                <Card />
-              </Grid>
-            </Grid>
+            </Box>
             <Box
               display="flex"
               justifyContent="center"
-              style={{ paddingTop: "3%" }}
+              style={{ paddingTop: "5%" }}
             >
               <button className={styles.btn}>
                 <Link href="/Property">Show All properties</Link>
