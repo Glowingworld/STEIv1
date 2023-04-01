@@ -1,122 +1,270 @@
-.navbar {
-  background-color: white;
-  height: 70px;
-}
-.navLink {
-  color: rgba(0, 0, 0, 0.5);
-}
+@media screen and (min-width: 606px) {
+  .navbar {
+    background-color: white;
+    height: 70px;
+  }
+  .navLink {
+    color: rgba(0, 0, 0, 0.5);
+  }
 
-.footer {
-  background-color: white;
-  position: fixed;
-  bottom: 0px;
-  height: 70px;
-  width: 100%;
-  z-index: 3;
-}
+  .footer {
+    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    height: 70px;
+    width: 100%;
+    z-index: 3;
+  }
 
-.searchform {
-  background-color: #edeef0;
-  border-radius: 8px;
-}
+  .searchform {
+    background-color: #edeef0;
+    border-radius: 8px;
+  }
 
-.footerContents {
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 1.5%;
-  background-color: #fff;
-}
+  .footerContents {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 1.5%;
+    background-color: #fff;
+  }
 
-.card {
-  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 50%);
-  height: 500px;
-  width: 350px;
-  background-color: #edeef0;
-  border-radius: 8px;
-  transition-property: translate opacity transform;
-  transition-duration: 1s;
-  transition-delay: 0.5;
+  .card {
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 50%);
+    height: 500px;
+    width: 350px;
+    background-color: #edeef0;
+    border-radius: 8px;
+    transition-property: translate opacity transform;
+    transition-duration: 1s;
+    transition-delay: 0.5;
 
-  &:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 70%);
-    transform: translateY(-1.5vh);
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 70%);
+      transform: translateY(-1.5vh);
+    }
+  }
+
+  .cardImage {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-image: url("/nyumba.png");
+    height: 95%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  .cardContents {
+    background-color: white;
+    position: relative;
+    border-top-left-radius: 16px;
+    // border-bottom-right-radius: 8px;
+    // border-top-left-radius: 32px;
+    top: 60%;
+    height: 22%;
+    border-bottom: 2px solid #e4e4e4;
+  }
+
+  .cardDetails {
+    border-radius: 4px;
+    border-bottom: 2px solid #edeef0;
+    background-color: #f6f6f6;
+  }
+
+  .cardDescriptions {
+    //background-color: #191919;
+    color: white;
+    position: relative;
+    top: 62%;
+    padding-left: 2%;
+  }
+
+  .index {
+    background-color: #fff;
+    box-shadow: 0 0.1875rem 0.9375rem rgb(0 0 0 / 15%);
+    //bottom: -0.75rem;
+    border-radius: 0.1875rem;
+    color: #191919;
+    display: inline-block;
+    left: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0.5rem;
+    z-index: 2;
+  }
+
+  .btn {
+    border: solid 0px transparent;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    color: #343a40;
+    background-color: transparent;
+    border-radius: 8px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .properySearch {
+    background-color: #edeef0;
+    border-radius: 8px;
+  }
+
+  .detailImage {
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);
+    height: 400px;
+    width: 590px;
+  }
+
+  .appbar {
+    background-color: white;
+    color: black;
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 20%;
   }
 }
 
-.cardImage {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background-image: url("/nyumba.png");
-  height: 95%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
-}
-
-.cardContents {
-  background-color: white;
-  position: relative;
-  border-top-left-radius: 16px;
-  // border-bottom-right-radius: 8px;
-  // border-top-left-radius: 32px;
-  top: 60%;
-  height: 22%;
-  border-bottom: 2px solid #e4e4e4;
-}
-
-.cardDetails {
-  background-color: #f6f6f6;
-}
-
-.cardDescriptions {
-  //background-color: #191919;
-  color: white;
-  position: relative;
-  top: 62%;
-  padding-left: 2%;
-}
-
-.index {
-  background-color: #fff;
-  box-shadow: 0 0.1875rem 0.9375rem rgb(0 0 0 / 15%);
-  //bottom: -0.75rem;
-  border-radius: 0.1875rem;
-  color: #191919;
-  display: inline-block;
-  left: 1rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  position: relative;
-  padding: 0.5rem 0.5rem;
-  z-index: 2;
-}
-
-.btn {
-  border: solid 0px transparent;
-  padding: 0.8rem 1.5rem;
-  width: 100%;
-  color: #343a40;
-  background-color: transparent;
-  border-radius: 8px;
-  &:hover {
-    cursor: pointer;
+@media screen and (max-width: 606px) {
+  .navbar {
+    background-color: white;
+    height: 70px;
   }
-}
+  .navLink {
+    color: rgba(0, 0, 0, 0.5);
+  }
 
-.properySearch {
-  background-color: #edeef0;
-  border-radius: 8px;
-}
+  .footer {
+    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    height: 70px;
+    width: 100%;
+    z-index: 3;
+  }
 
-.detailImage {
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);
-  height: 400px;
-  width: 590px;
+  .searchform {
+    background-color: #edeef0;
+    border-radius: 8px;
+  }
+
+  .footerContents {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 1.5%;
+    background-color: #fff;
+  }
+
+  .card {
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 50%);
+    height: 500px;
+    width: 350px;
+
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition-property: translate opacity transform;
+    transition-duration: 1s;
+    transition-delay: 0.5;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 70%);
+      transform: translateY(-1.5vh);
+    }
+  }
+
+  .cardImage {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-image: url("/nyumba.png");
+    height: 95%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  .cardContents {
+    background-color: white;
+    position: relative;
+    border-top-left-radius: 16px;
+    // border-bottom-right-radius: 8px;
+    // border-top-left-radius: 32px;
+    top: 60%;
+    height: 22%;
+    border-bottom: 2px solid #e4e4e4;
+  }
+
+  .cardDetails {
+    border-radius: 4px;
+    border-bottom: 2px solid #edeef0;
+    background-color: #f6f6f6;
+  }
+
+  .cardDescriptions {
+    //background-color: #191919;
+    color: white;
+    position: relative;
+    top: 62%;
+    padding-left: 2%;
+  }
+
+  .index {
+    background-color: #fff;
+    box-shadow: 0 0.1875rem 0.9375rem rgb(0 0 0 / 15%);
+    //bottom: -0.75rem;
+    border-radius: 0.1875rem;
+    color: #191919;
+    display: inline-block;
+    left: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0.5rem;
+    z-index: 2;
+  }
+
+  .btn {
+    border: solid 0px transparent;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    color: #343a40;
+    background-color: transparent;
+    border-radius: 8px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .properySearch {
+    background-color: #edeef0;
+    border-radius: 8px;
+  }
+
+  .detailImage {
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 20%);
+    height: 400px;
+    width: 590px;
+  }
+
+  .appbar {
+    background-color: white;
+    color: black;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 20%;
+  }
 }

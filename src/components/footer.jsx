@@ -21,10 +21,10 @@ export default function footer() {
         </Box>
         <Box display="flex" justifyContent="space-evenly">
           <Box>
-            <Typography>watu</Typography>
+            <Typography>.</Typography>
           </Box>
           <Box>
-            <Typography>watu</Typography>
+            <Typography>.</Typography>
           </Box>
         </Box>
       </Box>

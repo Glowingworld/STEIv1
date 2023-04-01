@@ -35,7 +35,7 @@ const Home = () => {
                 <img src="/wordmark.svg" width="50%" />
               </Box>
               <Box>
-                <Typography className={styles.fonttwo} variant="h4">
+                <Typography className={styles.fonttwo} variant="h5">
                   <i>" How about staying with us "</i>
                 </Typography>
               </Box>
@@ -73,7 +73,7 @@ const Home = () => {
               </Typography>
             </Box>
 
-            <Grid container spacing={1} rowSpacing={2}>
+            <Grid container spacing={1} rowSpacing={12}>
               <Grid item>
                 <Card />
               </Grid>

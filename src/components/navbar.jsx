@@ -53,6 +53,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
+import styles from "@/styles/components.module.scss";
 
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -79,91 +80,62 @@ export default function ButtonAppBar() {
   };
 
   const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
+  // const renderMobileMenu = (
+  //   <Menu
+  //     anchorEl={mobileMoreAnchorEl}
+  //     anchorOrigin={{
+  //       vertical: "top",
+  //       horizontal: "right",
+  //     }}
+  //     id={mobileMenuId}
+  //     keepMounted
+  //     transformOrigin={{
+  //       vertical: "top",
+  //       horizontal: "right",
+  //     }}
+  //     open={isMobileMenuOpen}
+  //     onClose={handleMobileMenuClose}
+  //   >
+  //     <MenuItem>
+  //       <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+  //         <Badge badgeContent={4} color="error">
+  //           <MailIcon />
+  //         </Badge>
+  //       </IconButton>
+  //       <p>Messages</p>
+  //     </MenuItem>
+  //     <MenuItem>
+  //       <IconButton
+  //         size="large"
+  //         aria-label="show 17 new notifications"
+  //         color="inherit"
+  //       >
+  //         <Badge badgeContent={17} color="error">
+  //           <NotificationsIcon />
+  //         </Badge>
+  //       </IconButton>
+  //       <p>Notifications</p>
+  //     </MenuItem>
+  //     <MenuItem onClick={handleProfileMenuOpen}>
+  //       <IconButton
+  //         size="large"
+  //         aria-label="account of current user"
+  //         aria-controls="primary-search-account-menu"
+  //         aria-haspopup="true"
+  //         color="inherit"
+  //       >
+  //         <AccountCircle />
+  //       </IconButton>
+  //       <p>Profile</p>
+  //     </MenuItem>
+  //   </Menu>
+  // );
 
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: "white" }}>
-      <AppBar
-        position="static"
-        sx={{
-          backgroundColor: "white",
-          color: "black",
-          paddingLeft: "10%",
-          paddingRight: "10%",
-          height: "20%",
-        }}
-      >
+      <AppBar position="static" className={styles.appbar}>
         <Toolbar>
           <IconButton
             size="large"

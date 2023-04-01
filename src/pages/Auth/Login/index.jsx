@@ -12,6 +12,7 @@ import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";
 import { useState } from "react";
+import { CircularProgress } from "@mui/material";
 // import { CheckBox } from "@mui/icons-material";
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ export default function Login() {
     let email = data.get("email");
     let password = data.get("password");
 
-    await fetch("http://localhost:8045/login", {
+    await fetch("http://localhost:8046/login", {
       method: "POST",
       body: JSON.stringify({
         email: email,
@@ -60,19 +61,12 @@ export default function Login() {
             <Box
               display="flex"
               justifyContent="center"
-              style={{ paddingBottom: "5%", color: "rgba(0, 0, 0, 0.5)" }}
+              className={styles.formTitle}
             >
               <Typography variant="h5">Login</Typography>
             </Box>
             <Box>
-              <Container
-                style={{
-                  height: "300px",
-                  width: "500px",
-                  borderTop: "3px solid #dee2e6",
-                  borderBottom: "1px solid #dee2e6",
-                }}
-              >
+              <Container className={styles.loginFormWidth}>
                 {/* <CssBaseline /> */}
                 <Box component="form" onSubmit={handleSubmit} paddingTop="2%">
                   <TextField
@@ -157,7 +151,10 @@ export default function Login() {
           color: "darkblue",
         }}
       >
-        <Typography variant="h4">Login....</Typography>
+        <CircularProgress size={80} />
+        <Box sx={{ paddingLeft: "3%" }}>
+          <Typography variant="h4"></Typography>
+        </Box>
       </Box>
     </Box>
   );
