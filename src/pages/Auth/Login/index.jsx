@@ -11,10 +11,43 @@ import ButtonAppBar from "@/components/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";
+import { useState } from "react";
 // import { CheckBox } from "@mui/icons-material";
 export default function Login() {
-  function handleSubmit() {}
-  return (
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleSubmit(event) {
+    setLoading(true);
+    event.preventDefault();
+    let data = new FormData(event.currentTarget);
+    let email = data.get("email");
+    let password = data.get("password");
+
+    await fetch("http://localhost:8045/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(res.status);
+        setTimeout(() => setLoading(false), 1000);
+
+        setEmail("");
+        setPassword("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  let loginPage = (
     <Box>
       <ButtonAppBar />
       {/* <Box className={styles.testColor}></Box> */}
@@ -44,20 +77,30 @@ export default function Login() {
                 <Box component="form" onSubmit={handleSubmit} paddingTop="2%">
                   <TextField
                     margin="normal"
+                    required
                     fullWidth
                     id="email"
                     label="Email"
                     name="email"
                     type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.value);
+                    }}
                     autoComplete="email"
                     autoFocus
                   />
                   <TextField
                     margin="normal"
+                    required
                     fullWidth
                     id="Password"
                     type="password"
                     label="Password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.value);
+                    }}
                     name="password"
                     autoComplete="password"
                     autoFocus
@@ -94,4 +137,30 @@ export default function Login() {
       <Footer />
     </Box>
   );
+
+  let loadingBox = (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      style={{ height: "100vh" }}
+    >
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        style={{
+          background: "#f6f6f6",
+          height: "300px",
+          width: "600px",
+          borderRadius: "4px",
+          color: "darkblue",
+        }}
+      >
+        <Typography variant="h4">Login....</Typography>
+      </Box>
+    </Box>
+  );
+
+  return <Box className={styles.main}>{loading ? loadingBox : loginPage}</Box>;
 }

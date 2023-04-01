@@ -99,6 +99,7 @@ export default function Login() {
                     label="First name"
                     name="firstname"
                     type="text"
+                    required
                     autoComplete="firstname"
                     value={fname}
                     onChange={(e) => {
@@ -113,6 +114,7 @@ export default function Login() {
                     label="Last name"
                     name="lastname"
                     type="text"
+                    required
                     autoComplete="lastname"
                     autoFocus
                     value={lname}
@@ -125,6 +127,7 @@ export default function Login() {
                     margin="normal"
                     fullWidth
                     id="email"
+                    required
                     label="Email"
                     name="email"
                     type="email"
@@ -142,6 +145,7 @@ export default function Login() {
                     label="Phone number"
                     name="phone"
                     type="tel"
+                    required
                     autoComplete="tel"
                     autoFocus
                     value={phone}
@@ -153,6 +157,7 @@ export default function Login() {
                     margin="normal"
                     fullWidth
                     id="pass"
+                    required
                     label="Password"
                     name="Password"
                     type="password"
@@ -166,6 +171,7 @@ export default function Login() {
                     margin="normal"
                     fullWidth
                     id="Pass2"
+                    required
                     type="password"
                     label="Repeate Password"
                     name="Password2"
@@ -187,7 +193,7 @@ export default function Login() {
                     </Box>
                     <Box>
                       <Button
-                        disabled={password !== repassword && fname.length > 0}
+                        disabled={password !== repassword}
                         type="submit"
                         variant="contained"
                         sx={{
@@ -231,7 +237,7 @@ export default function Login() {
           color: "darkblue",
         }}
       >
-        <Typography variant="h3">Loading.......</Typography>
+        <Typography variant="h4">Registering....</Typography>
       </Box>
     </Box>
   );
