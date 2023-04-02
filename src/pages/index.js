@@ -33,9 +33,10 @@ const Home = () => {
                 <img src="/wordmark.svg" className={styles.logo} />
               </Box>
               <Box className={styles.fontOne}>
+                Hey <span>&#128075;</span>
                 <TypewriterComponent
                   options={{
-                    strings: ["Hey ", "'How about staying with us!'"],
+                    strings: ["'How about staying with us!'"],
                     autoStart: true,
                     loop: true,
                   }}

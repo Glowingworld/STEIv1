@@ -4,6 +4,29 @@
 }
 
 @media screen and (min-width: 600px) {
+  .fontOne {
+    padding-top: 20px;
+    font-size: 2rem;
+    background-color: transparent;
+    color: white;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-weight: bolder;
+  }
+
+  .btnSearch {
+    border: 0px solid transparent;
+    padding: 0.8rem 1.5rem;
+
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-1vh);
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
   .firstsection {
     background-color: #e7f2f6;
     background-image: url("/external.87fdc6ca.jpg");
@@ -76,7 +99,7 @@
       to bottom,
       rgba(193, 210, 247, 1) 0%,
       rgba(193, 211, 247, 1) 0%,
-      rgba(246, 246, 246, 1) 30%
+      rgba(246, 246, 246, 1) 20%
     );
   }
 
@@ -210,6 +233,7 @@
   .btn {
     border: 0px solid transparent;
     padding: 0.8rem 1.5rem;
+
     transition-property: transform;
     transition-duration: 0.5s;
     transition-delay: 0.1s;
@@ -217,15 +241,32 @@
       cursor: pointer;
 
       transform: translateY(-1vh);
-      transform: scale(1.2);
+      transform: scale(1.02);
+      opacity: 0.8;
+    }
+  }
+  .btnSearch {
+    border: 0px solid transparent;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+    &:hover {
+      cursor: pointer;
+
+      transform: translateY(-1vh);
+      transform: scale(1.02);
       opacity: 0.8;
     }
   }
 
   .property {
     height: 100%;
-    padding-left: 5%;
-    padding-right: 0%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 10px;
+    padding-bottom: 70px;
 
     background: linear-gradient(
       to bottom,
@@ -290,6 +331,8 @@
   }
 
   .submit {
+    padding-top: 30px;
+    padding-bottom: 40px;
     background: linear-gradient(
       to bottom,
 
@@ -321,7 +364,7 @@
     padding-top: 5px;
     font-size: x-large;
     background-color: transparent;
-    color: black;
+    color: #070707;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-weight: bold;
   }
