@@ -136,7 +136,12 @@
 @media screen and (max-width: 606px) {
   .navbar {
     background-color: white;
+    background-color: white;
+    position: fixed;
+    top: 0px;
     height: 70px;
+    width: 100%;
+    z-index: 3;
   }
   .navLink {
     color: rgba(0, 0, 0, 0.5);
@@ -166,7 +171,7 @@
   .card {
     box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 50%);
     height: 500px;
-    width: 350px;
+    width: 366px;
 
     background-color: #ffffff;
     border-radius: 8px;
@@ -175,9 +180,7 @@
     transition-delay: 0.5;
 
     &:hover {
-      transform: scale(1.01);
       box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 70%);
-      transform: translateY(-1.5vh);
     }
   }
 

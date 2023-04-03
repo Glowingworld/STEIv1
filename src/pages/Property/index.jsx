@@ -25,7 +25,7 @@ const Properties = () => {
   return (
     <Box>
       <ButtonAppBar />
-      <Box className={styles.testColor}></Box>
+      {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.property}>
         <Box paddingTop="7%" paddingBottom="5%" color="black">
           <Typography variant="h4">Search</Typography>
@@ -90,7 +90,7 @@ const Properties = () => {
                       color: "white",
                       borderRadius: "4px",
                     }}
-                    className={styles.btn}
+                    className={styles.btnSearch}
                   >
                     Search
                   </button>
@@ -101,7 +101,7 @@ const Properties = () => {
         </Container>
 
         <Box className={styles.allProperties}>
-          <Grid container spacing={1} rowSpacing={3}>
+          <Grid container spacing={1} rowSpacing={6}>
             {card.map((c) => {
               return (
                 <Grid item>

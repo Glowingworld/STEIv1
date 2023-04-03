@@ -19,22 +19,23 @@ const Submit = () => {
       <ButtonAppBar />
       <Box className={styles.submit}>
         <Box className={styles.propert}>
-          <Box paddingTop="7%" paddingBottom="5%" color="black">
-            <Typography variant="h4">Submit Property</Typography>
-          </Box>
-
-          <Box paddingTop="2%" sx={{ color: " rgba(0, 0, 0, 0.5)" }}>
-            <Typography variant="h5">Basic Information</Typography>
-          </Box>
           <Box>
             <Container
               style={{
                 height: "100%",
                 width: "100%",
-                borderTop: "3px solid #dee2e6",
               }}
             >
+              <Box paddingTop="7%" paddingBottom="5%" color="black">
+                <Typography variant="h6">Details</Typography>
+              </Box>
               <Box component="form" onSubmit={handleSubmit} paddingTop="2%">
+                <Box paddingTop="2%" sx={{ color: " rgba(0, 0, 0, 0.5)" }}>
+                  <Typography variant="h5">Basic Information</Typography>
+                </Box>
+                <Box paddingBottom="3%">
+                  <hr color="#dee2e6"></hr>
+                </Box>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <TextField
