@@ -24,6 +24,7 @@ import getWardLocations from "@/components/streethook";
 const Submit = () => {
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
+  const [title, setTitle] = useState("");
   const [districts] = getRegionsLocations(city);
   const [street, setStreet] = useState("");
   const [streets] = getWardLocations(district);
@@ -68,9 +69,13 @@ const Submit = () => {
                       multiline
                       name="title"
                       type="Text"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      error={title.length < 4 && title.length > 0}
+                      aria-errormessage="ttile"
                       label="TITLE"
                       required
-                      autoFocus
+                      autoFocusz
                     />
                   </Grid>
                   <Grid item xs={6} sm={3}>
