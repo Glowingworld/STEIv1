@@ -1,5 +1,6 @@
 import ButtonAppBar from "@/components/navbar";
 import Footer from "@/components/footer";
+import FileUploader from "@/components/fileUploader";
 import {
   Box,
   Typography,
@@ -8,10 +9,25 @@ import {
   Checkbox,
   Button,
   Grid,
+  FormControl,
+  MenuItem,
+  FormHelperText,
+  InputLabel,
+  Select,
+  TextareaAutosize,
 } from "@mui/material";
 import styles from "@/styles/Home.module.scss";
+import { useState, useEffect } from "react";
+import getRegionsLocations from "@/components/hooks";
+import getWardLocations from "@/components/streethook";
 
 const Submit = () => {
+  const [city, setCity] = useState("");
+  const [district, setDistrict] = useState("");
+  const [districts] = getRegionsLocations(city);
+  const [street, setStreet] = useState("");
+  const [streets] = getWardLocations(district);
+  console.log(districts);
   function handleSubmit() {}
 
   return (
@@ -38,15 +54,20 @@ const Submit = () => {
                 </Box>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      margin="normal"
-                      id="title"
-                      label="Title"
-                      name="title"
-                      type="text"
-                      autoFocus
-                    />
+                    <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                      <InputLabel id="city">CITY</InputLabel>
+                      <Select
+                        fullWidth
+                        labelId="city"
+                        id="slage"
+                        value={city}
+                        label="City"
+                        onChange={(e) => setCity(e.target.value)}
+                      >
+                        <MenuItem value={"Daressalaam"}>Dar-es-Salaam</MenuItem>
+                        <MenuItem value={"Arusha"}>Arusha</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
                   <Grid item xs={6} sm={3}>
                     <TextField
@@ -106,7 +127,6 @@ const Submit = () => {
                     />
                   </Grid>
                 </Grid>
-
                 <Box
                   paddingTop="7%"
                   paddingBottom="2%"
@@ -117,40 +137,55 @@ const Submit = () => {
                 <Box paddingBottom="3%">
                   <hr color="#dee2e6"></hr>
                 </Box>
-
                 <Grid container spacing={1}>
                   <Grid item xs={12}>
-                    <TextField
-                      margin="normal"
-                      id="span"
-                      label="City"
-                      name="span"
-                      type="text"
-                      autoFocus
-                    />
+                    <FormControl sx={{ mt: 2, minWidth: "30%" }}>
+                      <InputLabel id="city">CITY</InputLabel>
+                      <Select
+                        labelId="city"
+                        id="slage"
+                        value={city}
+                        label="City"
+                        onChange={(e) => setCity(e.target.value)}
+                      >
+                        <MenuItem value={"Daressalaam"}>Dar-es-Salaam</MenuItem>
+                        <MenuItem value={"Arusha"}>Arusha</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      margin="normal"
-                      id="span"
-                      label="District"
-                      name="span"
-                      type="text"
-                      autoFocus
-                    />
+                    <FormControl sx={{ mt: 2, minWidth: "30%" }}>
+                      <InputLabel id="DIS">DISTRICT</InputLabel>
+                      <Select
+                        labelId="DIS"
+                        id="DIS"
+                        value={district}
+                        label="DISTRICT"
+                        onChange={(e) => setDistrict(e.target.value)}
+                      >
+                        {districts.map((dis) => {
+                          return <MenuItem value={dis}>{dis}</MenuItem>;
+                        })}
+                      </Select>
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      margin="normal"
-                      id="span"
-                      label="Street"
-                      name="span"
-                      type="text"
-                      autoFocus
-                    />
+                    <FormControl sx={{ mt: 2, minWidth: "30%" }}>
+                      <InputLabel id="ST">STREET</InputLabel>
+                      <Select
+                        labelId="ST"
+                        id="ST"
+                        value={street}
+                        label="STREET"
+                        onChange={(e) => setStreet(e.target.value)}
+                      >
+                        {streets.map((dis) => {
+                          return <MenuItem value={dis}>{dis}</MenuItem>;
+                        })}
+                      </Select>
+                    </FormControl>
                   </Grid>
                 </Grid>
-
                 <Box
                   paddingTop="7%"
                   paddingBottom="2%"
@@ -161,10 +196,9 @@ const Submit = () => {
                 <Box paddingBottom="3%">
                   <hr color="#dee2e6"></hr>
                 </Box>
-
-                <Box
-                  style={{ height: "400px", backgroundColor: "burlywood" }}
-                ></Box>
+                <Box>
+                  <FileUploader />
+                </Box>
 
                 <Box
                   paddingTop="7%"
@@ -176,16 +210,17 @@ const Submit = () => {
                 <Box paddingBottom="3%">
                   <hr color="#dee2e6"></hr>
                 </Box>
-
-                <TextField
+                <TextareaAutosize
+                  aria-label=""
                   margin="normal"
-                  id="span"
-                  label="Descriptions"
-                  name="span"
-                  type="text"
-                  autoFocus
+                  minRows={6}
+                  placeholder="Description"
+                  style={{
+                    width: "30%",
+                    padding: "1%",
+                    border: "1px solid #bdbdbd",
+                  }}
                 />
-
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={4}>
                     <TextField
@@ -251,7 +286,6 @@ const Submit = () => {
                 <Box paddingBottom="3%" paddingTop="3%">
                   <hr color="#dee2e6"></hr>
                 </Box>
-
                 <Box display="flex" justifyContent="end">
                   <Box>
                     <Button

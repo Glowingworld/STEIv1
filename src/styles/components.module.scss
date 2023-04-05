@@ -131,6 +131,15 @@
     padding-right: 10%;
     height: 20%;
   }
+
+  .upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    border: 4px dashed #06507e;
+    height: 300px;
+  }
 }
 
 @media screen and (max-width: 606px) {
@@ -269,5 +278,13 @@
     padding-left: 5%;
     padding-right: 5%;
     height: 20%;
+  }
+
+  .upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border: 4px dashed #06507e;
   }
 }

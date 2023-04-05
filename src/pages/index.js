@@ -24,7 +24,7 @@ const Home = () => {
             <Grid
               item
               xs={12}
-              md={6}
+              sm={6}
               style={{
                 paddingTop: "8%",
               }}
@@ -42,13 +42,8 @@ const Home = () => {
                   }}
                 />
               </Box>
-              {/* <Box style={{ paddingTop: "5%" }}>
-                <button className={styles.btn} style={{ borderRadius: "2px" }}>
-                  Show properties
-                </button>
-              </Box> */}
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <SearchForm />
             </Grid>
           </Grid>

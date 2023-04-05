@@ -63,12 +63,7 @@ export default function searchForm() {
           >
             Search Properties
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <FormControl sx={{ m: 1, minWidth: "100%" }}>
               <InputLabel id="city">CITY</InputLabel>
               <Select

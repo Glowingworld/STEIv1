@@ -56,11 +56,6 @@
       rgba(193, 211, 247, 1) 0%,
       rgba(246, 246, 246, 1) 3%
     );
-    // background: linear-gradient(
-    //   to bottom,
-    //   rgb(218, 239, 247, 0.8) 0%,
-    //   rgb(250, 250, 246) 20%
-    // );
   }
   .feature {
     background: linear-gradient(
@@ -183,7 +178,7 @@
   }
 }
 
-@media screen and (max-width: 904px) {
+@media screen and (max-width: 600px) {
   .firstsection {
     padding-top: 70px;
     background-color: #e7f2f6;
