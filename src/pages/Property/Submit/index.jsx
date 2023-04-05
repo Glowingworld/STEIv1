@@ -27,8 +27,14 @@ const Submit = () => {
   const [districts] = getRegionsLocations(city);
   const [street, setStreet] = useState("");
   const [streets] = getWardLocations(district);
+  const [model, setModel] = useState("");
+  const [status, setStatus] = useState("");
+  const [duration, setDuration] = useState("");
+  const [parking, setParking] = useState("");
   console.log(districts);
-  function handleSubmit() {}
+  function handleSubmit(event) {
+    const data = new FormData(event.current.target);
+  }
 
   return (
     <Box className={styles.submit} paddingBottom="10%">
@@ -54,75 +60,105 @@ const Submit = () => {
                 </Box>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      margin="normal"
+                      id="title"
+                      placeholder="example Chumba (Master) kinapangishwa mbezi"
+                      multiline
+                      name="title"
+                      type="Text"
+                      label="TITLE"
+                      required
+                      autoFocus
+                    />
+                  </Grid>
+                  <Grid item xs={6} sm={3}>
                     <FormControl sx={{ mt: 2, minWidth: "100%" }}>
-                      <InputLabel id="city">CITY</InputLabel>
+                      <InputLabel id="status">PURPOSE</InputLabel>
                       <Select
-                        fullWidth
-                        labelId="city"
-                        id="slage"
-                        value={city}
-                        label="City"
-                        onChange={(e) => setCity(e.target.value)}
+                        required
+                        labelId="status"
+                        id="status"
+                        value={status}
+                        label="PURPOSE"
+                        onChange={(e) => setStatus(e.target.value)}
                       >
-                        <MenuItem value={"Daressalaam"}>Dar-es-Salaam</MenuItem>
-                        <MenuItem value={"Arusha"}>Arusha</MenuItem>
+                        <MenuItem value={"Rent"}>Rent</MenuItem>
+                        <MenuItem value={"Sell"}>Sell</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={6} sm={3}>
                     <TextField
                       fullWidth
+                      required
                       margin="normal"
                       id="price"
-                      label="Price"
+                      label="PRICE"
                       name="prices"
                       type="number"
-                      autoFocus
-                    />
-                  </Grid>
-                  <Grid item xs={6} sm={3}>
-                    <TextField
-                      fullWidth
-                      margin="normal"
-                      id="span"
-                      label="For(Annual/Monthly)"
-                      name="span"
-                      type="text"
                       autoFocus
                     />
                   </Grid>
                 </Grid>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={4}>
-                    <TextField
-                      fullWidth
-                      margin="normal"
-                      id="title"
-                      label="Rooms"
-                      name="title"
-                      type="text"
-                      autoFocus
-                    />
+                    {status == "Sell" ? (
+                      <Box></Box>
+                    ) : (
+                      <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                        <InputLabel id="duration">DURATION </InputLabel>
+                        <Select
+                          required
+                          labelId="duration"
+                          id="dur"
+                          value={duration}
+                          label="Price per (month/year)"
+                          onChange={(e) => setDuration(e.target.value)}
+                        >
+                          <MenuItem value={"monthyl"}>Monthly</MenuItem>
+                          <MenuItem value={"annually"}>Annually</MenuItem>
+                        </Select>
+                      </FormControl>
+                    )}
                   </Grid>
+                  <Grid item xs={12} sm={4}>
+                    {status == "Sell" ? (
+                      <Box></Box>
+                    ) : (
+                      <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                        <InputLabel id="model">MODEL</InputLabel>
+                        <Select
+                          required
+                          labelId="model"
+                          id="model"
+                          value={model}
+                          label="MODEL"
+                          onChange={(e) => setModel(e.target.value)}
+                        >
+                          <MenuItem value={"1"}>Each month</MenuItem>
+                          <MenuItem value={"3"}> After every 3 months</MenuItem>
+                          <MenuItem value={"6"}>After every 6 months</MenuItem>
+                          <MenuItem value={"12"}>
+                            {" "}
+                            After every 12 months
+                          </MenuItem>
+                        </Select>
+                      </FormControl>
+                    )}
+                  </Grid>
+
                   <Grid item xs={12} sm={4}>
                     <TextField
                       fullWidth
+                      required
                       margin="normal"
-                      id="price"
-                      label="Type"
-                      name="prices"
+                      id="room"
+                      placeholder="example: 4 (vyumba vinne)"
+                      name="rooms"
                       type="number"
-                      autoFocus
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      fullWidth
-                      margin="normal"
-                      id="span"
-                      label="Status"
-                      name="span"
-                      type="text"
+                      label="ROOMS"
                       autoFocus
                     />
                   </Grid>
@@ -143,6 +179,7 @@ const Submit = () => {
                       <InputLabel id="city">CITY</InputLabel>
                       <Select
                         labelId="city"
+                        required
                         id="slage"
                         value={city}
                         label="City"
@@ -158,6 +195,7 @@ const Submit = () => {
                       <InputLabel id="DIS">DISTRICT</InputLabel>
                       <Select
                         labelId="DIS"
+                        required
                         id="DIS"
                         value={district}
                         label="DISTRICT"
@@ -174,6 +212,7 @@ const Submit = () => {
                       <InputLabel id="ST">STREET</InputLabel>
                       <Select
                         labelId="ST"
+                        required
                         id="ST"
                         value={street}
                         label="STREET"
@@ -211,7 +250,6 @@ const Submit = () => {
                   <hr color="#dee2e6"></hr>
                 </Box>
                 <TextareaAutosize
-                  aria-label=""
                   margin="normal"
                   minRows={6}
                   placeholder="Description"
@@ -225,10 +263,12 @@ const Submit = () => {
                   <Grid item xs={12} sm={4}>
                     <TextField
                       fullWidth
+                      placeholder="example: 2"
                       margin="normal"
-                      id="title"
+                      id="baths"
                       label="Bathrooms"
-                      name="title"
+                      name="baths"
+                      required
                       type="number"
                       autoFocus
                     />
@@ -237,23 +277,29 @@ const Submit = () => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      id="price"
+                      required
+                      placeholder="example: 4"
+                      id="beds"
                       label="Bedrooms"
-                      name="prices"
+                      name="beds"
                       type="number"
                       autoFocus
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
-                    <TextField
-                      fullWidth
-                      margin="normal"
-                      id="span"
-                      label="Parking?"
-                      name="span"
-                      type="text"
-                      autoFocus
-                    />
+                    <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                      <InputLabel id="par">Parking?</InputLabel>
+                      <Select
+                        labelId="par"
+                        id="par"
+                        value={parking}
+                        label="Parking?"
+                        onChange={(e) => setParking(e.target.value)}
+                      >
+                        <MenuItem value={"no"}>No</MenuItem>
+                        <MenuItem value={"yes"}>Yes</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
                 </Grid>
                 <Box
@@ -266,19 +312,19 @@ const Submit = () => {
                 <Grid container>
                   <Grid item xs={12} md={4}>
                     <Box>
-                      <Checkbox />
+                      <Checkbox name="umeme" />
                       Electicity
                     </Box>
                   </Grid>
                   <Grid item xs={12} md={4}>
                     <Box>
-                      <Checkbox />
+                      <Checkbox name="water" />
                       Water
                     </Box>
                   </Grid>
                   <Grid item xs={12} md={4}>
                     <Box>
-                      <Checkbox />
+                      <Checkbox name="fence" />
                       Fence
                     </Box>
                   </Grid>
