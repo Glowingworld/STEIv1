@@ -17,7 +17,7 @@ let getWardLocations = (district) => {
       setWard([]);
       try {
         const res = await fetch(
-          `http://localhost:8046/street?district=${district}`
+          `http://localhost:8045/street?district=${district}`
         );
 
         const _ward = await res.json();

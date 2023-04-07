@@ -26,7 +26,7 @@ export default function Login() {
     let email = data.get("email");
     let password = data.get("password");
 
-    await fetch("http://localhost:8046/login", {
+    await fetch("http://localhost:8045/login", {
       method: "POST",
       body: JSON.stringify({
         email: email,
