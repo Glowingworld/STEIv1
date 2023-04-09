@@ -4,7 +4,7 @@ import Head from "next/head";
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
-import { Button, Menu, Typography, useTheme } from "@mui/material";
+import { Button, Menu, MenuItem, Typography, useTheme } from "@mui/material";
 import { Box, Skeleton } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
@@ -16,9 +16,21 @@ import ThreeDRotation from "@mui/icons-material/ThreeDRotation";
 //import styles from "@/styles/components.module.scss";
 import styles from "@/styles/components.module.scss";
 const Card = (props) => {
-  const [loading, setLoading] = useState(false);
+  let loading = props.stage;
+
+  async function handleClick(id) {
+    console.log(id);
+    try {
+      let res = await fetch("http://localhost:8045/allPropeties", {
+        method: "GET",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={() => handleClick(props.id)}>
       <Box className={styles.cardImage}>
         <Box className={styles.cardDescriptions}>
           <Box>
@@ -38,29 +50,29 @@ const Card = (props) => {
                   fontWeight: "bolder",
                 }}
               >
-                Nyumba nzuri inapangishwa
+                {props.title}
               </Typography>
             )}
           </Box>
           <Box>
-            <Typography>
-              <span>
-                <PlaceIcon />
-              </span>
-              <span>Arusha</span>
-            </Typography>
+            <MenuItem>
+              <PlaceIcon />
+              {props.street},{props.location}
+            </MenuItem>
           </Box>
-          <Box className={styles.index}>3000000</Box>
+          <Box className={styles.index}>
+            <b>{props.price}</b>
+          </Box>
         </Box>
         <Box className={styles.cardContents}>
           {/* <h1>ontsdbwjbdjqbdj wiqjd</h1> */}
         </Box>
       </Box>
-      <Box className={styles.cardDetails}>
+      {/* <Box className={styles.cardDetails}>
         <button className={styles.btn}>
           DETAILS <span>s</span>
         </button>
-      </Box>
+      </Box> */}
     </div>
   );
 };
