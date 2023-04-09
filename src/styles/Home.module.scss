@@ -1,5 +1,5 @@
 .main {
-  background-color: white;
+  background-color: rgba(246, 246, 246, 1);
   height: 100%;
 }
 
@@ -28,11 +28,11 @@
     }
   }
   .firstsection {
-    background-color: #e7f2f6;
-    background-image: url("/external.87fdc6ca.jpg");
+    background-color: #3917f2;
+    // background-image: url("/external.87fdc6ca.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 70vh;
+    height: 80vh;
   }
 
   .insideFirstSection {
@@ -44,6 +44,8 @@
 
   .secondSection {
     padding-bottom: 5%;
+    padding-bottom: 100px;
+    border-radius: 8px;
   }
 
   .secondSectionContents {
@@ -67,7 +69,8 @@
   }
 
   .secondSectionInsideContents {
-    background-color: #eeeeee;
+    background-color: #3917f2;
+    color: white;
   }
 
   .btn {
@@ -181,8 +184,9 @@
 @media screen and (max-width: 600px) {
   .firstsection {
     padding-top: 70px;
-    background-color: #e7f2f6;
-    background-image: url("/external.87fdc6ca.jpg");
+    color: white;
+    background-color: #3917f2;
+    // background-image: url("/external.87fdc6ca.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 90vh;
@@ -197,7 +201,7 @@
 
   .secondSection {
     padding-bottom: 5%;
-    padding-bottom: 70px;
+    padding-bottom: 80px;
   }
 
   .secondSectionContents {
@@ -222,7 +226,8 @@
   }
 
   .secondSectionInsideContents {
-    background-color: blue;
+    background-color: #3917f2;
+    color: white;
   }
 
   .btn {
@@ -359,7 +364,8 @@
     padding-top: 5px;
     font-size: x-large;
     background-color: transparent;
-    color: #070707;
+    // color: #070707;
+    color: white;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-weight: bold;
   }

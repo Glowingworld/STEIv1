@@ -60,17 +60,19 @@ const Card = (props) => {
               {props.street},{props.location}
             </MenuItem>
           </Box>
-          <Box className={styles.index}>{props.price}</Box>
+          <Box className={styles.index}>
+            <b>{props.price}</b>
+          </Box>
         </Box>
         <Box className={styles.cardContents}>
           {/* <h1>ontsdbwjbdjqbdj wiqjd</h1> */}
         </Box>
       </Box>
-      <Box className={styles.cardDetails}>
+      {/* <Box className={styles.cardDetails}>
         <button className={styles.btn}>
           DETAILS <span>s</span>
         </button>
-      </Box>
+      </Box> */}
     </div>
   );
 };
