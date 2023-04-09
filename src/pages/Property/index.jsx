@@ -21,6 +21,9 @@ import ButtonAppBar from "@/components/navbar";
 const Properties = () => {
   const [loading, setLoading] = useState(false);
   const [properties, setProperties] = useState([]);
+  function handleClick() {
+    console.log("here here");
+  }
 
   function handleSubmit() {}
 
@@ -29,10 +32,14 @@ const Properties = () => {
   }, []);
 
   async function requestProperty() {
+    setLoading(true);
     try {
       let res = await fetch("http://localhost:8045/allPropeties", {
         method: "GET",
       });
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
 
       res = await res.json();
       setProperties(res.properties);
@@ -123,20 +130,28 @@ const Properties = () => {
         </Container>
 
         <Box className={styles.allProperties}>
-          <Grid container spacing={1} rowSpacing={6}>
-            {properties.map((c) => {
-              return (
-                <Grid item>
-                  <Card
-                    title={c.Title}
-                    location={c.City}
-                    street={c.Street}
-                    price={c.Price}
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>
+          {loading ? (
+            <Box display="flex" justifyContent="center" alignItems="center">
+              <Typography variant="h4"> Fetching feeds.....</Typography>
+            </Box>
+          ) : (
+            <Grid container spacing={1} rowSpacing={6}>
+              {properties.map((c) => {
+                return (
+                  <Grid item>
+                    <Card
+                      id={c._id}
+                      stage={loading}
+                      title={c.Title}
+                      location={c.City}
+                      street={c.Street}
+                      price={c.Price}
+                    />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
         </Box>
       </Box>
       <Footer />

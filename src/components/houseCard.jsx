@@ -16,9 +16,21 @@ import ThreeDRotation from "@mui/icons-material/ThreeDRotation";
 //import styles from "@/styles/components.module.scss";
 import styles from "@/styles/components.module.scss";
 const Card = (props) => {
-  const [loading, setLoading] = useState(false);
+  let loading = props.stage;
+
+  async function handleClick(id) {
+    console.log(id);
+    try {
+      let res = await fetch("http://localhost:8045/allPropeties", {
+        method: "GET",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={() => handleClick(props.id)}>
       <Box className={styles.cardImage}>
         <Box className={styles.cardDescriptions}>
           <Box>
