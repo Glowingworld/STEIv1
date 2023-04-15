@@ -22,30 +22,31 @@ export default function Login() {
   async function handleSubmit(event) {
     setLoading(true);
     event.preventDefault();
+
     let data = new FormData(event.currentTarget);
     let email = data.get("email");
     let password = data.get("password");
 
-    await fetch("http://localhost:8045/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => {
-        console.log(res.status);
-        setTimeout(() => setLoading(false), 1000);
+    try {
+      let res = await fetch("http://localhost:8045/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
 
-        setEmail("");
-        setPassword("");
-      })
-      .catch((err) => {
-        console.log(err);
+        headers: {
+          "Content-type": "application/json",
+        },
       });
+
+      console.log(res);
+      setTimeout(() => setLoading(false), 200);
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   let loginPage = (

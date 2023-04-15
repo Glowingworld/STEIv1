@@ -6,11 +6,40 @@
 @media screen and (min-width: 600px) {
   .fontOne {
     padding-top: 20px;
+
     font-size: 2rem;
-    background-color: transparent;
+    background-color: #060c21;
     color: white;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-weight: bolder;
+  }
+
+  .fontOne::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -1;
+  }
+
+  .fontOne:after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -2;
+    filter: blur(40px);
+  }
+
+  .fontOne:before,
+  .fontOne:after {
+    background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
   }
 
   .btnSearch {
@@ -28,11 +57,11 @@
     }
   }
   .firstsection {
-    background-color: #3917f2;
+    background-color: #060c21; //#3917f2;
     // background-image: url("/external.87fdc6ca.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
+    height: 85vh;
   }
 
   .insideFirstSection {
@@ -69,8 +98,10 @@
   }
 
   .secondSectionInsideContents {
-    background-color: #3917f2;
-    color: white;
+    background-color: #060c21;
+    color: #f4f5f7;
+    box-sizing: border-box;
+    box-shadow: 2px #060c21;
   }
 
   .btn {

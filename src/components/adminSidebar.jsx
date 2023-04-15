@@ -39,7 +39,7 @@ const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
   );
 };
 
-const sidebar = () => {
+const AdminSidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -123,36 +123,50 @@ const sidebar = () => {
           <Box height="100vh" paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/userDashboard"
+              to="/Admin/Dashboard"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
 
-            <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
               Data
             </Typography>
             <Item
-              title="Add Properties"
-              to="/userDashboard/Submit"
-              icon={<RoofingIcon />}
+              title="Manage Team"
+              to="/Admin/users"
+              icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-              isCollapsed={isCollapsed}
             />
             <Item
-              title="View Properties"
-              to="/userDashboard/property"
-              icon={<VisibilityIcon />}
+              title="Contacts Information"
+              to="#"
+              icon={<ContactsOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Invoices Balances"
+              to={"#"}
+              icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
 
-            <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
               Pages
             </Typography>
             <Item
-              title="Profile "
+              title="Profile Form"
               to="#"
               icon={<PersonOutlinedIcon />}
               selected={selected}
@@ -165,10 +179,17 @@ const sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Item
+              title="FAQ Page"
+              to="#"
+              icon={<HelpOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
             <Typography
               variant="h6"
-              color={colors.grey[400]}
+              color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Charts
@@ -194,6 +215,13 @@ const sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Item
+              title="Geography Chart"
+              to="#"
+              icon={<MapOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
           </Box>
         </Menu>
       </Sidebar>
@@ -201,4 +229,4 @@ const sidebar = () => {
   );
 };
 
-export default sidebar;
+export default AdminSidebar;
