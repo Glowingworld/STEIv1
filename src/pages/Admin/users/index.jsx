@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TableGrid from "@/components/tablegrid";
 import ButtonAppBar from "@/components/navbar";
 import AdminSidebar from "@/components/adminSidebar";
@@ -10,10 +10,31 @@ import { tokens } from "@/theme";
 import { useTheme } from "@mui/material";
 
 const Users = () => {
+  const [users, setUsers] = useState([]);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  useEffect(() => {
+    requestUsers();
+  }, []);
+
+  async function requestUsers() {
+    try {
+      let res = await fetch("http://localhost:8045/users", {
+        method: "GET",
+        headers: {},
+      });
+
+      res = await res.json();
+      console.log(res.user);
+      setUsers(res.user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const columns = [
-    // { field: "id", headerName: "ID" },
+    { field: "_id", headerName: "ID" },
     {
       field: "First_Name",
       headerName: "FIRST NAME",
@@ -52,7 +73,7 @@ const Users = () => {
         <Head title="USERS" subtittle="voila users" />
         <Box
           m="40px 0 0 0"
-          height="92vh"
+          height="90vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",

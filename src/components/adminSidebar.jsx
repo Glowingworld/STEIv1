@@ -137,14 +137,14 @@ const AdminSidebar = () => {
               Data
             </Typography>
             <Item
-              title="Manage Team"
+              title="Registeres Users"
               to="/Admin/users"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Contacts Information"
+              title="Contacts"
               to="#"
               icon={<ContactsOutlinedIcon />}
               selected={selected}

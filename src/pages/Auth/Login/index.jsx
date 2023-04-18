@@ -11,13 +11,16 @@ import ButtonAppBar from "@/components/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CircularProgress } from "@mui/material";
+// import userContext from "./userContext";
 // import { CheckBox } from "@mui/icons-material";
 export default function Login() {
   const [loading, setLoading] = useState(false);
+  // const [, setUser] = useContext(userContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [response, setResponse] = useState(null);
 
   async function handleSubmit(event) {
     setLoading(true);
@@ -40,8 +43,9 @@ export default function Login() {
         },
       });
 
-      console.log(res);
       setTimeout(() => setLoading(false), 200);
+      setResponse(res.status);
+      console.log(response);
       setEmail("");
       setPassword("");
     } catch (error) {
