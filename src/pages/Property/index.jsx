@@ -25,6 +25,7 @@ import ButtonAppBar from "@/components/navbar";
 const Properties = () => {
   const [loading, setLoading] = useState(false);
   const [properties, setProperties] = useState([]);
+  const [price, setPrice] = useState("");
   const [city, setCity] = useState("");
   const [range, setRange] = useState("");
   const [status, setStatus] = useState("");
@@ -106,32 +107,42 @@ const Properties = () => {
                     </FormControl>
                   </Grid>
                   <Grid item xs={12} md={4}>
-                    <FormControl sx={{ mt: 2, minWidth: "100%" }}>
-                      <InputLabel id="priceR">PRICE RANGE</InputLabel>
-                      <Select
-                        required
-                        labelId="priceR"
-                        id="priceR"
-                        value={range}
-                        label="PURPOSE"
-                        onChange={(e) => {
-                          setRange(e.target.value);
-                        }}
-                      >
-                        {status == "Rent" ? (
-                          <Box>
-                            <MenuItem value={"40k"}>40K - 100K</MenuItem>
-                            <MenuItem value={"100k"}>100K - 150K</MenuItem>
-                          </Box>
-                        ) : (
-                          <Box>
-                            <MenuItem value={"50M"}>50M - 100M</MenuItem>
-                            <MenuItem value={"20M"}>100M - 300M</MenuItem>
-                            <MenuItem value={"20M"}>300M - 700M</MenuItem>
-                          </Box>
-                        )}
-                      </Select>
-                    </FormControl>
+                    {status == "Rent" ? (
+                      <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                        <InputLabel id="range">PRICE RANGE</InputLabel>
+                        <Select
+                          required
+                          labelId="range"
+                          id="range"
+                          value={range}
+                          label="PRICE RANGE"
+                          onChange={(e) => {
+                            setRange(e.target.value);
+                          }}
+                        >
+                          <MenuItem value={"40k"}>40K</MenuItem>
+                          <MenuItem value={"100k"}>100K - 150K</MenuItem>
+                        </Select>
+                      </FormControl>
+                    ) : (
+                      <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                        <InputLabel id="price">PRICE</InputLabel>
+                        <Select
+                          required
+                          labelId="price"
+                          id="price"
+                          value={price}
+                          label="PRICE"
+                          onChange={(e) => {
+                            setPrice(e.target.value);
+                          }}
+                        >
+                          <MenuItem value={"50M"}>50M - 100M</MenuItem>
+                          <MenuItem value={"20M"}>100M - 300M</MenuItem>
+                          <MenuItem value={"20M"}>300M - 700M</MenuItem>
+                        </Select>
+                      </FormControl>
+                    )}
                   </Grid>
 
                   <Grid item xs={12} md={4}></Grid>
