@@ -1,3 +1,4 @@
+/*useclient*/
 import {
   Box,
   Typography,
@@ -7,12 +8,16 @@ import {
   Checkbox,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import { useRouter } from "next/router";
 import ButtonAppBar from "@/components/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";
 import { useContext, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import userContext from "@/components/context";
+
+import { useNavigate } from "react-router-dom";
 // import userContext from "./userContext";
 // import { CheckBox } from "@mui/icons-material";
 export default function Login() {
@@ -21,6 +26,9 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState(null);
+  const router = useRouter();
+  const [user, setUser] = useContext(userContext);
+  // const navigate = useNavigate();
 
   async function handleSubmit(event) {
     setLoading(true);
@@ -44,8 +52,11 @@ export default function Login() {
       });
 
       setTimeout(() => setLoading(false), 200);
+      let token = (await res.json()).token;
+      window.localStorage.setItem("token", token);
       setResponse(res.status);
-      console.log(response);
+
+      router.push("/userDashboard");
       setEmail("");
       setPassword("");
     } catch (error) {

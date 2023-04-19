@@ -50,6 +50,7 @@ const Submit = () => {
     console.log(description);
     setLoading(true);
     try {
+      let token = window.localStorage.getItem("token");
       let res = await fetch("http://localhost:8045/feeds", {
         method: "POST",
         body: JSON.stringify({
@@ -74,6 +75,7 @@ const Submit = () => {
         }),
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bear ${token}`,
         },
       });
 
