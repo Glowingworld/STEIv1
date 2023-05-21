@@ -11,19 +11,24 @@ import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PlaceIcon from "@mui/icons-material/Place";
 import ThreeDRotation from "@mui/icons-material/ThreeDRotation";
+import { useNavigate } from "react-router-dom";
 
-//import LocationIcon from "@mui/material/AccessAlarm";
-//import styles from "@/styles/components.module.scss";
 import styles from "@/styles/components.module.scss";
 const Card = (props) => {
   let loading = props.stage;
 
   async function handleClick(id) {
     console.log(id);
+
     try {
-      let res = await fetch("http://localhost:8045/allPropeties", {
-        method: "GET",
-      });
+      let res = await fetch(
+        `http://localhost:8045/singleProperty?postId=${id}`,
+        {
+          method: "GET",
+        }
+      );
+
+      console.log(await res.json());
     } catch (error) {
       console.log(error);
     }
@@ -31,9 +36,16 @@ const Card = (props) => {
 
   return (
     <div className={styles.card} onClick={() => handleClick(props.id)}>
-      <Box className={styles.cardImage}>
+      <Box
+        className={styles.cardImage}
+        style={{
+          backgroundImage: "url('images.png')",
+          backgroundSize: "cover",
+          backgroundRepeate: "no-repeate",
+        }}
+      >
         <Box className={styles.cardDescriptions}>
-          <Box>
+          <Box paddingTop="5%">
             {loading ? (
               <Skeleton
                 animation="wave"

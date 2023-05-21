@@ -3,7 +3,9 @@ import Head from "@/components/ header";
 import ButtonAppBar from "@/components/navbar";
 import { Sidebar, useProSidebar } from "react-pro-sidebar";
 import { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
+import PieCharts from "@/components/pieCharts";
+import BarChart from "@/components/barCharts";
 const AdminDashboard = () => {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
@@ -16,6 +18,16 @@ const AdminDashboard = () => {
       <div style={{ marginLeft: "auto", flex: 1, paddingTop: "10px" }}>
         {/* <ButtonAppBar /> */}
         <Head title="Dashboard" subtittle="voila dashboard" />
+        <Box>
+          <Grid container spacing={1}>
+            <Grid iteme xs={12} md={8}>
+              <BarChart />
+            </Grid>
+            <Grid iteme xs={12} md={4}>
+              <PieCharts />
+            </Grid>
+          </Grid>
+        </Box>
       </div>
     </div>
   );

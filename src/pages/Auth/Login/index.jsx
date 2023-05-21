@@ -52,10 +52,12 @@ export default function Login() {
       });
 
       setTimeout(() => setLoading(false), 200);
-      let token = (await res.json()).token;
+      res = await res.json();
+      let token = res.token;
       window.localStorage.setItem("token", token);
       setResponse(res.status);
-
+      console.log(res.user);
+      setUser(res.user);
       router.push("/userDashboard");
       setEmail("");
       setPassword("");

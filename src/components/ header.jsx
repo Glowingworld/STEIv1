@@ -15,7 +15,7 @@ const Head = ({ title, subtittle }) => {
         fontWeight="bold"
         style={{
           color: `${colors.grey[400]}`,
-          paddingLeft: "15px",
+          // paddingLeft: "15px",
         }}
       >
         {title}
@@ -25,7 +25,7 @@ const Head = ({ title, subtittle }) => {
         fontWeight="bold"
         style={{
           color: `${colors.greenAccent[400]}`,
-          paddingLeft: "15px",
+          // paddingLeft: "15px",
         }}
       >
         {subtittle}

@@ -401,3 +401,17 @@
     font-weight: bold;
   }
 }
+
+.userDashoardContainer {
+  border-radius: 8px;
+  background-color: #fffff1;
+  margin: 20px;
+}
+
+.formPosition {
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  z-index: 2;
+  margin-bottom: 50px;
+}
