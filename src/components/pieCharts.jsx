@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 import { Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { mockPieData } from "../../Data/mockdata";
+import { mockPieData } from "../Data/mockdata";
 const data = mockPieData;
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -13,23 +13,23 @@ const pieCharts = () => {
   return (
     <Box
       display="flex"
-      height="50vh"
+      height="440px"
       justifyContent="center"
       sx={{
-        backgroundColor: colors.primary[600],
-        boxShadow: `2px 2px ${colors.primary[300]}`,
+        backgroundColor: "white",
+        boxShadow: `2px 2px white`,
         borderRadius: "4px",
       }}
     >
-      <PieChart width={800} height={700}>
+      <PieChart width={500} height={500}>
         <Pie
           data={data}
-          cx={360}
+          cx={250}
           cy={240}
-          innerRadius={120}
+          innerRadius={100}
           label="label"
           labelLine="label"
-          outerRadius={180}
+          outerRadius={160}
           fill="#8884d8"
           paddingAngle={5}
           dataKey="value"

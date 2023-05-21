@@ -17,6 +17,7 @@ import {
   InputLabel,
   FormControl,
   FormHelperText,
+  Grid,
 } from "@mui/material";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -47,85 +48,83 @@ export default function searchForm() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container className={styles.searchform} component="main" maxWidth="xs">
+      <Container className={styles.searchform} component="main">
         {/* <CssBaseline /> */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <Box>
           <Typography
             component="h1"
             variant="h5"
-            sx={{ color: "black", paddingTop: "3%" }}
+            sx={{ color: "black", paddingTop: "3%", paddingBottom: "5%" }}
           >
-            Search Properties
+            Find your Home
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <FormControl sx={{ m: 1, minWidth: "100%" }}>
-              <InputLabel id="city">CITY</InputLabel>
-              <Select
-                fullWidth
-                labelId="city"
-                id="slage"
-                value={City}
-                label="City"
-                onChange={(e) => setCity(e.target.value)}
-              >
-                <MenuItem value={10}>Dar-es-Salaam</MenuItem>
-                <MenuItem value={20}>Arusha</MenuItem>
-                <MenuItem value={30}>Mwanza</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl sx={{ m: 1, width: "100%" }}>
-              <InputLabel id="stat">STATUS</InputLabel>
-              <Select
-                fullWidth
-                labelId="stat"
-                id="sltype"
-                value={Status}
-                label="Status"
-                onChange={(e) => setStatus(e.target.value)}
-              >
-                <MenuItem value={"appartment"}>Appartment</MenuItem>
-                <MenuItem value={"single room"}>Single room</MenuItem>
-                <MenuItem value={"Full house"}>Full house</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl sx={{ m: 1, minWidth: "100%" }}>
-              {" "}
-              <InputLabel id="type">TYPE</InputLabel>
-              <Select
-                fullWidth
-                labelId="type"
-                id="sltype"
-                value={Type}
-                label="Type"
-                onChange={(e) => setType(e.target.value)}
-              >
-                <MenuItem value={"rent"}>Rent</MenuItem>
-                <MenuItem value={"sell"}>Sell</MenuItem>
-              </Select>
-            </FormControl>
+          <Box component="form" onSubmit={handleSubmit}>
+            <Grid container spacing={1}>
+              <Grid item md={4}>
+                <FormControl sx={{ minWidth: "100%" }}>
+                  <InputLabel id="city">CITY</InputLabel>
+                  <Select
+                    fullWidth
+                    labelId="city"
+                    id="slage"
+                    value={City}
+                    label="City"
+                    onChange={(e) => setCity(e.target.value)}
+                  >
+                    <MenuItem value={10}>Dar-es-Salaam</MenuItem>
+                    <MenuItem value={20}>Arusha</MenuItem>
+                    <MenuItem value={30}>Mwanza</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item md={4}>
+                <FormControl sx={{ minWidth: "100%" }}>
+                  <InputLabel id="stat">STATUS</InputLabel>
+                  <Select
+                    fullWidth
+                    labelId="stat"
+                    id="sltype"
+                    value={Status}
+                    label="Status"
+                    onChange={(e) => setStatus(e.target.value)}
+                  >
+                    <MenuItem value={"appartment"}>Appartment</MenuItem>
+                    <MenuItem value={"single room"}>Single room</MenuItem>
+                    <MenuItem value={"Full house"}>Full house</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item md={4}>
+                <FormControl sx={{ minWidth: "100%" }}>
+                  {" "}
+                  <InputLabel id="type">TYPE</InputLabel>
+                  <Select
+                    fullWidth
+                    labelId="type"
+                    id="sltype"
+                    value={Type}
+                    label="Type"
+                    onChange={(e) => setType(e.target.value)}
+                  >
+                    <MenuItem value={"rent"}>Rent</MenuItem>
+                    <MenuItem value={"sell"}>Sell</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
 
-            <FormControl sx={{ m: 1, minWidth: "100%" }}>
-              {" "}
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, pt: 1, pb: 1, background: "#0000ff" }}
-              >
-                Search
-              </Button>
-            </FormControl>
+              <Grid item md={4}>
+                <FormControl sx={{ minWidth: "100%" }}>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, pt: 1, pb: 1, background: "#0000ff" }}
+                  >
+                    Search
+                  </Button>
+                </FormControl>
+              </Grid>
+            </Grid>
           </Box>
 
           {/* <FormControl sx={{ m: 1, minWidth: 120 }}>

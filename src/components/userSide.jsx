@@ -5,6 +5,7 @@ import { Box, Grid, IconButton, Typography, useTheme } from "@mui/material";
 import Link from "next/link";
 import Head from "./ header";
 //import "react-pro-sidebar/dist/css/styles.css";
+import { useContext } from "react";
 import { tokens } from "../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -20,6 +21,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import RoofingIcon from "@mui/icons-material/Roofing";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import userContext from "./context";
 
 const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
   return (
@@ -40,6 +42,8 @@ const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
 };
 
 const sidebar = () => {
+  const [user, _] = useContext(userContext);
+  console.log(user);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -47,8 +51,8 @@ const sidebar = () => {
 
   return (
     <Box
+      height="100%"
       sx={{
-        height: "100vh",
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
         },
@@ -111,7 +115,7 @@ const sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0", color: "#0098e4" }}
                 >
-                  Julius Marenga
+                  {/* {user.First_name} */}
                 </Typography>
                 <Typography variant="h6" color="white">
                   Operational Manager
@@ -129,9 +133,9 @@ const sidebar = () => {
               setSelected={setSelected}
             />
 
-            <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
+            {/* <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
               Data
-            </Typography>
+            </Typography> */}
             <Item
               title="Add Properties"
               to="/userDashboard/Submit"
@@ -140,15 +144,30 @@ const sidebar = () => {
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
-            <Item
+            {/* <Item
               title="View Properties"
               to="/userDashboard/property"
               icon={<VisibilityIcon />}
               selected={selected}
               setSelected={setSelected}
+            /> */}
+
+            <Item
+              title="Profile "
+              to="#"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Calendar"
+              to="#"
+              icon={<CalendarTodayOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
             />
 
-            <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
+            {/* <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
               Pages
             </Typography>
             <Item
@@ -164,7 +183,7 @@ const sidebar = () => {
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
 
             <Typography
               variant="h6"

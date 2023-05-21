@@ -24,7 +24,7 @@ const Home = () => {
             <Grid
               item
               xs={12}
-              md={6}
+              sm={6}
               style={{
                 paddingTop: "8%",
               }}
@@ -42,22 +42,18 @@ const Home = () => {
                   }}
                 />
               </Box>
-              {/* <Box style={{ paddingTop: "5%" }}>
-                <button className={styles.btn} style={{ borderRadius: "2px" }}>
-                  Show properties
-                </button>
-              </Box> */}
             </Grid>
-            <Grid item xs={12} md={6}>
-              <SearchForm />
-            </Grid>
+            <Grid item xs={12} sm={6}></Grid>
           </Grid>
         </Box>
+      </Box>
+      <Box className={styles.formPosition}>
+        <SearchForm />
       </Box>
       {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.secondSection}>
         <Box className={styles.secondSectionContents}>
-          <Box style={{ paddingBottom: "6%" }}>
+          <Box style={{ paddingBottom: "" }}>
             <Box
               display="flex"
               justifyContent="center"
@@ -72,7 +68,7 @@ const Home = () => {
                   fontSize: "1.75rem",
                 }}
               >
-                Featured Properties
+                Why booking with Us
               </Typography>
             </Box>
             <Box paddingBottom="10px">

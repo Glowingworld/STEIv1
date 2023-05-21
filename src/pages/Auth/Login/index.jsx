@@ -1,3 +1,4 @@
+/*useclient*/
 import {
   Box,
   Typography,
@@ -7,45 +8,62 @@ import {
   Checkbox,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import { useRouter } from "next/router";
 import ButtonAppBar from "@/components/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import userContext from "@/components/context";
+
+import { useNavigate } from "react-router-dom";
+// import userContext from "./userContext";
 // import { CheckBox } from "@mui/icons-material";
 export default function Login() {
   const [loading, setLoading] = useState(false);
+  // const [, setUser] = useContext(userContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [response, setResponse] = useState(null);
+  const router = useRouter();
+  const [user, setUser] = useContext(userContext);
+  // const navigate = useNavigate();
 
   async function handleSubmit(event) {
     setLoading(true);
     event.preventDefault();
+
     let data = new FormData(event.currentTarget);
     let email = data.get("email");
     let password = data.get("password");
 
-    await fetch("http://localhost:8046/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => {
-        console.log(res.status);
-        setTimeout(() => setLoading(false), 1000);
+    try {
+      let res = await fetch("http://localhost:8045/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
 
-        setEmail("");
-        setPassword("");
-      })
-      .catch((err) => {
-        console.log(err);
+        headers: {
+          "Content-type": "application/json",
+        },
       });
+
+      setTimeout(() => setLoading(false), 200);
+      res = await res.json();
+      let token = res.token;
+      window.localStorage.setItem("token", token);
+      setResponse(res.status);
+      console.log(res.user);
+      setUser(res.user);
+      router.push("/userDashboard");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   let loginPage = (

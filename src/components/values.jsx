@@ -1,10 +1,5 @@
+const values = () => {
+  return <Box></Box>;
+};
 
-
-
-const values = () =>{
-    return (
-
-    )
-}
-
-export default values
+export default values;

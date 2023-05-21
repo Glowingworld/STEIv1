@@ -4,18 +4,18 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 //import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../theme";
-const head = ({ title, subtittle }) => {
+const Head = ({ title, subtittle }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   return (
     <Box>
       <Typography
-        variant="h2"
+        variant="h3"
         fontWeight="bold"
         style={{
           color: `${colors.grey[400]}`,
-          paddingLeft: "15px",
+          // paddingLeft: "15px",
         }}
       >
         {title}
@@ -25,7 +25,7 @@ const head = ({ title, subtittle }) => {
         fontWeight="bold"
         style={{
           color: `${colors.greenAccent[400]}`,
-          paddingLeft: "15px",
+          // paddingLeft: "15px",
         }}
       >
         {subtittle}
@@ -34,4 +34,4 @@ const head = ({ title, subtittle }) => {
   );
 };
 
-export default head;
+export default Head;

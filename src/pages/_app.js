@@ -1,5 +1,14 @@
-import '@/styles/globals.css'
-
+import "@/styles/globals.css";
+import userContext from "@/components/context";
+import { ProSidebarProvider } from "react-pro-sidebar";
+import { useState } from "react";
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  const user = useState(null);
+  return (
+    <userContext.Provider value={user}>
+      <ProSidebarProvider>
+        <Component {...pageProps} />
+      </ProSidebarProvider>
+    </userContext.Provider>
+  );
 }

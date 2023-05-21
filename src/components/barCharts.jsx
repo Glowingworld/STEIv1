@@ -1,7 +1,6 @@
 import { Box, useTheme } from "@mui/material";
-
-import { mockBarData } from "../../Data/mockdata";
-import Header from "./ header";
+import { mockBarData } from "../Data/mockdata";
+import Head from "./ header";
 import {
   BarChart,
   Bar,
@@ -65,16 +64,15 @@ const barChart = () => {
   const colors = tokens(theme.palette.mode);
 
   return (
-    <ResponsiveContainer width="90%" height="75%">
+    <ResponsiveContainer width="90%" height="90%">
       <BarChart
         width={600}
-        height={100}
         data={data}
+        padding={{ top: "10px", righ: "2px" }}
         margin={{
-          top: 0,
+          top: 10,
           right: 10,
           left: 10,
-          bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="1 0" />

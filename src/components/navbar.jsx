@@ -140,7 +140,7 @@ export default function ButtonAppBar() {
     >
       <AppBar position="static" className={styles.appbar}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="white"
@@ -148,7 +148,7 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
 
           <Typography
             variant="h7"
@@ -205,7 +205,7 @@ export default function ButtonAppBar() {
               },
             }}
           >
-            Contact
+            <Link href="/userDashboard">Dashboard</Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box
