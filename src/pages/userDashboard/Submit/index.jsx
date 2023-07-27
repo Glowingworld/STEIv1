@@ -1,6 +1,12 @@
 import ButtonAppBar from "@/components/navbar";
 import Footer from "@/components/footer";
 import FileUploader from "@/components/fileUploader";
+import { Group, Text, useMantineTheme, rem } from "@mantine/core";
+import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
+import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
+import { Delete } from "@mui/icons-material";
+import axios from "axios";
+
 import {
   Box,
   Typography,
@@ -34,10 +40,15 @@ const Submit = () => {
   const [status, setStatus] = useState("");
   const [duration, setDuration] = useState("");
   const [parking, setParking] = useState("");
-  const [files, setFiles] = useState(null);
+  const [file, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const fileTypes = ["JPG", "PNG", "GIF"];
+  const theme = useMantineTheme();
+  let test = [1, 1, 32, 3];
+
   async function handleSubmit(event) {
     event.preventDefault();
+    console.log(`inside the submit ${file[0].name}`);
     const data = new FormData(event.currentTarget);
     let umeme = data.get("umeme");
     let fence = data.get("fence");
@@ -48,41 +59,81 @@ const Submit = () => {
     let rooms = data.get("rooms");
     let price = data.get("price");
     console.log(description);
+    const formdata = new FormData();
+    formdata.append("title", title);
+    formdata.append("description", description);
+    formdata.append("district", district);
+    formdata.append("street", street);
+    formdata.append("model", model);
+    formdata.append("duration", duration);
+    formdata.append("parking", parking);
+    formdata.append("city", city);
+    formdata.append("price", price);
+    formdata.append("purpose", status);
+    formdata.append("rooms", rooms);
+    formdata.append("bathrooms", bathrooms);
+    formdata.append("water", water);
+    formdata.append("fence", fence);
+    formdata.append("umeme", umeme);
+    formdata.append("bedrooms", bedrooms);
+    file.forEach((fl) => {
+      formdata.append("files", fl);
+    });
+
     setLoading(true);
     try {
       let token = window.localStorage.getItem("token");
-      let res = await fetch("http://localhost:8045/feeds", {
-        method: "POST",
-        body: JSON.stringify({
-          title: title,
-          description: description,
-          district: district,
-          street: street,
-          model: model,
-          // status: status,
-          duration: duration,
-          parking: parking,
-          city: city,
-          price: price,
-          // images: images,
-          purpose: status,
-          rooms: rooms,
-          bathrooms: bathrooms,
-          water: water,
-          fence: fence,
-          umeme: umeme,
-          bedrooms: bedrooms,
-        }),
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bear ${token}`,
-        },
-      });
-
+      const response = await axios.post(
+        "http://localhost:8045/feeds",
+        formdata,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bear ${token}`,
+          },
+        }
+      );
       setTimeout(() => setLoading(false), 500);
+
+      console.log(response.data); // File upload success message
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
+
+    // try {
+    //   let token = window.localStorage.getItem("token");
+    //   let res = await fetch("http://localhost:8045/feeds", {
+    //     method: "POST",
+    //     // body: JSON.stringify({
+    //     //   title: title,
+    //     //   description: description,
+    //     //   district: district,
+    //     //   street: street,
+    //     //   model: model,
+    //     //   // status: status,
+    //     //   duration: duration,
+    //     //   parking: parking,
+    //     //   city: city,
+    //     //   price: price,
+    //     //   images: file,
+    //     //   purpose: status,
+    //     //   rooms: rooms,
+    //     //   bathrooms: bathrooms,
+    //     //   water: water,
+    //     //   fence: fence,
+    //     //   umeme: umeme,
+    //     //   bedrooms: bedrooms,
+    //     // }),
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //       Authorization: `Bear ${token}`,
+    //     },
+    //   });
+
+    //   setTimeout(() => setLoading(false), 500);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   return (
@@ -336,7 +387,108 @@ const Submit = () => {
                         <hr color="#dee2e6"></hr>
                       </Box>
                       <Box>
-                        <FileUploader />
+                        {/* <FileUploader /> */}
+
+                        <Dropzone
+                          onDrop={(files) => {
+                            setFiles([...files, ...file]);
+                            console.log("accepted files", files);
+                          }}
+                          onReject={(files) =>
+                            console.log("rejected files", files)
+                          }
+                          maxSize={3 * 1024 ** 2}
+                          accept={IMAGE_MIME_TYPE}
+                          style={{
+                            backgroundColor: "#f4f5f7",
+                            paddingLeft: 70,
+                            paddingRight: 70,
+                          }}
+                        >
+                          <Group
+                            position="center"
+                            spacing="xl"
+                            style={{
+                              minHeight: rem(100),
+                              pointerEvents: "none",
+                            }}
+                          >
+                            <Dropzone.Accept>
+                              <IconUpload
+                                size="3.2rem"
+                                stroke={1.5}
+                                color={
+                                  theme.colors[theme.primaryColor][
+                                    theme.colorScheme === "dark" ? 4 : 6
+                                  ]
+                                }
+                              />
+                            </Dropzone.Accept>
+                            <Dropzone.Reject>
+                              <IconX
+                                size="3.2rem"
+                                stroke={1.5}
+                                color={
+                                  theme.colors.red[
+                                    theme.colorScheme === "dark" ? 4 : 6
+                                  ]
+                                }
+                              />
+                            </Dropzone.Reject>
+
+                            <div className="">
+                              {file ? (
+                                <div>
+                                  <Text size="xl" color="dimmed" inline>
+                                    Files uploaded
+                                  </Text>
+                                  <Text
+                                    size="sm"
+                                    color="dimmed"
+                                    inline
+                                    mt={7}
+                                    mb={15}
+                                  >
+                                    Attach as many files as you like, each file
+                                    should not exceed 5mb
+                                  </Text>
+                                  {file.map((el) => {
+                                    return (
+                                      <div className={styles.fileNames}>
+                                        <Box
+                                          display="flex"
+                                          justifyContent="space-between"
+                                        >
+                                          <Box>
+                                            <Text color="dimmed">
+                                              {el.name + ""}
+                                            </Text>
+                                          </Box>
+                                          <Box>
+                                            <Button>
+                                              <Delete />
+                                            </Button>
+                                          </Box>
+                                        </Box>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              ) : (
+                                <div>
+                                  <Text size="xl" color="dimmed" inline>
+                                    Drag & Drop files here or click to select
+                                    files
+                                  </Text>
+                                  <Text size="sm" color="dimmed" inline mt={7}>
+                                    Attach as many files as you like, each file
+                                    should not exceed 5mb
+                                  </Text>
+                                </div>
+                              )}
+                            </div>
+                          </Group>
+                        </Dropzone>
                       </Box>
 
                       <Box

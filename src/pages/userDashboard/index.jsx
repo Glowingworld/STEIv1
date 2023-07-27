@@ -10,6 +10,7 @@ import BarChart from "@/components/barCharts";
 import AuthRoute from "@/components/authRoute";
 import styles from "@/styles/Home.module.scss";
 import NCard from "@/components/dashCard";
+import CarouselCard from "@/components/manCard";
 const Dashboard = () => {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
