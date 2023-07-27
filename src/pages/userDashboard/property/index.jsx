@@ -38,7 +38,7 @@ const MyProp = () => {
         {/* <TableGrid /> */}
         <Box className={styles.userDashoardContainer} color="white">
           <Box style={{ paddingTop: "2%", paddingBottom: "2%" }}>
-            {properties.map((c) => {
+            {properties.map((c, index) => {
               return (
                 <div
                   style={{
@@ -47,12 +47,13 @@ const MyProp = () => {
                     marginRight: "5%",
                     backgroundColor: "white",
                   }}
+                  key={index}
                 >
                   <Grid container spacing={1} margin={2}>
                     <Grid item xs={12} md={6}>
                       <div></div>
                     </Grid>
-                    <Grid item xs={12} md={6} key={c._id}>
+                    <Grid item xs={12} md={6}>
                       <Box color="black">
                         <Box>
                           <Typography variant="h6">
