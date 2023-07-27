@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-let getWardLocations = (district) => {
+let GetWardLocations = (district) => {
   let localDistricLocation = {};
   const [ward, setWard] = useState([]);
 
@@ -33,4 +33,4 @@ let getWardLocations = (district) => {
   return [ward];
 };
 
-export default getWardLocations;
+export default GetWardLocations;

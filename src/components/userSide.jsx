@@ -41,7 +41,7 @@ const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
   );
 };
 
-const sidebar = () => {
+const Sidebars = () => {
   const [user, _] = useContext(userContext);
   console.log(user);
   const theme = useTheme();
@@ -220,4 +220,4 @@ const sidebar = () => {
   );
 };
 
-export default sidebar;
+export default Sidebars;

@@ -8,7 +8,7 @@ import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Head from "./ header";
 
-const tableGrid = () => {
+const TableGrid = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -84,4 +84,4 @@ const tableGrid = () => {
   );
 };
 
-export default tableGrid;
+export default TableGrid;

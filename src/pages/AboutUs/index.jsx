@@ -32,15 +32,7 @@ const Properties = () => {
         </Box>
 
         <Box className={styles.allProperties}>
-          <Grid container spacing={1} rowSpacing={3}>
-            {card.map((c) => {
-              return (
-                <Grid item>
-                  <Card />
-                </Grid>
-              );
-            })}
-          </Grid>
+          <Grid container spacing={1} rowSpacing={3}></Grid>
         </Box>
       </Box>
       <Footer />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-let getRegionsLocations = (city) => {
+let GetRegionsLocations = (city) => {
   let localCache = {};
   const [districts, setDistricts] = useState([]);
 
@@ -32,4 +32,4 @@ let getRegionsLocations = (city) => {
   return [districts];
 };
 
-export default getRegionsLocations;
+export default GetRegionsLocations;

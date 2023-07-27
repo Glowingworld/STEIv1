@@ -6,7 +6,7 @@ import Head from "@/components/ header";
 import { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.scss";
 
-const myProp = () => {
+const MyProp = () => {
   const [properties, setProperties] = useState([]);
   useEffect(() => {
     requestprops();
@@ -52,7 +52,7 @@ const myProp = () => {
                     <Grid item xs={12} md={6}>
                       <div></div>
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} key={c._id}>
                       <Box color="black">
                         <Box>
                           <Typography variant="h6">
@@ -109,4 +109,4 @@ const myProp = () => {
   );
 };
 
-export default myProp;
+export default MyProp;

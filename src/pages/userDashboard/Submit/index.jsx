@@ -352,8 +352,12 @@ const Submit = () => {
                               label="DISTRICT"
                               onChange={(e) => setDistrict(e.target.value)}
                             >
-                              {districts.map((dis) => {
-                                return <MenuItem value={dis}>{dis}</MenuItem>;
+                              {districts.map((dis, index) => {
+                                return (
+                                  <MenuItem value={dis} key={index}>
+                                    {dis}
+                                  </MenuItem>
+                                );
                               })}
                             </Select>
                           </FormControl>
@@ -369,8 +373,12 @@ const Submit = () => {
                               label="STREET"
                               onChange={(e) => setStreet(e.target.value)}
                             >
-                              {streets.map((dis) => {
-                                return <MenuItem value={dis}>{dis}</MenuItem>;
+                              {streets.map((dis, index) => {
+                                return (
+                                  <MenuItem key={index} value={dis}>
+                                    {dis}
+                                  </MenuItem>
+                                );
                               })}
                             </Select>
                           </FormControl>
@@ -452,9 +460,12 @@ const Submit = () => {
                                     Attach as many files as you like, each file
                                     should not exceed 5mb
                                   </Text>
-                                  {file.map((el) => {
+                                  {file.map((el, index) => {
                                     return (
-                                      <div className={styles.fileNames}>
+                                      <div
+                                        className={styles.fileNames}
+                                        key={index}
+                                      >
                                         <Box
                                           display="flex"
                                           justifyContent="space-between"

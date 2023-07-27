@@ -26,7 +26,7 @@ import { useState } from "react";
 
 const theme = createTheme();
 
-export default function searchForm() {
+export default function SearchForm() {
   const [City, setCity] = useState("");
   const [Type, setType] = useState("");
   const [Status, setStatus] = useState("");
