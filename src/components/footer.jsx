@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "@/styles/components.module.scss";
 //import styles from "@/styles/Home.module.css";
-export default function footer() {
+export default function Footer() {
   return (
     <Box className={styles.footer}>
       <Box

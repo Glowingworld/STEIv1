@@ -56,7 +56,7 @@ const data = [
   },
 ];
 
-export default class chart extends PureComponent {
+export default class Chart extends PureComponent {
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">

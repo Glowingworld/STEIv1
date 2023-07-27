@@ -99,9 +99,9 @@ const Dashboard = () => {
                   paddingTop="2%"
                 >
                   <Grid container>
-                    {properties.map((prop) => {
+                    {properties.map((prop, index) => {
                       return (
-                        <Grid xs={4}>
+                        <Grid xs={4} key={index}>
                           <NCard title={prop.Title} price={prop.Price} />
                         </Grid>
                       );

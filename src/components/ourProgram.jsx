@@ -2,7 +2,7 @@ import "./components.scss";
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
-const ourProgram = (props) => {
+const OurProgram = (props) => {
   return (
     <div>
       <Box
@@ -113,4 +113,4 @@ const ourProgram = (props) => {
   );
 };
 
-export default ourProgram;
+export default OurProgram;

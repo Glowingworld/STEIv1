@@ -33,13 +33,13 @@ const Detail = () => {
       <Box className={styles.detail}>
         <Box className={styles.detailscard}>
           <Grid container spacing={0.5}>
-            {card.map((c) => {
+            {/* {card.map((c) => {
               return (
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={4} key={}>
                   <ImageCard />
                 </Grid>
               );
-            })}
+            })} */}
           </Grid>
         </Box>
         <section

@@ -1,5 +1,5 @@
-const values = () => {
+const Values = () => {
   return <Box></Box>;
 };
 
-export default values;
+export default Values;

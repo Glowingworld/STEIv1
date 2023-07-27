@@ -180,9 +180,9 @@ const Properties = () => {
               alignItems="center"
             >
               <Grid container spacing={2}>
-                {skel.map((el) => {
+                {skel.map((el, index) => {
                   return (
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={3} key={index}>
                       <Skeleton height={250} animate={true} />
                     </Grid>
                   );
@@ -193,7 +193,7 @@ const Properties = () => {
             <Grid container spacing={1} rowSpacing={6}>
               {properties.map((c) => {
                 return (
-                  <Grid item xs={12} md={3} lg={3}>
+                  <Grid item xs={12} md={3} lg={3} key={c._id}>
                     <CarouselCard
                       id={c._id}
                       stage={loading}
