@@ -3,8 +3,12 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import { useEffect, useState } from "react";
+import { Skeleton } from "@mantine/core";
 //import Card from "@/components/houseCard";
 import Footer from "@/components/footer";
+let skel = [
+  1, 1, 1, 2, 1, 2, 1, 2, 12, 1, 2, 2, 1, 2, 2, 1, 2, 12, 2, 2, 12, 3,
+];
 import {
   Button,
   Grid,
@@ -20,6 +24,7 @@ import {
 } from "@mui/material";
 import SearchForm from "@/components/homeSearchForm";
 import Card from "@/components/houseCard";
+import CarouselCard from "@/components/manCard";
 import ButtonAppBar from "@/components/navbar";
 
 const Properties = () => {
@@ -64,8 +69,8 @@ const Properties = () => {
       <ButtonAppBar />
       {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.property}>
-        <Box paddingTop="7%" paddingBottom="5%" color="black">
-          <Typography variant="h4">Search</Typography>
+        <Box paddingTop="3%" paddingBottom="1%" color="black">
+          {/* <Typography variant="h4">Search</Typography> */}
         </Box>
         <Container className={styles.properySearch}>
           <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }}>
@@ -168,15 +173,28 @@ const Properties = () => {
 
         <Box className={styles.allProperties}>
           {loading ? (
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <Typography variant="h4"> Fetching feeds.....</Typography>
+            <Box
+              // style={{ height: "90vh" }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid container spacing={2}>
+                {skel.map((el) => {
+                  return (
+                    <Grid item xs={12} md={3}>
+                      <Skeleton height={250} animate={true} />
+                    </Grid>
+                  );
+                })}
+              </Grid>
             </Box>
           ) : (
             <Grid container spacing={1} rowSpacing={6}>
               {properties.map((c) => {
                 return (
-                  <Grid item>
-                    <Card
+                  <Grid item xs={12} md={3} lg={3}>
+                    <CarouselCard
                       id={c._id}
                       stage={loading}
                       title={c.Title}

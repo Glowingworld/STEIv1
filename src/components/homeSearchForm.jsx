@@ -60,7 +60,7 @@ export default function searchForm() {
           </Typography>
           <Box component="form" onSubmit={handleSubmit}>
             <Grid container spacing={1}>
-              <Grid item md={4}>
+              <Grid item xs={12} md={4}>
                 <FormControl sx={{ minWidth: "100%" }}>
                   <InputLabel id="city">CITY</InputLabel>
                   <Select
@@ -77,7 +77,7 @@ export default function searchForm() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item md={4}>
+              <Grid item xs={12} md={4}>
                 <FormControl sx={{ minWidth: "100%" }}>
                   <InputLabel id="stat">STATUS</InputLabel>
                   <Select
@@ -94,7 +94,7 @@ export default function searchForm() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item md={4}>
+              <Grid xs={12} item md={4}>
                 <FormControl sx={{ minWidth: "100%" }}>
                   {" "}
                   <InputLabel id="type">TYPE</InputLabel>
@@ -112,7 +112,7 @@ export default function searchForm() {
                 </FormControl>
               </Grid>
 
-              <Grid item md={4}>
+              <Grid xs={12} item md={4}>
                 <FormControl sx={{ minWidth: "100%" }}>
                   <Button
                     type="submit"
