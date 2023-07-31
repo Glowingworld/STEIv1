@@ -55,11 +55,14 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
 import styles from "@/styles/components.module.scss";
 import { useSelector } from "react-redux";
+import { logout } from "@/Features/auth/authetication";
+import { Logout } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const { loading, error, userInfo } = useSelector((state) => state.auth);
-
+  const dispatch = useDispatch();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -242,7 +245,14 @@ export default function ButtonAppBar() {
               }}
             >
               {userInfo ? (
-                <Link href="/Auth/Register">Logout </Link>
+                <Link
+                  href="/Auth/Register"
+                  onClick={() => {
+                    dispatch(logout());
+                  }}
+                >
+                  Logout
+                </Link>
               ) : (
                 <Link href="/Auth/Register">Register</Link>
               )}
