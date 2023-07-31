@@ -19,12 +19,14 @@ export const userLogin = createAsyncThunk(
       });
 
       let data = await res.json();
-
+      if (data.statusCode !== 200) {
+        return rejectWithValue(data.message);
+      }
       // store user's token in local storage
-      console.log();
       localStorage.setItem("userToken", data.token);
       return data;
     } catch (error) {
+      console.log(`am the error from the rejection ${error}`);
       // return custom error message from API if any
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);

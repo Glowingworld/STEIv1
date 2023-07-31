@@ -105,11 +105,11 @@ const Dashboard = () => {
                 >
                   <Grid container>
                     {properties.map((prop, index) => {
-                      return (
-                        <Grid xs={4} key={index}>
-                          <NCard title={prop.Title} price={prop.Price} />
-                        </Grid>
-                      );
+                      // return (
+                      //   // <Grid xs={4} key={index}>
+                      //   //   <NCard title={prop.Title} price={prop.Price} />
+                      //   // </Grid>
+                      // );
                     })}
                   </Grid>
                 </Box>

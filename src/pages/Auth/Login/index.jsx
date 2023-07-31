@@ -39,6 +39,7 @@ export default function Login() {
   useEffect(() => {
     if (userInfo) {
       console.log(userInfo);
+      console.log(userInfo.statusCode);
       router.push("/userDashboard");
     }
   }, [userInfo]);
@@ -53,35 +54,7 @@ export default function Login() {
       email,
       password,
     };
-
     dispatch(userLogin(data));
-
-    // try {
-    //   let res = await fetch("http://localhost:8045/login", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       email: email,
-    //       password: password,
-    //     }),
-
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //   });
-
-    //   setTimeout(() => setLoading(false), 200);
-    //   res = await res.json();
-    //   let token = res.token;
-    //   window.localStorage.setItem("token", token);
-    //   setResponse(res.status);
-    //   console.log(res.user);
-    //   setUser(res.user);
-    //   router.push("/userDashboard");
-    //   setEmail("");
-    //   setPassword("");
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }
 
   let loginPage = (
