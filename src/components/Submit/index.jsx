@@ -99,48 +99,13 @@ const Submit = () => {
     } catch (error) {
       console.error(error);
     }
-
-    // try {
-    //   let token = window.localStorage.getItem("token");
-    //   let res = await fetch("http://localhost:8045/feeds", {
-    //     method: "POST",
-    //     // body: JSON.stringify({
-    //     //   title: title,
-    //     //   description: description,
-    //     //   district: district,
-    //     //   street: street,
-    //     //   model: model,
-    //     //   // status: status,
-    //     //   duration: duration,
-    //     //   parking: parking,
-    //     //   city: city,
-    //     //   price: price,
-    //     //   images: file,
-    //     //   purpose: status,
-    //     //   rooms: rooms,
-    //     //   bathrooms: bathrooms,
-    //     //   water: water,
-    //     //   fence: fence,
-    //     //   umeme: umeme,
-    //     //   bedrooms: bedrooms,
-    //     // }),
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //       Authorization: `Bear ${token}`,
-    //     },
-    //   });
-
-    //   setTimeout(() => setLoading(false), 500);
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }
 
   return (
     <Box display="flex">
-      <div style={{ position: "fixed", left: 0, top: 0, height: "100vh" }}>
+      {/* <div style={{ position: "fixed", left: 0, top: 0, height: "100vh" }}>
         <Sidebar />
-      </div>
+      </div> */}
 
       <Box style={{ marginLeft: "auto", flex: 1, overflowY: "auto" }}>
         {" "}
@@ -171,7 +136,7 @@ const Submit = () => {
           </Box>
         ) : (
           <Box className={styles.submit} paddingBottom="10%">
-            <ButtonAppBar />
+            {/* <ButtonAppBar /> */}
             <Box className={styles.submit}>
               <Box className={styles.propert}>
                 <Box>

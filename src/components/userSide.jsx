@@ -47,7 +47,7 @@ const Sidebars = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+  const [selected, setSelected] = useState("");
 
   return (
     <Box
@@ -166,24 +166,6 @@ const Sidebars = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
-            {/* <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
-              Pages
-            </Typography>
-            <Item
-              title="Profile "
-              to="#"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Calendar"
-              to="#"
-              icon={<CalendarTodayOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
 
             <Typography
               variant="h6"
