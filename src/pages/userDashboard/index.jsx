@@ -22,7 +22,12 @@ const Dashboard = () => {
   }, []);
 
   async function requestprops() {
-    let token = window.localStorage.getItem("token");
+    let token;
+
+    if (window !== undefined) {
+      token = localStorage.getItem("userToken");
+      console.log(`token is here ${token}`);
+    }
 
     let res = await fetch("http://localhost:8045/userProps", {
       method: "GET",

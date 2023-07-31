@@ -92,7 +92,13 @@ export function FeaturesCards() {
       padding="xl"
     >
       <feature.icon size={rem(50)} stroke={2} color={theme.fn.primaryColor()} />
-      <Text fz="lg" fw={500} className={classes.cardTitle} mt="md">
+      <Text
+        fz="lg"
+        fw={500}
+        className={classes.cardTitle}
+        mt="md"
+        onAnimationEnd={true}
+      >
         {feature.title}
       </Text>
       <Text fz="sm" c="dimmed" mt="sm">

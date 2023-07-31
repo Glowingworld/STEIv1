@@ -54,10 +54,11 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
 import styles from "@/styles/components.module.scss";
-
+import { useSelector } from "react-redux";
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const { loading, error, userInfo } = useSelector((state) => state.auth);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -223,7 +224,11 @@ export default function ButtonAppBar() {
                 color: " rgba(0, 0, 0, 0.5)",
               }}
             >
-              <Link href="/Auth/Login">Login</Link>
+              {userInfo ? (
+                ` ${userInfo.user.Email}`
+              ) : (
+                <Link href="/Auth/Login">Login</Link>
+              )}
             </Typography>
 
             <Typography
@@ -236,7 +241,11 @@ export default function ButtonAppBar() {
                 color: " rgba(0, 0, 0, 0.5)",
               }}
             >
-              <Link href="/Auth/Register">Register</Link>
+              {userInfo ? (
+                <Link href="/Auth/Register">Logout </Link>
+              ) : (
+                <Link href="/Auth/Register">Register</Link>
+              )}
             </Typography>
           </Box>
         </Toolbar>

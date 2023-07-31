@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 //import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../theme";
 const Head = ({ title, subtittle }) => {
+  const { loading, error, userInfo } = useSelector((state) => state.auth);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
