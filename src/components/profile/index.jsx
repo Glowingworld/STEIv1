@@ -12,12 +12,17 @@ import styles from "@/styles/Home.module.scss";
 import NCard from "@/components/dashCard";
 import CarouselCard from "@/components/manCard";
 import Dashboard from "../../pages/userDashboard";
-
-const Profile = () => {
+import { useSelector } from "react-redux";
+import { Pagination } from "@mantine/core";
+import { Skeleton } from "@mantine/core";
+const Profile = (props) => {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
+
+  let skel = [1, 1, 3, 3, 3, 3, 3, 3, 22, 3];
+  const { loading, userInfo } = useSelector((state) => state.auth);
   const [selected, setSelected] = useState("");
-  const [properties, setProperties] = useState([]);
+  let properties = props.properties;
   return (
     <Box paddingLeft="4%" paddingRight="4%">
       <Grid container spacing={1} rowSpacing={2} paddingBottom="2%">
@@ -64,13 +69,39 @@ const Profile = () => {
             paddingTop="2%"
           >
             <Grid container>
-              {properties.map((prop, index) => {
-                // return (
-                //   // <Grid xs={4} key={index}>
-                //   //   <NCard title={prop.Title} price={prop.Price} />
-                //   // </Grid>
-                // );
-              })}
+              {loading || !userInfo ? (
+                <Box
+                  // style={{ height: "90vh" }}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Grid container spacing={2}>
+                    {skel.map((el, index) => {
+                      return (
+                        <Grid item xs={12} md={3} key={index}>
+                          <Skeleton height={250} animate={true} />
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                </Box>
+              ) : !userInfo ? (
+                properties.map((c, index) => {
+                  return (
+                    <Grid xs={4} key={index}>
+                      <CarouselCard
+                        id={c._id}
+                        stage={loading}
+                        title={c.Title}
+                        location={c.City}
+                        street={c.Street}
+                        price={c.Price}
+                      />
+                    </Grid>
+                  );
+                })
+              ) : null}
             </Grid>
           </Box>
         </Grid>

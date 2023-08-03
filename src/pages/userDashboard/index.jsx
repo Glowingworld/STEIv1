@@ -65,7 +65,7 @@ const Item = ({
   );
 };
 
-function componentsRender(page) {
+function componentsRender(page, prop) {
   switch (page) {
     case 1:
       return <Profile />;
@@ -76,7 +76,7 @@ function componentsRender(page) {
       break;
 
     default:
-      return <Profile />;
+      return <Profile properties={prop} />;
       break;
   }
 }
@@ -296,7 +296,7 @@ const Dashboard = () => {
           >
             <Head title={selected} />
           </Box>
-          <Box>{componentsRender(components)}</Box>
+          <Box>{componentsRender(components, properties)}</Box>
         </div>
       </div>
     </AuthRoute>
