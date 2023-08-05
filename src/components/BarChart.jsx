@@ -60,7 +60,7 @@ const data = mockBarData;
 //   },
 // ];
 
-const BarChart = () => {
+const BarCharts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -91,4 +91,4 @@ const BarChart = () => {
   );
 };
 
-export default BarChart;
+export default BarCharts;

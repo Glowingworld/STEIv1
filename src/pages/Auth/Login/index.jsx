@@ -13,57 +13,48 @@ import ButtonAppBar from "@/components/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import userContext from "@/components/context";
+import authFunction, { userLogin } from "../../../Features/auth/authAction";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 // import userContext from "./userContext";
 // import { CheckBox } from "@mui/icons-material";
 export default function Login() {
-  const [loading, setLoading] = useState(false);
+  const { loading, error, userInfo } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  //const [loading, setLoading] = useState(false);
   // const [, setUser] = useContext(userContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState(null);
   const router = useRouter();
   const [user, setUser] = useContext(userContext);
-  // const navigate = useNavigate();
+  //const navigate = useNavigate();
+
+  // redirect authenticated user to profile screen
+  // redirect authenticated user to profile screen
+  useEffect(() => {
+    if (userInfo) {
+      console.log(userInfo);
+      console.log(userInfo.statusCode);
+      router.push("/userDashboard");
+    }
+  }, [userInfo]);
 
   async function handleSubmit(event) {
-    setLoading(true);
+    //setLoading(true);
     event.preventDefault();
-
-    let data = new FormData(event.currentTarget);
-    let email = data.get("email");
-    let password = data.get("password");
-
-    try {
-      let res = await fetch("http://localhost:8045/login", {
-        method: "POST",
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-
-      setTimeout(() => setLoading(false), 200);
-      res = await res.json();
-      let token = res.token;
-      window.localStorage.setItem("token", token);
-      setResponse(res.status);
-      console.log(res.user);
-      setUser(res.user);
-      router.push("/userDashboard");
-      setEmail("");
-      setPassword("");
-    } catch (error) {
-      console.log(error);
-    }
+    let pdata = new FormData(event.currentTarget);
+    let email = pdata.get("email");
+    let password = pdata.get("password");
+    let data = {
+      email,
+      password,
+    };
+    dispatch(userLogin(data));
   }
 
   let loginPage = (

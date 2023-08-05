@@ -1,40 +1,3 @@
-// import * as React from "react";
-// import AppBar from "@mui/material/AppBar";
-// import Box from "@mui/material/Box";
-// import Toolbar from "@mui/material/Toolbar";
-// import Typography from "@mui/material/Typography";
-// import Button from "@mui/material/Button";
-// import IconButton from "@mui/material/IconButton";
-// import MenuIcon from "@mui/icons-material/Menu";
-// import styles from "@/styles/components.module.scss";
-// //import styles from "@/styles/Home.module.css";
-// export default function ButtonAppBar() {
-//   return (
-//     <Box className={styles.navbar}>
-//       <Box
-//         display="flex"
-//         justifyContent="space-between"
-//         className={styles.footerContents}
-//       >
-//         <Box display="flex">
-//           <Typography>STEI </Typography>
-//           <Typography>Property </Typography>
-//           <Typography>About us </Typography>
-//           <Typography>Contacts</Typography>
-//         </Box>
-//         <Box display="flex" justifyContent="space-evenly">
-//           <Box>
-//             <Typography>Login</Typography>
-//           </Box>
-//           <Box>
-//             <Typography>Register</Typography>
-//           </Box>
-//         </Box>
-//       </Box>
-//     </Box>
-//   );
-// }
-
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -54,11 +17,16 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
 import styles from "@/styles/components.module.scss";
+import { useSelector } from "react-redux";
+import { logout } from "@/Features/auth/authetication";
+import { Logout } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
 
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const { loading, error, userInfo } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -82,56 +50,6 @@ export default function ButtonAppBar() {
   const menuId = "primary-search-account-menu";
 
   const mobileMenuId = "primary-search-account-menu-mobile";
-  // const renderMobileMenu = (
-  //   <Menu
-  //     anchorEl={mobileMoreAnchorEl}
-  //     anchorOrigin={{
-  //       vertical: "top",
-  //       horizontal: "right",
-  //     }}
-  //     id={mobileMenuId}
-  //     keepMounted
-  //     transformOrigin={{
-  //       vertical: "top",
-  //       horizontal: "right",
-  //     }}
-  //     open={isMobileMenuOpen}
-  //     onClose={handleMobileMenuClose}
-  //   >
-  //     <MenuItem>
-  //       <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-  //         <Badge badgeContent={4} color="error">
-  //           <MailIcon />
-  //         </Badge>
-  //       </IconButton>
-  //       <p>Messages</p>
-  //     </MenuItem>
-  //     <MenuItem>
-  //       <IconButton
-  //         size="large"
-  //         aria-label="show 17 new notifications"
-  //         color="inherit"
-  //       >
-  //         <Badge badgeContent={17} color="error">
-  //           <NotificationsIcon />
-  //         </Badge>
-  //       </IconButton>
-  //       <p>Notifications</p>
-  //     </MenuItem>
-  //     <MenuItem onClick={handleProfileMenuOpen}>
-  //       <IconButton
-  //         size="large"
-  //         aria-label="account of current user"
-  //         aria-controls="primary-search-account-menu"
-  //         aria-haspopup="true"
-  //         color="inherit"
-  //       >
-  //         <AccountCircle />
-  //       </IconButton>
-  //       <p>Profile</p>
-  //     </MenuItem>
-  //   </Menu>
-  // );
 
   return (
     <Box
@@ -205,7 +123,7 @@ export default function ButtonAppBar() {
               },
             }}
           >
-            <Link href="/userDashboard">Dashboard</Link>
+            {userInfo ? <Link href="/userDashboard">Dashboard</Link> : null}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box
@@ -223,7 +141,11 @@ export default function ButtonAppBar() {
                 color: " rgba(0, 0, 0, 0.5)",
               }}
             >
-              <Link href="/Auth/Login">Login</Link>
+              {userInfo ? (
+                ` ${userInfo.user.Email}`
+              ) : (
+                <Link href="/Auth/Login">Login</Link>
+              )}
             </Typography>
 
             <Typography
@@ -236,7 +158,18 @@ export default function ButtonAppBar() {
                 color: " rgba(0, 0, 0, 0.5)",
               }}
             >
-              <Link href="/Auth/Register">Register</Link>
+              {userInfo ? (
+                <Link
+                  href="/Auth/Register"
+                  onClick={() => {
+                    dispatch(logout());
+                  }}
+                >
+                  Logout
+                </Link>
+              ) : (
+                <Link href="/Auth/Register">Register</Link>
+              )}
             </Typography>
           </Box>
         </Toolbar>
