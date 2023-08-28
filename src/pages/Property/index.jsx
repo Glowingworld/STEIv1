@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@mantine/core";
 //import Card from "@/components/houseCard";
 import Footer from "@/components/footer";
-let skel = [
-  1, 1, 1, 2, 1, 2, 1, 2, 12, 1, 2, 2, 1, 2, 2, 1, 2, 12, 2, 2, 12, 3,
-];
+let skel = [1, 1, 1, 2, 1, 2, 1, 2, 12, 1, 2, 2, 1, 2, 2, 1, 2, 12, 2, 2];
 import {
   Button,
   Grid,

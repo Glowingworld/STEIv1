@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { IconStar } from "@tabler/icons-react";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   price: {
@@ -102,7 +103,9 @@ function CarouselCard(props) {
           </Text>
         </div>
 
-        <Button radius="md">Book now</Button>
+        <Link href="/Property/Detail">
+          <Button radius="md">Book now</Button>
+        </Link>
       </Group>
     </Card>
   );

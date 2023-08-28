@@ -5,6 +5,8 @@ import {
   Grid,
   Typography,
   MenuItem,
+  Paper,
+  Card,
 } from "@mui/material";
 import { useState } from "preact/hooks";
 import styles from "@/styles/Home.module.scss";
@@ -20,6 +22,10 @@ import AccessibleIcon from "@mui/icons-material/Accessible";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import TrainIcon from "@mui/icons-material/Train";
 import PowerIcon from "@mui/icons-material/Power";
+import { Group } from "@mantine/core";
+import { SimpleGrid, Skeleton } from "@mantine/core";
+import { UserInfoActio } from "@/components/property/user/ index";
+import { Checkoutpage } from "@/components/property/checkoutCards/card";
 
 const Detail = () => {
   //const [loading, setLoading] = useState(false);
@@ -29,23 +35,10 @@ const Detail = () => {
   return (
     <Box style={{ paddingBottom: "0%" }}>
       <ButtonAppBar />
-      <Box className={styles.testColor}></Box>
       <Box className={styles.detail}>
-        <Box className={styles.detailscard}>
-          <Grid container spacing={0.5}>
-            {/* {card.map((c) => {
-              return (
-                <Grid item xs={12} md={4} key={}>
-                  <ImageCard />
-                </Grid>
-              );
-            })} */}
-          </Grid>
-        </Box>
         <section
           style={{
             paddingTop: "5%",
-            paddingBottom: "2%",
             borderBottom: " 2px solid #e4e4e4",
           }}
         >
@@ -79,59 +72,50 @@ const Detail = () => {
                 </Box>
               </Grid>
             </Grid>
+
+            <SimpleGrid
+              pt="lg"
+              pb="md"
+              cols={2}
+              spacing="md"
+              breakpoints={[{ maxWidth: "sm", cols: 1 }]}
+            >
+              <Skeleton height={500} radius="md" animate={true} />
+              <Grid container spacing={1}>
+                <Grid item md={6}>
+                  <Skeleton height={240} radius="md" animate={true} />
+                </Grid>
+                <Grid item md={6}>
+                  <Skeleton height={240} radius="md" animate={true} />
+                </Grid>
+                <Grid item md={6}>
+                  <Skeleton height={240} radius="md" animate={true} />
+                </Grid>
+                <Grid item md={6}>
+                  <Skeleton height={240} radius="md" animate={true} />
+                </Grid>
+              </Grid>
+            </SimpleGrid>
           </Box>
         </section>
         <section className={styles.secondDetail}>
           <Box className={styles.propert} style={{ paddingTop: "3%" }}>
             <Grid container spacing={1}>
               <Grid item xs={12} md={4}>
-                <Box style={{ paddingBottom: "4%" }}>
-                  <Typography variant="h5">Contact the Agent</Typography>
-                </Box>
-                <Box
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: "4px",
-                    height: "200px",
-                    boxShadow: "0 0.125rem 0.3125rem rgb(0 0 0 / 10%)",
-                  }}
-                >
-                  <Grid container>
-                    <Grid item xs={12} md={5}>
-                      <Box
-                        style={{
-                          border: "1px solid transparent",
-                          width: "11rem",
-                          height: "8rem",
-                          paddingTop: "10%",
-                        }}
-                        display="flex"
-                        justifyContent="center"
-                        alignContent="center"
-                      >
-                        <img
-                          src="/images.png"
-                          alt="agent"
-                          width="95rem"
-                          style={{ borderRadius: "50%" }}
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={12} md={7}>
-                      <Box style={{ paddingTop: "20%", paddingLeft: "5%" }}>
-                        <Box>
-                          <Typography>Marenga Julius</Typography>
-                        </Box>
-                        <Box>
-                          <MenuItem style={{ paddingTop: "2%" }}>
-                            <LocalPhoneIcon />
-                            074565467328
-                          </MenuItem>
-                        </Box>
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Box>
+                <Group pb="lg">
+                  <Typography variant="h5">
+                    Contact the <span style={{ color: "grey" }}>Agent</span>{" "}
+                  </Typography>
+                </Group>
+
+                <UserInfoActio
+                  name="Julius marenga"
+                  job="Steir"
+                  email="marengajulius@gmail.com"
+                  avatar="/marenga.jpg"
+                />
+
+                <Checkoutpage />
               </Grid>
               <Grid
                 item
