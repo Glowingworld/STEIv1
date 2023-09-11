@@ -8,7 +8,8 @@ import {
   Paper,
   Card,
 } from "@mui/material";
-import { useState } from "preact/hooks";
+import { Image } from "@mantine/core";
+
 import styles from "@/styles/Home.module.scss";
 import Footer from "@/components/footer";
 import ImageCard from "@/components/imageCard";
@@ -26,11 +27,57 @@ import { Group } from "@mantine/core";
 import { SimpleGrid, Skeleton } from "@mantine/core";
 import { UserInfoActio } from "@/components/property/user/ index";
 import { Checkoutpage } from "@/components/property/checkoutCards/card";
+import { useEffect, useState } from "react";
+import Router from "next/router";
+//import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Detail = () => {
-  //const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const card = [1, 2, 3];
+  const [house, setHouse] = useState({});
+  const [creator, setCreator] = useState({});
+  const [imageurls, setImageArray] = useState([]);
   const car = [{}];
+  const router = useRouter();
+  let queryData = router.query;
+  let id = queryData.id;
+  console.log(` id - ${id}`);
+
+  useEffect(() => {
+    fetchSingleHouse();
+  }, []);
+
+  async function fetchSingleHouse() {
+    try {
+      setLoading(true);
+      let res = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/singleProperty/${id}`,
+        {
+          method: "GET",
+        }
+      );
+
+      res = await res.json();
+      setHouse(res.post);
+      setCreator(res.post.Creator);
+      setImageArray([...res.post.imageUrls]);
+      console.log(res.post.Creator);
+      setLoading(false);
+
+      //console.log(res.properties);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  let images = [];
+
+  if (imageurls !== undefined) {
+    imageurls.map((image) => {
+      images.push(`http://localhost:8045/images/${image}`);
+    });
+  }
 
   return (
     <Box style={{ paddingBottom: "0%" }}>
@@ -46,14 +93,12 @@ const Detail = () => {
             <Grid container spacing={1}>
               <Grid item xs={12} md={9}>
                 <Box>
-                  <Typography variant="h4">
-                    Nyumba nzuri ya kupanga kwa familia
-                  </Typography>
+                  <Typography variant="h4">{house.Title}</Typography>
                 </Box>
                 <Box sx={{ color: " rgba(0, 0, 0, 0.5)" }}>
                   <MenuItem>
                     <PlaceIcon />
-                    <Typography variant="h6">Arusha</Typography>
+                    <Typography variant="h6">{house.City}</Typography>
                   </MenuItem>
                 </Box>
               </Grid>
@@ -67,7 +112,7 @@ const Detail = () => {
                     }}
                     className={styles.btn}
                   >
-                    3000000
+                    {house.Price} Tsh
                   </button>
                 </Box>
               </Grid>
@@ -80,19 +125,40 @@ const Detail = () => {
               spacing="md"
               breakpoints={[{ maxWidth: "sm", cols: 1 }]}
             >
-              <Skeleton height={500} radius="md" animate={true} />
+              {loading ? (
+                <Skeleton height={500} radius="md" animate={true} />
+              ) : (
+                <Image src={images[0]} height={500} radius="md" />
+              )}
+
               <Grid container spacing={1}>
                 <Grid item md={6}>
-                  <Skeleton height={240} radius="md" animate={true} />
+                  {loading ? (
+                    <Skeleton height={240} radius="md" animate={true} />
+                  ) : (
+                    <Image src={images[1]} height={240} radius="md" />
+                  )}
                 </Grid>
                 <Grid item md={6}>
-                  <Skeleton height={240} radius="md" animate={true} />
+                  {loading ? (
+                    <Skeleton height={240} radius="md" animate={true} />
+                  ) : (
+                    <Image src={images[2]} height={240} radius="md" />
+                  )}
                 </Grid>
                 <Grid item md={6}>
-                  <Skeleton height={240} radius="md" animate={true} />
+                  {loading ? (
+                    <Skeleton height={240} radius="md" animate={true} />
+                  ) : (
+                    <Image src={images[3]} height={240} radius="md" />
+                  )}
                 </Grid>
                 <Grid item md={6}>
-                  <Skeleton height={240} radius="md" animate={true} />
+                  {loading ? (
+                    <Skeleton height={240} radius="md" animate={true} />
+                  ) : (
+                    <Image src={images[4]} height={240} radius="md" />
+                  )}
                 </Grid>
               </Grid>
             </SimpleGrid>
@@ -109,9 +175,9 @@ const Detail = () => {
                 </Group>
 
                 <UserInfoActio
-                  name="Julius marenga"
+                  name={creator.First_name}
                   job="Steir"
-                  email="marengajulius@gmail.com"
+                  email={creator.Email}
                   avatar="/marenga.jpg"
                 />
 
@@ -136,12 +202,7 @@ const Detail = () => {
                     color: " rgba(0, 0, 0, 0.5)",
                   }}
                 >
-                  <Typography>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Facilis amet velit impedit autem pariatur magnam enim earum,
-                    ipsam laudantium aperiam, dolor facere repellat consequuntur
-                    fugiat labore est ipsum similique obcaecati?
-                  </Typography>
+                  <Typography>{house.Description}</Typography>
                 </Box>
                 <Box style={{ paddingBottom: "3%", paddingLeft: "3%" }}>
                   {card.map((c) => {
@@ -296,22 +357,28 @@ const Detail = () => {
                     sx={{ color: " rgba(0, 0, 0, 0.5)" }}
                   >
                     <Grid item xs={12} md={4}>
-                      <MenuItem>
-                        <PlaceIcon />
-                        Electricity
-                      </MenuItem>
+                      {house.Umeme ? (
+                        <MenuItem>
+                          <PlaceIcon />
+                          Electricity
+                        </MenuItem>
+                      ) : null}
                     </Grid>
                     <Grid item xs={12} md={4}>
-                      <MenuItem>
-                        <PlaceIcon />
-                        Fence
-                      </MenuItem>
+                      {house.Fence ? (
+                        <MenuItem>
+                          <PlaceIcon />
+                          Fence
+                        </MenuItem>
+                      ) : null}
                     </Grid>
                     <Grid item xs={12} md={4}>
-                      <MenuItem>
-                        <PlaceIcon />
-                        Water
-                      </MenuItem>
+                      {house.water ? (
+                        <MenuItem>
+                          <PlaceIcon />
+                          Water
+                        </MenuItem>
+                      ) : null}
                     </Grid>
                   </Grid>
                 </Box>

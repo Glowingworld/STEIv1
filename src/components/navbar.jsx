@@ -58,16 +58,6 @@ export default function ButtonAppBar() {
     >
       <AppBar position="static" className={styles.appbar}>
         <Toolbar>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="white"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
-
           <Typography
             variant="h7"
             noWrap

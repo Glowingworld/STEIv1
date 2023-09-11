@@ -77,12 +77,13 @@ const Submit = () => {
     formdata.append("umeme", umeme);
     formdata.append("bedrooms", bedrooms);
     file.forEach((fl) => {
-      formdata.append("files", fl);
+      formdata.append("images", fl);
     });
 
     setLoading(true);
     try {
-      let token = window.localStorage.getItem("token");
+      let token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ4MzM4MzI0NTM1MmY1ZDk0Mzg1MWIiLCJpYXQiOjE2OTQzNDgyNzIsImV4cCI6MTY5NDQzNDY3Mn0.G_ooXMgEKfX7XW4fMsXPoabRuz1LWySWe6hZ-zZE3Sw";
       const response = await axios.post(
         "http://localhost:8045/feeds",
         formdata,

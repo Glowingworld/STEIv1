@@ -199,6 +199,8 @@ const Properties = () => {
                       location={c.City}
                       street={c.Street}
                       price={c.Price}
+                      imageUrl={c.imageUrls}
+                      Description={c.Description}
                     />
                   </Grid>
                 );
