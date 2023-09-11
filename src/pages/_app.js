@@ -1,20 +1,18 @@
 import "@/styles/globals.css";
-import userContext from "@/components/context";
+import userContext from "@/components/utils/context";
 import { ProSidebarProvider } from "react-pro-sidebar";
 import { useState } from "react";
 import { MantineProvider, Button } from "@mantine/core";
-import { Provider } from "react-redux";
-import store from "@/store";
-export default function App({ Component, pageProps }) {
-  const user = useState(null);
-
+import { SessionProvider } from "next-auth/react";
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
-    <Provider store={store}>
-      <userContext.Provider value={user}>
-        <ProSidebarProvider>
-          <Component {...pageProps} />
-        </ProSidebarProvider>
-      </userContext.Provider>
-    </Provider>
+    <SessionProvider session={pageProps.session}>
+      <ProSidebarProvider>
+        <Component {...pageProps} />
+      </ProSidebarProvider>
+    </SessionProvider>
   );
 }

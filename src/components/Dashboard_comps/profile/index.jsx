@@ -1,18 +1,13 @@
 import Sdebar from "@/components/userSide";
-import Head from "@/components/ header";
-import ButtonAppBar from "@/components/navbar";
+import Head from "@/components/common/dashboard/ header";
+import ButtonAppBar from "@/components/common/navbar";
 import { Sidebar, useProSidebar } from "react-pro-sidebar";
-import userContext from "@/components/context";
 import { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import PieCharts from "@/components/pieCharts";
-import BarChart from "@/components/barCharts";
-import AuthRoute from "@/components/authRoute";
-import styles from "@/styles/Home.module.scss";
-import NCard from "@/components/dashCard";
+import PieCharts from "@/components/charts/pieCharts";
+import BarChart from "@/components/charts/barCharts";
 import CarouselCard from "@/components/manCard";
-import Dashboard from "../../pages/userDashboard";
-import { useSelector } from "react-redux";
+import Dashboard from "../../../pages/Dashboard";
 import { Pagination } from "@mantine/core";
 import { Skeleton } from "@mantine/core";
 const Profile = (props) => {
@@ -20,7 +15,6 @@ const Profile = (props) => {
     useProSidebar();
 
   let skel = [1, 1, 3, 3, 3, 3, 3, 3, 22, 3];
-  const { loading, userInfo } = useSelector((state) => state.auth);
   const [selected, setSelected] = useState("");
   let properties = props.properties;
   return (
@@ -69,39 +63,47 @@ const Profile = (props) => {
             paddingTop="2%"
           >
             <Grid container>
-              {loading || !userInfo ? (
-                <Box
-                  // style={{ height: "90vh" }}
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <Grid container spacing={2}>
-                    {skel.map((el, index) => {
+              {
+                // loading || !userInfo ? (
+                //   <Box
+                //     // style={{ height: "90vh" }}
+                //     display="flex"
+                //     justifyContent="center"
+                //     alignItems="center"
+                //   >
+                //     <Grid container spacing={2}>
+                //       {skel.map((el, index) => {
+                //         return (
+                //           <Grid item xs={12} md={3} key={index}>
+                //             <Skeleton height={250} animate={true} />
+                //           </Grid>
+                //         );
+                //       })}
+                //     </Grid>
+                //   </Box>
+                // ) : !userInfo ? (
+                //       })}
+                //     </Grid>
+                //   </Box>
+                // ) : !userInfo ? (
+
+                properties !== undefined
+                  ? properties.map((c, index) => {
                       return (
-                        <Grid item xs={12} md={3} key={index}>
-                          <Skeleton height={250} animate={true} />
+                        <Grid xs={4} key={index}>
+                          <CarouselCard
+                            id={c._id}
+                            stage={loading}
+                            title={c.Title}
+                            location={c.City}
+                            street={c.Street}
+                            price={c.Price}
+                          />
                         </Grid>
                       );
-                    })}
-                  </Grid>
-                </Box>
-              ) : !userInfo ? (
-                properties.map((c, index) => {
-                  return (
-                    <Grid xs={4} key={index}>
-                      <CarouselCard
-                        id={c._id}
-                        stage={loading}
-                        title={c.Title}
-                        location={c.City}
-                        street={c.Street}
-                        price={c.Price}
-                      />
-                    </Grid>
-                  );
-                })
-              ) : null}
+                    })
+                  : null
+              }
             </Grid>
           </Box>
         </Grid>

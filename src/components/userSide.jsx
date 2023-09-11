@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Sidebar, Menu, MenuItem, ProSidebarProvider } from "react-pro-sidebar";
 import { Box, Grid, IconButton, Typography, useTheme } from "@mui/material";
 import Link from "next/link";
-import Head from "./ header";
+import Head from "./common/dashboard/ header";
 //import "react-pro-sidebar/dist/css/styles.css";
 import { useContext } from "react";
 import { tokens } from "../theme";
@@ -21,7 +21,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import RoofingIcon from "@mui/icons-material/Roofing";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import userContext from "./context";
+import userContext from "./utils/context";
 
 const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
   return (

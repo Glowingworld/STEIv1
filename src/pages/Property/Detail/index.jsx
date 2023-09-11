@@ -1,4 +1,4 @@
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 import {
   Box,
   cardActionAreaClasses,
@@ -25,8 +25,8 @@ import TrainIcon from "@mui/icons-material/Train";
 import PowerIcon from "@mui/icons-material/Power";
 import { Group } from "@mantine/core";
 import { SimpleGrid, Skeleton } from "@mantine/core";
-import { UserInfoActio } from "@/components/property/user/ index";
-import { Checkoutpage } from "@/components/property/checkoutCards/card";
+import { UserInfoActio } from "@/components/Dashboard_comps/profile/property/user/ index";
+import { Checkoutpage } from "@/components/checkoutCards/card";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 //import Image from "next/image";

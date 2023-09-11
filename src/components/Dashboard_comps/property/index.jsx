@@ -1,8 +1,8 @@
 import Sidebar from "@/components/userSide";
 import TableGrid from "@/components/tablegrid";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import ButtonAppBar from "@/components/navbar";
-import Head from "@/components/ header";
+import ButtonAppBar from "@/components/common/navbar";
+import Head from "@/components/common/dashboard/ header";
 import { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.scss";
 

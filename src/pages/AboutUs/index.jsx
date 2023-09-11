@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import SearchForm from "@/components/homeSearchForm";
 import Card from "@/components/houseCard";
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 
 const Properties = () => {
   function handleSubmit() {}

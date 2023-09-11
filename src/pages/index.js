@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import { useState } from "react";
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 import Footer from "@/components/footer";
 import { Button, Grid, Typography, Box } from "@mui/material";
 import SearchForm from "@/components/homeSearchForm";

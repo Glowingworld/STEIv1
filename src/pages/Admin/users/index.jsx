@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import TableGrid from "@/components/tablegrid";
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 import AdminSidebar from "@/components/adminSidebar";
-import Head from "@/components/ header";
+import Head from "@/components/common/dashboard/ header";
 import { mockDataTeam } from "@/Data/mockdata";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "@/theme";

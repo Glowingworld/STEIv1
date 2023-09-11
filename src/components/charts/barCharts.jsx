@@ -1,6 +1,6 @@
 import { Box, useTheme } from "@mui/material";
-import { mockBarData } from "../Data/mockdata";
-import Head from "./ header";
+import { mockBarData } from "../../Data/mockdata";
+import Head from "../common/dashboard/ header";
 import {
   BarChart,
   Bar,
@@ -12,7 +12,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { tokens } from "../theme";
+import { tokens } from "../../theme";
 
 const data = mockBarData;
 //   {

@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 import { Box, useTheme } from "@mui/material";
-import { tokens } from "../theme";
-import { mockPieData } from "../Data/mockdata";
+import { tokens } from "../../theme";
+import { mockPieData } from "../../Data/mockdata";
 const data = mockPieData;
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 

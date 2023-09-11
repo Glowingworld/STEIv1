@@ -1,6 +1,6 @@
 import AdminSidebar from "@/components/adminSidebar";
-import Head from "@/components/ header";
-import ButtonAppBar from "@/components/navbar";
+import Head from "@/components/common/dashboard/ header";
+import ButtonAppBar from "@/components/common/navbar";
 import { Sidebar, useProSidebar } from "react-pro-sidebar";
 import { useState } from "react";
 import { Box, Grid } from "@mui/material";

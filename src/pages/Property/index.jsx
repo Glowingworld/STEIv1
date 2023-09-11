@@ -23,7 +23,7 @@ import {
 import SearchForm from "@/components/homeSearchForm";
 import Card from "@/components/houseCard";
 import CarouselCard from "@/components/manCard";
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 
 const Properties = () => {
   const [loading, setLoading] = useState(false);

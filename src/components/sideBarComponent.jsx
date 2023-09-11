@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Sidebar, Menu, MenuItem, ProSidebarProvider } from "react-pro-sidebar";
 import { Box, Grid, IconButton, Typography, useTheme } from "@mui/material";
 import Link from "next/link";
-import Head from "./ header";
+import Head from "./common/dashboard/ header";
 //import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";

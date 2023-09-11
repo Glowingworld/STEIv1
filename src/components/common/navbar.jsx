@@ -5,30 +5,27 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import styles from "@/styles/components.module.scss";
-import { useSelector } from "react-redux";
+
 import { logout } from "@/Features/auth/authetication";
 import { Logout } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { UnstyledButton, Badge, Group } from "@mantine/core";
+import ButtonMenu from "../Buttons/dropdownMenubtn";
 
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { data: session, status } = useSession();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { loading, error, userInfo } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const user = session?.user;
+  let userData = user?.user;
+
+  let fname = userData?.First_name;
+  let lastname = userData?.Last_name;
+  console.log(user);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -52,11 +49,11 @@ export default function ButtonAppBar() {
   const mobileMenuId = "primary-search-account-menu-mobile";
 
   return (
-    <Box
+    <Group
       sx={{ flexGrow: 1, backgroundColor: "white" }}
       className={styles.navbar}
     >
-      <AppBar position="static" className={styles.appbar}>
+      <AppBar className={styles.appbar}>
         <Toolbar>
           <Typography
             variant="h7"
@@ -113,7 +110,9 @@ export default function ButtonAppBar() {
               },
             }}
           >
-            {userInfo ? <Link href="/userDashboard">Dashboard</Link> : null}
+            <Link href="/Dashboard">
+              {status == "authenticated" ? "Dashboard" : null}
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box
@@ -121,49 +120,25 @@ export default function ButtonAppBar() {
               display: { xs: "none", md: "flex", color: " rgba(0, 0, 0, 0.5)" },
             }}
           >
-            <Typography
-              variant="h7"
-              noWrap
-              component="div"
-              sx={{
-                display: { xs: "none", sm: "block" },
-                padding: "4px",
-                color: " rgba(0, 0, 0, 0.5)",
-              }}
-            >
-              {userInfo ? (
-                ` ${userInfo.user.Email}`
-              ) : (
+            {status == "authenticated" ? (
+              <ButtonMenu link="#" title={`${fname} ${lastname}`} />
+            ) : (
+              <Typography
+                variant="h7"
+                noWrap
+                component="div"
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                  padding: "4px",
+                  color: " rgba(0, 0, 0, 0.5)",
+                }}
+              >
                 <Link href="/Auth/Login">Login</Link>
-              )}
-            </Typography>
-
-            <Typography
-              variant="h7"
-              noWrap
-              component="div"
-              sx={{
-                display: { xs: "none", sm: "block" },
-                padding: "4px",
-                color: " rgba(0, 0, 0, 0.5)",
-              }}
-            >
-              {userInfo ? (
-                <Link
-                  href="/Auth/Register"
-                  onClick={() => {
-                    dispatch(logout());
-                  }}
-                >
-                  Logout
-                </Link>
-              ) : (
-                <Link href="/Auth/Register">Register</Link>
-              )}
-            </Typography>
+              </Typography>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
-    </Box>
+    </Group>
   );
 }

@@ -6,7 +6,7 @@ import { mockDataTeam } from "../Data/mockdata";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
-import Head from "./ header";
+import Head from "./common/dashboard/ header";
 
 const TableGrid = () => {
   const theme = useTheme();

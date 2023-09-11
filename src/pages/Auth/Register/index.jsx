@@ -7,7 +7,7 @@ import {
   Checkbox,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";

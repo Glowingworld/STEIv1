@@ -1,4 +1,4 @@
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 import Footer from "@/components/footer";
 import FileUploader from "@/components/fileUploader";
 import { Group, Text, useMantineTheme, rem } from "@mantine/core";
@@ -25,8 +25,8 @@ import {
 } from "@mui/material";
 import styles from "@/styles/Home.module.scss";
 import { useState, useEffect } from "react";
-import getRegionsLocations from "@/components/hooks";
-import getWardLocations from "@/components/streethook";
+import getRegionsLocations from "@/components/utils/hooks";
+import getWardLocations from "@/components/utils/streethook";
 import Sidebar from "@/components/userSide";
 
 const Submit = () => {

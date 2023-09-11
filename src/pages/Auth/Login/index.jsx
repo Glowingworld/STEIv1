@@ -7,54 +7,51 @@ import {
   Button,
   Checkbox,
 } from "@mui/material";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
-import ButtonAppBar from "@/components/navbar";
+import ButtonAppBar from "@/components/common/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
 import Footer from "@/components/footer";
 import { useContext, useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
-import userContext from "@/components/context";
+import userContext from "@/components/utils/context";
+import { signIn } from "next-auth/react";
 import authFunction, { userLogin } from "../../../Features/auth/authAction";
-import { useDispatch, useSelector } from "react-redux";
+import Router from "next/router";
+import { LoadingOverlay } from "@mantine/core";
+//import { useRouter } from "next/router";
 
-import { useNavigate } from "react-router-dom";
-// import userContext from "./userContext";
-// import { CheckBox } from "@mui/icons-material";
 export default function Login() {
-  const { loading, error, userInfo } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  //const [loading, setLoading] = useState(false);
-  // const [, setUser] = useContext(userContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const [user, setUser] = useContext(userContext);
-  //const navigate = useNavigate();
+  let errordata = router.query;
+  let errorMessage = errordata["error "];
 
-  // redirect authenticated user to profile screen
-  // redirect authenticated user to profile screen
-  useEffect(() => {
-    if (userInfo) {
-      console.log(userInfo);
-      console.log(userInfo.statusCode);
-      router.push("/userDashboard");
+  useEffect(() => {}, []);
+
+  async function handleSignin(e) {
+    e.preventDefault();
+
+    setLoading(true);
+    let res = await signIn("credentials", {
+      redirect: false,
+      email: email,
+      password: password,
+    });
+
+    console.log(res);
+    if (res.ok) {
+      Router.push("/Dashboard");
+    } else {
+      Router.push(`/Auth/Login?error = ${res.error}`);
     }
-  }, [userInfo]);
 
-  async function handleSubmit(event) {
-    //setLoading(true);
-    event.preventDefault();
-    let pdata = new FormData(event.currentTarget);
-    let email = pdata.get("email");
-    let password = pdata.get("password");
-    let data = {
-      email,
-      password,
-    };
-    dispatch(userLogin(data));
+    setLoading(false);
   }
 
   let loginPage = (
@@ -75,9 +72,10 @@ export default function Login() {
               <Typography variant="h5">Login</Typography>
             </Box>
             <Box>
+              <LoadingOverlay visible={loading} />
               <Container className={styles.loginFormWidth}>
                 {/* <CssBaseline /> */}
-                <Box component="form" onSubmit={handleSubmit} paddingTop="2%">
+                <Box component="form" paddingTop="2%">
                   <TextField
                     margin="normal"
                     required
@@ -88,7 +86,7 @@ export default function Login() {
                     type="email"
                     value={email}
                     onChange={(e) => {
-                      setEmail(e.value);
+                      setEmail(e.target.value);
                     }}
                     autoComplete="email"
                     autoFocus
@@ -102,7 +100,7 @@ export default function Login() {
                     label="Password"
                     value={password}
                     onChange={(e) => {
-                      setPassword(e.value);
+                      setPassword(e.target.value);
                     }}
                     name="password"
                     autoComplete="password"
@@ -116,7 +114,7 @@ export default function Login() {
                     </Box>
                     <Box>
                       <Button
-                        type="submit"
+                        onClick={handleSignin}
                         variant="contained"
                         sx={{
                           mt: 3,
@@ -168,5 +166,5 @@ export default function Login() {
     </Box>
   );
 
-  return <Box className={styles.main}>{loading ? loadingBox : loginPage}</Box>;
+  return <Box className={styles.main}>{loginPage}</Box>;
 }
