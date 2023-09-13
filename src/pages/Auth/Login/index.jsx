@@ -60,7 +60,7 @@ export default function Login() {
       {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.property}>
         <Box paddingTop="3%" paddingBottom="2%" color="#191919">
-          <Typography variant="h4">Login</Typography>
+          <Typography variant="h4">LOGIN</Typography>
         </Box>
         <Box display="flex" justifyContent="center">
           <Box>
