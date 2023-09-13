@@ -121,7 +121,7 @@ const adminLinks = [
 const Layout = ({ children }) => {
   let pathname = usePathname();
   pathname = pathname.substring(pathname.lastIndexOf("/") + 1);
-  console.log(pathname);
+   
   const { classes, cx } = useStyles();
   const [active, setActive] = useState(pathname);
   const [user_name, setUserName] = useState("");
@@ -136,9 +136,9 @@ const Layout = ({ children }) => {
   let fname = userData?.First_name;
   let lastname = userData?.Last_name;
   useEffect(() => {
-    console.log(userData?.role?.type);
+     
     setUserName(userData?.fullName);
-  }, [user]);
+  }, []);
 
   const userlinks = userLinks.map((item) => (
     <Link
