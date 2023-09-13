@@ -28,6 +28,7 @@ import {
   IconHome2,
   IconNotification,
   IconSettings,
+  IconPlus,
 } from "@tabler/icons-react";
 //import styles from "../../styles/home.module.css";
 
@@ -102,7 +103,7 @@ const useStyles = createStyles((theme) => ({
 
 const userLinks = [
   { link: "/Dashboard", label: "Dashboard", icon: IconHome2 },
-  { link: "/Dashboard/addrooms", label: "Submit", icon: IconCreditCard },
+  { link: "/Dashboard/Submit", label: "Submit", icon: IconPlus },
   {
     link: "#",
     label: "Requests",
@@ -121,7 +122,7 @@ const adminLinks = [
 const Layout = ({ children }) => {
   let pathname = usePathname();
   pathname = pathname.substring(pathname.lastIndexOf("/") + 1);
-   
+
   const { classes, cx } = useStyles();
   const [active, setActive] = useState(pathname);
   const [user_name, setUserName] = useState("");
@@ -136,7 +137,6 @@ const Layout = ({ children }) => {
   let fname = userData?.First_name;
   let lastname = userData?.Last_name;
   useEffect(() => {
-     
     setUserName(userData?.fullName);
   }, []);
 

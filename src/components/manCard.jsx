@@ -70,7 +70,7 @@ function CarouselCard(props) {
   });
 
   return (
-    <Card radius="md" withBorder>
+    <Card style={{ height: "auto" }} radius="md" withBorder>
       <Card.Section>
         <Carousel
           withIndicators

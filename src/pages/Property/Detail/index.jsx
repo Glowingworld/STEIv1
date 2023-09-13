@@ -8,7 +8,7 @@ import {
   Paper,
   Card,
 } from "@mui/material";
-import { Image } from "@mantine/core";
+import { Container, Image } from "@mantine/core";
 
 import styles from "@/styles/Home.module.scss";
 import Footer from "@/components/footer";
@@ -91,7 +91,7 @@ const Detail = () => {
             borderBottom: " 2px solid #e4e4e4",
           }}
         >
-          <Box className={styles.propert}>
+          <Container size="xl">
             <Grid container spacing={1}>
               <Grid item xs={12} md={9}>
                 <Box>
@@ -164,9 +164,9 @@ const Detail = () => {
                 </Grid>
               </Grid>
             </SimpleGrid>
-          </Box>
+          </Container>
         </section>
-        <section className={styles.secondDetail}>
+        <Container size="xl">
           <Box className={styles.propert} style={{ paddingTop: "3%" }}>
             <Grid container spacing={1}>
               <Grid item xs={12} md={4}>
@@ -297,14 +297,7 @@ const Detail = () => {
                           </MenuItem>
                         </Box>
                       </Grid>
-                      {/* <Grid item xs={12} md={3}>
-                        <Box>
-                          <MenuItem>
-                            <TrainIcon />
-                            Train
-                          </MenuItem>
-                        </Box>
-                      </Grid> */}
+
                       <Grid item xs={12} md={3}>
                         <Box>
                           <MenuItem>
@@ -388,7 +381,7 @@ const Detail = () => {
               </Grid>
             </Grid>
           </Box>
-        </section>
+        </Container>
       </Box>
 
       <Footer />

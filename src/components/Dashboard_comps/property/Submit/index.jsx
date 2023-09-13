@@ -9,6 +9,7 @@ import {
   rem,
   Container,
   Button,
+  Checkbox,
 } from "@mantine/core";
 import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
@@ -19,7 +20,6 @@ import {
   Box,
   Typography,
   TextField,
-  Checkbox,
   Grid,
   FormControl,
   MenuItem,
@@ -50,7 +50,14 @@ const Submit = () => {
   const [loading, setLoading] = useState(false);
   const fileTypes = ["JPG", "PNG", "GIF"];
   const [active, setActive] = useState(1);
-  const [umeme, setUmeme] = useState(0);
+  const [umeme, setUmeme] = useState(false);
+  const [Price, setprice] = useState(null);
+  const [room, setRoom] = useState(null);
+  const [fence, setFence] = useState(false);
+  const [bedRooms, setBedroom] = useState(null);
+  const [bathrooms, setBathrooms] = useState(null);
+  const [description, setDescription] = useState("");
+  const [water, setWater] = useState(false);
   const nextStep = () =>
     setActive((current) => (current < 4 ? current + 1 : current));
   const prevStep = () =>
@@ -67,53 +74,48 @@ const Submit = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(`inside the submit ${file[0].name}`);
-
-    const data = new FormData(event.currentTarget);
-    let umeme = data.get("umeme");
-    let fence = data.get("fence");
-    let water = data.get("water");
-    let description = data.get("descript");
-    let bedrooms = data.get("beds");
-    let bathrooms = data.get("baths");
-    let rooms = data.get("rooms");
-    let price = data.get("price");
-    console.log(description);
-    const formdata = new FormData();
-    formdata.append("title", title);
-    formdata.append("description", description);
-    formdata.append("district", district);
-    formdata.append("street", street);
-    formdata.append("model", model);
-    formdata.append("duration", duration);
-    formdata.append("parking", parking);
-    formdata.append("city", city);
-    formdata.append("price", price);
-    formdata.append("purpose", statusroom);
-    formdata.append("rooms", rooms);
-    formdata.append("bathrooms", bathrooms);
-    formdata.append("water", water);
-    formdata.append("fence", fence);
-    formdata.append("umeme", umeme);
-    formdata.append("bedrooms", bedrooms);
-    file.forEach((fl) => {
-      formdata.append("images", fl);
-    });
-    console.log(formdata);
-    console.log(price);
+    console.log(Price);
 
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:8045/feeds",
-        formdata,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bear ${token}`,
-          },
-        }
-      );
+      console.log(file);
+      console.log(fence);
+      console.log(umeme);
+      console.log(water);
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("fence", fence);
+      formData.append("district", district);
+      formData.append("street", street);
+      formData.append("umeme", umeme);
+      formData.append("water", water);
+      formData.append("model", model);
+      formData.append("duration", duration);
+      formData.append("parking", parking);
+      formData.append("city", city);
+      formData.append("price", Price);
+      formData.append("purpose", statusroom);
+      formData.append("rooms", room);
+      formData.append("bathrooms", bathrooms);
+      formData.append("bedrooms", bedRooms);
+
+      // Append each file to the formData as images
+      file.forEach((image, index) => {
+        formData.append(`images`, image);
+      });
+
+      // Make the POST request
+      const response = await fetch("http://localhost:8045/feeds", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bear ${token}`,
+        },
+      });
+
+      // Handle the response here
+
       setTimeout(() => setLoading(false), 500);
 
       console.log(response.data); // File upload success message
@@ -129,7 +131,7 @@ const Submit = () => {
         backgroundColor: "",
         borderRadius: "16px",
         border: "1px solid grey",
-        height: "65vh",
+        height: "auto",
       }}
       p="xl"
       mt="lg"
@@ -182,11 +184,13 @@ const Submit = () => {
                 <TextField
                   fullWidth
                   required
+                  value={Price}
                   margin="normal"
                   id="price"
                   label="PRICE"
                   name="price"
                   type="number"
+                  onChange={(e) => setprice(e.target.value)}
                   autoFocus
                 />
               </Grid>
@@ -240,6 +244,10 @@ const Submit = () => {
                   fullWidth
                   required
                   margin="normal"
+                  value={room}
+                  onChange={(e) => {
+                    setRoom(e.target.value);
+                  }}
                   id="room"
                   placeholder="example: 4 (vyumba vinne)"
                   name="rooms"
@@ -413,7 +421,11 @@ const Submit = () => {
                   placeholder="example: 2"
                   margin="normal"
                   id="baths"
+                  value={bathrooms}
                   label="Bathrooms"
+                  onChange={(e) => {
+                    setBathrooms(e.target.value);
+                  }}
                   name="baths"
                   required
                   type="number"
@@ -427,6 +439,10 @@ const Submit = () => {
                   required
                   placeholder="example: 4"
                   id="beds"
+                  value={bedRooms}
+                  onChange={(e) => {
+                    setBedroom(e.target.value);
+                  }}
                   label="Bedrooms"
                   name="beds"
                   type="number"
@@ -454,6 +470,10 @@ const Submit = () => {
                 margin="normal"
                 minRows={6}
                 required
+                value={description}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
                 placeholder="Description"
                 name="descript"
                 style={{
@@ -474,19 +494,28 @@ const Submit = () => {
             <Grid container>
               <Grid item xs={12} md={4}>
                 <Box>
-                  <Checkbox name="umeme" />
+                  <Checkbox
+                    checked={umeme}
+                    onChange={(event) => setUmeme(event.currentTarget.checked)}
+                  />
                   Electicity
                 </Box>
               </Grid>
               <Grid item xs={12} md={4}>
                 <Box>
-                  <Checkbox name="water" />
+                  <Checkbox
+                    checked={water}
+                    onChange={(event) => setWater(event.currentTarget.checked)}
+                  />
                   Water
                 </Box>
               </Grid>
               <Grid item xs={12} md={4}>
                 <Box>
-                  <Checkbox name="fence" />
+                  <Checkbox
+                    checked={fence}
+                    onChange={(event) => setFence(event.currentTarget.checked)}
+                  />
                   Fence
                 </Box>
               </Grid>

@@ -1,8 +1,9 @@
 import Layout from "../layout";
-import Profile from "@/components/Dashboard_comps/profile";
+import OverviewA from "@/components/Dashboard_comps/Admin/Overview";
+import Overview from "@/components/Dashboard_comps/user/Overview";
 
 const Dashboard = () => {
-  return <Layout>{/* <Profile /> */}</Layout>;
+  return <Layout>{<Overview />}</Layout>;
 };
 
 export default Dashboard;

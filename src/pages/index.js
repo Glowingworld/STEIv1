@@ -19,9 +19,20 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import TrainIcon from "@mui/icons-material/Train";
 import PowerIcon from "@mui/icons-material/Power";
 import { Train } from "@mui/icons-material";
-import { Icon24Hours, Icon3dRotate } from "@tabler/icons-react";
-import { Card } from "@mantine/core";
+import {
+  Icon24Hours,
+  Icon3dRotate,
+  IconArrowAutofitRight,
+  IconArrowRight,
+  IconBrandLine,
+  IconLine,
+  IconLineDashed,
+  IconLineDotted,
+  IconLineHeight,
+} from "@tabler/icons-react";
+import { Card, Container, Group, Text, UnstyledButton } from "@mantine/core";
 import { FeaturesCards } from "@/components/features";
+import { Fade } from "react-reveal";
 const inter = Inter({ subsets: ["latin"] });
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -61,132 +72,136 @@ const Home = () => {
       <Box className={styles.formPosition}>
         <SearchForm />
       </Box>
-      {/* <Box className={styles.testColor}></Box> */}
-      <Box className={styles.secondSection}>
-        <Box className={styles.secondSectionContents}>
-          <Box style={{ paddingBottom: "" }}>
-            <Box
-              display="flex"
-              justifyContent="center"
-              className={styles.features}
-            >
-              <Typography
-                style={{
-                  backgroundolCor: "#f6f6f6",
-                  paddingTop: "5%",
-                  paddingBottom: "4%",
-                  fontWeight: "300",
-                  fontSize: "1.75rem",
-                }}
-              >
-                Featured
-              </Typography>
-            </Box>
-            <Box paddingBottom="10px">
-              <Grid container spacing={4} rowSpacing={6}>
-                <Grid item xs={12} md={6}>
-                  <CarouselCard />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <CarouselCard />
-                </Grid>
-              </Grid>
-            </Box>
-            <Box
-              display="flex"
-              justifyContent="center"
-              style={{ paddingTop: "5%" }}
-            >
-              <button className={styles.btn}>
-                <Link href="/Property">Show All properties</Link>
-              </button>
-            </Box>
-          </Box>
-          <Box>
-            <Box
-              display="flex"
-              justifyContent="start"
-              className={styles.features}
-            >
-              <Typography
-                style={{
-                  backgroundolCor: "#f6f6f6",
-                  paddingTop: "10%",
-                  paddingBottom: "4%",
-                  fontWeight: "300",
-                }}
-                variant="h4"
-              >
-                <span style={{ color: "#f4a261" }}>WHY</span> STAYING WITH US ?
-              </Typography>
-            </Box>
 
-            <Box style={{ paddingBottom: "5%" }}>
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={3}>
+      <Container size="xl">
+        <Group
+          position="left"
+          style={{
+            paddingTop: "20%",
+          }}
+        >
+          <Text pt="md">POPULAR</Text>
+        </Group>
+        <Group pb="lg" position="apart">
+          <Text fz={24} fw={500} py="md">
+            Our Popular Residence
+          </Text>
+
+          <Link href="/Property">
+            <UnstyledButton className={styles.btn}>
+              <Group>
+                <Text>Explore more</Text>
+                <IconArrowRight />
+              </Group>
+            </UnstyledButton>
+          </Link>
+        </Group>
+
+        <Box paddingBottom="10px">
+          <Grid container spacing={4} rowSpacing={6}>
+            <Grid item xs={12} md={4}>
+              <CarouselCard />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <CarouselCard />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <CarouselCard />
+            </Grid>
+          </Grid>
+        </Box>
+        <Box
+          display="flex"
+          justifyContent="center"
+          style={{ paddingTop: "5%" }}
+        ></Box>
+      </Container>
+      <Box className={styles.features}>
+        <Container size="xl">
+          <Box display="flex" justifyContent="start">
+            <Typography
+              style={{
+                backgroundolCor: "#f6f6f6",
+                paddingTop: "10%",
+                paddingBottom: "4%",
+                fontWeight: "300",
+              }}
+              variant="h4"
+            >
+              <span style={{ color: "#f4a261" }}>WHY</span> STAYING WITH US ?
+            </Typography>
+          </Box>
+
+          <Box style={{ paddingBottom: "5%" }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={3}>
+                <Fade left duration={2000}>
                   <CardWithIcon
                     color="#d8e2dc"
                     icon={<Icon3dRotate />}
                     title="Fast and secure"
                     desc="Find your perfect place and book it within minutes through our secure platform."
                   />
-                </Grid>
-                <Grid xs={12} item md={3}>
+                </Fade>
+              </Grid>
+              <Grid xs={12} item md={3}>
+                <Fade left duration={1500}>
                   <CardWithIcon
                     color="#f2e0ce"
                     title="Visited For You"
                     icon={<DoorbellIcon />}
                     desc="We have visited nearly 1800 rooms for you! When a viewing has been carried out you will see it indicated on the listing."
                   />
-                </Grid>
-                <Grid item xs={12} md={3}>
+                </Fade>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Fade left duration={1000}>
                   <CardWithIcon
                     color="#ffcad4"
                     title="All Included"
                     icon={<PowerIcon />}
                     desc="All Bills, Linen, Kitchen and Laundry facilities are included in the rent."
                   />
-                </Grid>
-                <Grid item xs={12} md={3}>
+                </Fade>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Fade left duration={500}>
                   <CardWithIcon
                     color="#9dc9f2"
                     icon={<TrainIcon />}
                     title="Fair and Fixed Rent"
                     desc="Affordable rooms only and the rent can't be increased during your stay."
                   />
-                </Grid>
-              </Grid>
-            </Box>
-          </Box>
-          <Box
-            display="flex"
-            justifyContent="start"
-            className={styles.features}
-          >
-            <Typography
-              style={{
-                backgroundolCor: "#f6f6f6",
-                paddingTop: "10%",
-                paddingBottom: "3%",
-                fontWeight: "300",
-              }}
-              variant="h4"
-            >
-              <span style={{ color: "#f4a261" }}>HOW</span> IT WORKS?
-            </Typography>
-          </Box>
-          <Box>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <FeaturesCards />
+                </Fade>{" "}
               </Grid>
             </Grid>
           </Box>
-          <Box
-            display="flex"
-            justifyContent="start"
-            className={styles.features}
-          >
+
+          <Box>
+            <Box display="flex" justifyContent="start">
+              <Typography
+                style={{
+                  backgroundolCor: "#f6f6f6",
+                  paddingTop: "10%",
+                  paddingBottom: "3%",
+                  fontWeight: "300",
+                }}
+                variant="h4"
+              >
+                <span style={{ color: "#f4a261" }}>HOW</span> IT WORKS?
+              </Typography>
+            </Box>
+            <Box>
+              <Grid container spacing={2}>
+                <Fade left duration={2000}>
+                  <Grid item xs={12}>
+                    <FeaturesCards />
+                  </Grid>
+                </Fade>
+              </Grid>
+            </Box>
+          </Box>
+          <Box display="flex" justifyContent="start">
             <Typography
               style={{
                 backgroundolCor: "#f6f6f6",
@@ -199,32 +214,32 @@ const Home = () => {
               <span style={{ color: "#f4a261" }}> WHERE</span> OUR GUESTS WORK?
             </Typography>
           </Box>
+        </Container>
+      </Box>
 
-          <Box className={styles.secondSectionInsideContents}>
-            <Box display="flex" justifyContent="center" paddingTop="5%">
-              <Typography className={styles.fontthree} variant="h4">
-                Have some House for sell/rent?
-              </Typography>
-            </Box>
-            <Box display="flex" justifyContent="center" paddingTop="2%">
-              <Typography className={styles.fontfour}>
-                Upload your house here
-              </Typography>
-            </Box>
-            <Box
-              display="flex"
-              justifyContent="center"
-              paddingTop="5%"
-              paddingBottom="5%"
-            >
-              <button
-                className={styles.btn}
-                style={{ backgroundColor: "black", color: "white" }}
-              >
-                <Link href="/Property/Submit">Submit your own property</Link>
-              </button>
-            </Box>
-          </Box>
+      <Box className={styles.secondSectionInsideContents}>
+        <Box display="flex" justifyContent="center" paddingTop="5%">
+          <Typography className={styles.fontthree} variant="h4">
+            Have some House for sell/rent?
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="center" paddingTop="2%">
+          <Typography className={styles.fontfour}>
+            Upload your house here
+          </Typography>
+        </Box>
+        <Box
+          display="flex"
+          justifyContent="center"
+          paddingTop="5%"
+          paddingBottom="5%"
+        >
+          <button
+            className={styles.btn}
+            style={{ backgroundColor: "black", color: "white" }}
+          >
+            <Link href="/Property/Submit">Submit your own property</Link>
+          </button>
         </Box>
       </Box>
 
