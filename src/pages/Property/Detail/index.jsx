@@ -25,7 +25,7 @@ import TrainIcon from "@mui/icons-material/Train";
 import PowerIcon from "@mui/icons-material/Power";
 import { Group } from "@mantine/core";
 import { SimpleGrid, Skeleton } from "@mantine/core";
-import { UserInfoActio } from "@/components/Dashboard_comps/profile/property/user/ index";
+import { UserInfoActio } from "@/components/AgentCard/ index";
 import { Checkoutpage } from "@/components/checkoutCards/card";
 import { useEffect, useState } from "react";
 import Router from "next/router";
@@ -205,9 +205,10 @@ const Detail = () => {
                   <Typography>{house.Description}</Typography>
                 </Box>
                 <Box style={{ paddingBottom: "3%", paddingLeft: "3%" }}>
-                  {card.map((c) => {
+                  {card.map((c, index) => {
                     return (
                       <Grid
+                        key={index}
                         container
                         spacing={1}
                         style={{

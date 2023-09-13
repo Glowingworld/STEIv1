@@ -120,7 +120,7 @@ export default function ButtonAppBar() {
               display: { xs: "none", md: "flex", color: " rgba(0, 0, 0, 0.5)" },
             }}
           >
-            {status == "authenticated" ? (
+            {status === "autheticated" ? (
               <ButtonMenu link="#" title={`${fname} ${lastname}`} />
             ) : (
               <Typography

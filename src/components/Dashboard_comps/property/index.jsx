@@ -31,7 +31,6 @@ const MyProp = () => {
 
   return (
     <Box style={{ display: "flex" }}>
-      <Sidebar />
       <Box style={{ flex: 1, marginLeft: "auto" }}>
         <ButtonAppBar />
         <Head title="MY PROPERTIES" subtittle="Voila props" />

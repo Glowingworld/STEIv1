@@ -1,270 +1,248 @@
-//import Sdebar from "@/components/userSide";
-
-// import { Link } from "react-router-dom";
-import { Menu, MenuItem, ProSidebarProvider } from "react-pro-sidebar";
-import { IconButton, useTheme } from "@mui/material";
+// components/Layout.js
+import React, { ReactNode, useEffect, useState } from "react";
+import { signOut, useSession } from "next-auth/react";
+import ButtonMenu from "../components/Buttons/dropdownMenubtn";
+import {
+  Image,
+  Text,
+  AppShell,
+  Group,
+  Navbar,
+  createStyles,
+  getStylesRef,
+  rem,
+  Space,
+  Header,
+  Container,
+  Avatar,
+  Grid,
+  Burger,
+  MediaQuery,
+  useMantineTheme,
+} from "@mantine/core";
 import Link from "next/link";
-//import "react-pro-sidebar/dist/css/styles.css";
-import { tokens } from "../theme";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import RoofingIcon from "@mui/icons-material/Roofing";
-import VisibilityIcon from "@mui/icons-material/Visibility";
+import { usePathname } from "next/navigation";
+import {
+  IconBell,
+  IconCreditCard,
+  IconHome2,
+  IconNotification,
+  IconSettings,
+} from "@tabler/icons-react";
+//import styles from "../../styles/home.module.css";
 
-//////////
-import Head from "@/components/common/dashboard/ header";
-import ButtonAppBar from "@/components/common/navbar";
-import { Sidebar, useProSidebar } from "react-pro-sidebar";
+const useStyles = createStyles((theme) => ({
+  header: {
+    paddingBottom: theme.spacing.md,
+    marginBottom: `calc(${theme.spacing.md} * 1.5)`,
+    borderBottom: `${rem(1)} solid ${
+      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]
+    }`,
+  },
 
-import { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+  footer: {
+    paddingTop: theme.spacing.md,
+    marginTop: theme.spacing.md,
+    borderTop: `${rem(1)} solid ${
+      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]
+    }`,
+  },
 
-const Item = ({
-  title,
-  to,
-  icon,
-  selected,
-  setSelected,
-  isCollapsed,
-  components,
-  setComponent,
-}) => {
-  return (
-    <Link href={to}>
-      <MenuItem
-        active={true}
-        style={{
-          color: "#426583",
-        }}
-        onClick={() => {
-          setSelected(selected);
-          console.log(selected);
-        }}
-        icon={icon}
-      >
-        {title}
-      </MenuItem>
-    </Link>
-  );
-};
+  link: {
+    ...theme.fn.focusStyles(),
+    display: "flex",
+    alignItems: "center",
+    textDecoration: "none",
+    fontSize: theme.fontSizes.sm,
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[1]
+        : theme.colors.gray[7],
+    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+    borderRadius: theme.radius.sm,
+    fontWeight: 500,
+
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
+      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+
+      [`& .${getStylesRef("icon")}`]: {
+        color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      },
+    },
+  },
+
+  linkIcon: {
+    ref: getStylesRef("icon"),
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[2]
+        : theme.colors.gray[6],
+    marginRight: theme.spacing.sm,
+  },
+
+  linkActive: {
+    "&, &:hover": {
+      backgroundColor: theme.fn.variant({
+        variant: "light",
+        color: theme.primaryColor,
+      }).background,
+      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+        .color,
+      [`& .${getStylesRef("icon")}`]: {
+        color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+          .color,
+      },
+    },
+  },
+}));
+
+const userLinks = [
+  { link: "/Dashboard", label: "Dashboard", icon: IconHome2 },
+  { link: "/Dashboard/addrooms", label: "Submit", icon: IconCreditCard },
+  {
+    link: "#",
+    label: "Requests",
+    icon: IconBell,
+  },
+  { link: "#", label: "Settings", icon: IconSettings },
+];
+
+const adminLinks = [
+  { link: "/Dashboard", label: "Dashboard", icon: IconHome2 },
+  { link: "/Dashboard/Users", label: "Users", icon: IconCreditCard },
+  { link: "/Dashboard/Meters", label: "Meters", icon: IconBell },
+  { link: "#", label: "Settings", icon: IconSettings },
+];
 
 const Layout = ({ children }) => {
-  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
-    useProSidebar();
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
-  const [components, setComponent] = useState(null);
-  const [properties, setProperties] = useState([]);
+  let pathname = usePathname();
+  pathname = pathname.substring(pathname.lastIndexOf("/") + 1);
+  console.log(pathname);
+  const { classes, cx } = useStyles();
+  const [active, setActive] = useState(pathname);
+  const [user_name, setUserName] = useState("");
+  const [user_img, setUserImg] = useState("");
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
+  const { data: session } = useSession();
 
+  const user = session?.user;
+  let userData = user?.user;
+
+  let fname = userData?.First_name;
+  let lastname = userData?.Last_name;
   useEffect(() => {
-    requestprops();
-  }, []);
+    console.log(userData?.role?.type);
+    setUserName(userData?.fullName);
+  }, [user]);
 
-  async function requestprops() {
-    let token;
+  const userlinks = userLinks.map((item) => (
+    <Link
+      href={item.link}
+      className={cx(classes.link, {
+        [classes.linkActive]: item.label === active,
+      })}
+      key={item.label}
+      onClick={(event) => {
+        setActive(item.label);
+      }}
+    >
+      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <span>{item.label}</span>
+    </Link>
+  ));
 
-    if (window !== undefined) {
-      token = localStorage.getItem("userToken");
-      console.log(`token is here ${token}`);
-    }
-
-    let res = await fetch("http://localhost:8045/userProps", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bear ${token}`,
-      },
-    });
-
-    let responses = await res.json();
-
-    setProperties(responses.houses);
-  }
+  const adminlinks = adminLinks.map((item) => (
+    <Link
+      href={item.link}
+      className={cx(classes.link, {
+        [classes.linkActive]: item.label === active,
+      })}
+      key={item.label}
+      onClick={(event) => {
+        setActive(item.label);
+      }}
+    >
+      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <span>{item.label}</span>
+    </Link>
+  ));
 
   return (
-    <div
-      style={{ backgroundColor: "#f6f6f6", height: "100%", display: "flex" }}
+    <AppShell
+      navbarOffsetBreakpoint="sm"
+      asideOffsetBreakpoint="sm"
+      navbar={
+        <Navbar
+          p="xs"
+          hiddenBreakpoint="sm"
+          hidden={!opened}
+          width={{ xm: 10, lg: 300 }}
+        >
+          <Navbar.Section mt="xs">
+            <Group spacing="xs">
+              {/* <Image maw={95} radius="xs" src="/chap.png" alt="Logo" /> */}
+              <Text size="xl" fw="bold">
+                STEI
+              </Text>
+            </Group>
+            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+              <Burger
+                opened={opened}
+                onClick={() => setOpened((o) => !o)}
+                size="sm"
+                color={theme.colors.gray[6]}
+                mr="xl"
+              />
+            </MediaQuery>
+
+            <Space h="xl" />
+          </Navbar.Section>
+          <Navbar.Section grow>
+            {userData?.role?.type == "admin" ? adminlinks : userlinks}
+          </Navbar.Section>
+        </Navbar>
+      }
     >
-      <Box
-        height="100%"
-        sx={{
-          "& .pro-sidebar-inner": {
-            background: `${colors.primary[400]} !important`,
-          },
-          "& .pro-icon-wrapper": {
-            backgroundColor: "transparent !important",
-          },
-          "& .pro-inner-item": {
-            padding: "5px 35px 5px 20px !important",
-          },
-          "& .pro-inner-item:hover": {
-            color: "#868dfb !important",
-          },
-          "& .pro-menu-item.active": {
-            color: "#6870fa !important",
-          },
-        }}
-      >
-        <Sidebar
-          defaultCollapsed={isCollapsed}
-          always
-          style={{ zIndex: 10 }}
-          backgroundColor="#0b2a49"
-        >
-          <Menu iconShape="square">
-            {/* LOGO AND MENU ICON */}
-            <MenuItem
-              onClick={() => setIsCollapsed(!isCollapsed)}
-              icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-              style={{
-                margin: "10px 0 20px 0",
-                color: colors.grey[100],
-              }}
-            >
-              {!isCollapsed && (
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  ml="15px"
-                >
-                  <IconButton
-                    color="white"
-                    onClick={() => setIsCollapsed(!isCollapsed)}
-                  >
-                    <MenuOutlinedIcon />
-                  </IconButton>
-                </Box>
+      <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+        <Burger
+          opened={opened}
+          onClick={() => setOpened((o) => !o)}
+          size="sm"
+          color={theme.colors.gray[6]}
+          mr="xl"
+        />
+      </MediaQuery>
+      <Container px="lg" py="md" size="xl">
+        <Grid>
+          <Grid.Col span={3}>
+            <Group spacing="xs">
+              <Text fw="bold" fz="lg">
+                {active}
+              </Text>
+            </Group>
+          </Grid.Col>
+
+          <Grid.Col span={3} offset={6}>
+            <Group>
+              {user_img == "" ? (
+                <Avatar radius="xl" />
+              ) : (
+                <Avatar src={user_img} alt="it's me" />
               )}
-            </MenuItem>
 
-            {!isCollapsed && (
-              <Box mb="25px">
-                <Box display="flex" justifyContent="center" alignItems="center">
-                  <img
-                    alt="profile"
-                    width="100px"
-                    height="100px"
-                    src="/favicon.ico"
-                    style={{ cursor: "pointer", borderRadius: "50%" }}
-                  />
-                </Box>
-                <Box textAlign="center">
-                  <Typography
-                    variant="h5"
-                    fontWeight="bold"
-                    sx={{ m: "10px 0 0 0", color: "#0098e4" }}
-                  >
-                    {/* {user.First_name} */}
-                  </Typography>
-                  <Typography variant="h6" color="white">
-                    Operational Manager
-                  </Typography>
-                </Box>
-              </Box>
-            )}
-
-            <Box height="190vh" paddingLeft={isCollapsed ? undefined : "10%"}>
-              <Item
-                title="Dashboard"
-                to="/Dashboard"
-                icon={<HomeOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-
-              {/* <Typography variant="h6" color="grey" sx={{ m: "15px 0 5px 20px" }}>
-              Data
-            </Typography> */}
-              <Item
-                title="Add Properties"
-                to="/Dashboard/addrooms"
-                icon={<RoofingIcon />}
-                selected={selected}
-                setSelected={setSelected}
-                isCollapsed={isCollapsed}
-                components={2}
-              />
-              {/* <Item
-              title="View Properties"
-              to="/userDashboard/property"
-              icon={<VisibilityIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
-
-              <Item
-                title="Profile "
-                to="#"
-                icon={<PersonOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-              {/* <Item
-                title="Calendar"
-                to="#"
-                icon={<CalendarTodayOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              /> */}
-
-              <Typography
-                variant="h6"
-                color={colors.grey[400]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                Charts
-              </Typography>
-              {/* <Item
-                title="Bar Chart"
-                to="#"
-                icon={<BarChartOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              /> */}
-              {/* <Item
-                title="Pie Chart"
-                to="#"
-                icon={<PieChartOutlineOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              /> */}
-              {/* <Item
-                title="Line Chart"
-                to="#"
-                icon={<TimelineOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              /> */}
-            </Box>
-          </Menu>
-        </Sidebar>
-      </Box>
-      <div style={{ marginLeft: "auto", flex: 1 }}>
-        <ButtonAppBar />
-        <Box
-          paddingBottom="1%"
-          paddingTop="1%"
-          paddingLeft="3%"
-          paddingRight="3%"
-        >
-          <Head title={selected} />
-        </Box>
-        <Box>{children}</Box>
-      </div>
-    </div>
+              <ButtonMenu link="#" title={`${fname} ${lastname}`} />
+            </Group>
+          </Grid.Col>
+        </Grid>
+      </Container>
+      {/* <div className={styles.thinBorder} /> */}
+      {children}
+    </AppShell>
   );
 };
 

@@ -33,7 +33,7 @@ export default function ButtonMenu(props) {
           rightIcon={<IconChevronDown size="1.05rem" stroke={1.5} />}
           pr={12}
         >
-          <Badge pl={3} size="lg" leftSection={avatar}>
+          <Badge pl={3} size="lg">
             {" "}
             {props.title}
           </Badge>

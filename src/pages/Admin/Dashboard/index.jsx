@@ -4,8 +4,8 @@ import ButtonAppBar from "@/components/common/navbar";
 import { Sidebar, useProSidebar } from "react-pro-sidebar";
 import { useState } from "react";
 import { Box, Grid } from "@mui/material";
-import PieCharts from "@/components/pieCharts";
-import BarChart from "@/components/barCharts";
+import PieCharts from "@/components/charts/pieCharts";
+import BarChart from "@/components/charts/BarChart";
 const AdminDashboard = () => {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
