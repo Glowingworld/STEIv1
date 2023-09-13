@@ -225,39 +225,6 @@ const Home = () => {
               </button>
             </Box>
           </Box>
-          <div style={{ backgroundColor: "brown" }}>
-            <div
-              id="particles-js"
-              color="#ffffff"
-              particleopacity="0.7"
-              linescolor="#ffffff"
-              particlesnumber="100"
-              shapetype="circle"
-              particlesize="5"
-              lineswidth="2"
-              linelinked="true"
-              lineopacity="0.4"
-              linesdistance="150"
-              movespeed="6"
-              hovereffect="true"
-              hovermode="grab"
-              clickeffect="true"
-              clickmode="push"
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <canvas
-                className="particles-js-canvas-el"
-                style={{
-                  width: "1044",
-                  height: "1036",
-                  style: "width: 100%; height: 100%;",
-                }}
-              ></canvas>
-            </div>
-          </div>
         </Box>
       </Box>
 

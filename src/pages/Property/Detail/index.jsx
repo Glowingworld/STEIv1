@@ -60,6 +60,8 @@ const Detail = () => {
 
       res = await res.json();
       setHouse(res.post);
+      console.log(res.post);
+      console.log(res.post.Creator);
       setCreator(res.post.Creator);
       setImageArray([...res.post.imageUrls]);
       console.log(res.post.Creator);
@@ -175,9 +177,9 @@ const Detail = () => {
                 </Group>
 
                 <UserInfoActio
-                  name={creator.First_name}
+                  name={creator == null ? null : creator.First_name}
                   job="Steir"
-                  email={creator.Email}
+                  email={creator == null ? null : creator.Email}
                   avatar="/marenga.jpg"
                 />
 
