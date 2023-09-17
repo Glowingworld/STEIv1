@@ -133,7 +133,7 @@ const Home = () => {
           </Box>
 
           <Box style={{ paddingBottom: "5%" }}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
               <Grid item xs={12} md={3}>
                 <Fade left duration={2000}>
                   <CardWithIcon
@@ -145,7 +145,7 @@ const Home = () => {
                 </Fade>
               </Grid>
               <Grid xs={12} item md={3}>
-                <Fade left duration={1500}>
+                <Fade right duration={1500}>
                   <CardWithIcon
                     color="#f2e0ce"
                     title="Visited For You"
@@ -165,14 +165,14 @@ const Home = () => {
                 </Fade>
               </Grid>
               <Grid item xs={12} md={3}>
-                <Fade left duration={500}>
+                <Fade right duration={1000}>
                   <CardWithIcon
                     color="#9dc9f2"
                     icon={<TrainIcon />}
                     title="Fair and Fixed Rent"
                     desc="Affordable rooms only and the rent can't be increased during your stay."
                   />
-                </Fade>{" "}
+                </Fade>
               </Grid>
             </Grid>
           </Box>

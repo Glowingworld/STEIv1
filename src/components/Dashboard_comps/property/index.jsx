@@ -16,7 +16,7 @@ const MyProp = () => {
     let token = window.localStorage.getItem("token");
     console.log("hey");
 
-    let res = await fetch("http://localhost:8045/userProps", {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/userProps`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",

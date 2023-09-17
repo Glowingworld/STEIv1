@@ -43,7 +43,7 @@ export default function Login() {
     data.append("password", password);
     data.append("phone", phone);
 
-    await fetch("http://localhost:8045/signup", {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/signup`, {
       method: "POST",
       body: JSON.stringify({
         firstname: fname,
@@ -74,7 +74,7 @@ export default function Login() {
   let registerForm = (
     <Box>
       <ButtonAppBar />
-      {/* <Box className={styles.testColor}></Box> */}
+
       <Box className={styles.property}>
         <Box paddingTop="3%" paddingBottom="2%" color="#191919">
           <Typography variant="h4">Register</Typography>

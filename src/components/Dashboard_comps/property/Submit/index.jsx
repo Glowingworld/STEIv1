@@ -106,7 +106,7 @@ const Submit = () => {
       });
 
       // Make the POST request
-      const response = await fetch("http://localhost:8045/feeds", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/feeds`, {
         method: "POST",
         body: formData,
         headers: {
@@ -144,7 +144,10 @@ const Submit = () => {
           onStepClick={setActive}
           breakpoint="sm"
         >
-          <Stepper.Step pt="xl" label="Basic Informations">
+          <Stepper.Step
+            label="Informations"
+            description="Fill The basic Informations"
+          >
             <Grid pt={5} container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -545,7 +548,9 @@ const Submit = () => {
         <Button variant="default" onClick={prevStep}>
           Back
         </Button>
-        <Button onClick={nextStep}>Next step</Button>
+        <Button variant="outline" onClick={nextStep}>
+          Next step
+        </Button>
       </Group>
     </Container>
   );

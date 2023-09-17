@@ -187,7 +187,7 @@ const Layout = ({ children }) => {
             <Group spacing="xs">
               {/* <Image maw={95} radius="xs" src="/chap.png" alt="Logo" /> */}
               <Text size="xl" fw="bold">
-                STEI
+                <Link href="/">STEI</Link>
               </Text>
             </Group>
             <MediaQuery largerThan="sm" styles={{ display: "none" }}>

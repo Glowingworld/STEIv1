@@ -45,7 +45,7 @@ const Properties = () => {
   async function requestProperty() {
     setLoading(true);
     try {
-      let res = await fetch("http://localhost:8045/allPropeties", {
+      let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/allPropeties`, {
         method: "GET",
       });
       setTimeout(() => {
@@ -67,16 +67,13 @@ const Properties = () => {
       <ButtonAppBar />
       {/* <Box className={styles.testColor}></Box> */}
       <Box className={styles.property}>
-        <Box paddingTop="3%" paddingBottom="1%" color="black">
-          {/* <Typography variant="h4">Search</Typography> */}
-        </Box>
         <Container className={styles.properySearch}>
           <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <Grid container spacing={1}>
                   <Grid item xs={12} md={4}>
-                    <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                    <FormControl sx={{ minWidth: "50%" }}>
                       <InputLabel id="city">CITY</InputLabel>
                       <Select
                         required
@@ -92,7 +89,7 @@ const Properties = () => {
                     </FormControl>
                   </Grid>
                   <Grid item xs={12} md={4}>
-                    <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                    <FormControl sx={{ minWidth: "100%" }}>
                       <InputLabel id="status">PURPOSE</InputLabel>
                       <Select
                         required
@@ -111,7 +108,7 @@ const Properties = () => {
                   </Grid>
                   <Grid item xs={12} md={4}>
                     {status == "Rent" ? (
-                      <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                      <FormControl sx={{ minWidth: "100%" }}>
                         <InputLabel id="range">PRICE RANGE</InputLabel>
                         <Select
                           required
@@ -128,7 +125,7 @@ const Properties = () => {
                         </Select>
                       </FormControl>
                     ) : (
-                      <FormControl sx={{ mt: 2, minWidth: "100%" }}>
+                      <FormControl sx={{ minWidth: "100%" }}>
                         <InputLabel id="price">PRICE</InputLabel>
                         <Select
                           required
@@ -152,7 +149,7 @@ const Properties = () => {
                 </Grid>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Box paddingTop="3.5%">
+                <Box>
                   <button
                     style={{
                       backgroundColor: "blue",

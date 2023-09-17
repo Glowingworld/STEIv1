@@ -1,7 +1,8 @@
 "use client"; // this is a client component 👈🏽
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+//import Button from "@mui/material/Button";
+import { Button, Group } from "@mantine/core";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -113,22 +114,18 @@ export default function SearchForm() {
               </Grid>
 
               <Grid xs={12} item md={4}>
-                <FormControl sx={{ minWidth: "100%" }}>
+                <Group position="">
                   <Button
+                    color="blue"
                     type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{
-                      mt: 3,
-                      mb: 2,
-                      pt: 1,
-                      pb: 1,
-                      backgroundColor: "#0000ff",
-                    }}
+                    variant="outline"
+                    backgroundColor="#0000ff"
+                    mt="lg"
+                    mb="lg"
                   >
                     Search
                   </Button>
-                </FormControl>
+                </Group>
               </Grid>
             </Grid>
           </Box>
