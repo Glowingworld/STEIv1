@@ -1,4 +1,12 @@
-import { Avatar, Button, Paper, Grid, Text, Highlight } from "@mantine/core";
+import {
+  Avatar,
+  Button,
+  Paper,
+  Grid,
+  Text,
+  Highlight,
+  Modal,
+} from "@mantine/core";
 import {
   Autocomplete,
   FormControl,
@@ -9,7 +17,7 @@ import {
 import { useState } from "react";
 
 export function Checkoutpage(props) {
-  const [duration, setDuration] = useState("");
+  const [duration, setDuration] = useState(3);
   return (
     <Paper shadow="lg" mt="md" radius="md" withBorder p="lg">
       <Grid p="md">
@@ -41,13 +49,16 @@ export function Checkoutpage(props) {
       </FormControl>
       <Grid p="md">
         <Grid.Col md={6}>
-          <Text ta="center" fz="md" weight={500} mt="md">
-            300000Tsh X 12
+          <Text fw={700} ta="center" fz="md" weight={500} mt="md">
+            {`${props.price}  X ${duration}`}{" "}
+            <span style={{ color: "blue" }}>Months</span>
           </Text>
         </Grid.Col>
         <Grid.Col md={6}>
           <Text ta="center" fz="md" fw={500} mt="md">
-            <Highlight color="red">Total 12000000Tsh</Highlight>
+            <Highlight color="red">
+              Total {Math.round(props.price * duration)} Tsh
+            </Highlight>
           </Text>
         </Grid.Col>
       </Grid>

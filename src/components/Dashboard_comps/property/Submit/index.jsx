@@ -1,5 +1,5 @@
 import ButtonAppBar from "@/components/common/navbar";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer/footer";
 import FileUploader from "@/components/fileUploader";
 import {
   Group,

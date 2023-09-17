@@ -5,7 +5,7 @@ import styles from "@/styles/Home.module.scss";
 import { useState } from "react";
 //import Card from "@/components/houseCard";
 
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer/footer";
 import {
   Button,
   Grid,

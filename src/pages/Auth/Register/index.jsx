@@ -10,7 +10,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ButtonAppBar from "@/components/common/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer/footer";
 import { useState } from "react";
 import { LineAxisOutlined } from "@mui/icons-material";
 import axios from "axios";

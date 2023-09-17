@@ -8,10 +8,17 @@ import {
   Paper,
   Card,
 } from "@mui/material";
-import { Container, Image } from "@mantine/core";
+import {
+  Container,
+  Image,
+  Textarea,
+  Modal,
+  LoadingOverlay,
+  Button,
+} from "@mantine/core";
 
 import styles from "@/styles/Home.module.scss";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer/footer";
 import ImageCard from "@/components/imageCard";
 import PlaceIcon from "@mui/icons-material/Place";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
@@ -28,16 +35,22 @@ import { SimpleGrid, Skeleton } from "@mantine/core";
 import { UserInfoActio } from "@/components/AgentCard/ index";
 import { Checkoutpage } from "@/components/checkoutCards/card";
 import { useEffect, useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
+//import Chat from "@/components/AgentCard/chat";
+
 import Router from "next/router";
 //import Image from "next/image";
 import { useRouter } from "next/router";
+import { IconMessage2, IconMessageBolt, IconSend } from "@tabler/icons-react";
 
 const Detail = () => {
+  const [opened, { close, toggle }] = useDisclosure();
   const [loading, setLoading] = useState(false);
   const card = [1, 2, 3];
   const [house, setHouse] = useState({});
   const [creator, setCreator] = useState({});
   const [imageurls, setImageArray] = useState([]);
+  const [duration, setDuration] = useState();
   const car = [{}];
   const router = useRouter();
   let queryData = router.query;
@@ -46,7 +59,13 @@ const Detail = () => {
 
   useEffect(() => {
     fetchSingleHouse();
-  }, []);
+  }, [id]);
+
+  function handleTriggerModal(data) {
+    console.log(`i am ${data}`);
+  }
+
+  function sendRequest() {}
 
   async function fetchSingleHouse() {
     try {
@@ -175,15 +194,55 @@ const Detail = () => {
                     Contact the <span style={{ color: "grey" }}>Agent</span>{" "}
                   </Typography>
                 </Group>
+                <Modal
+                  radius="lg"
+                  opened={opened}
+                  onClose={close}
+                  title={`Chat with ${
+                    creator == null ? "Agent" : creator.First_name
+                  }`}
+                  centered
+                  right={0}
+                  size="md"
+                >
+                  <LoadingOverlay />
+                  <Group p="sm" position="left">
+                    <Skeleton
+                      width={200}
+                      height={50}
+                      radius="md"
+                      animate={true}
+                    />
+                  </Group>
+                  <Group p="sm" position="right">
+                    <Skeleton
+                      width={150}
+                      height={60}
+                      radius="md"
+                      animate={true}
+                    />
+                  </Group>
+                  <Group p="sm" position="right">
+                    <Skeleton
+                      width={150}
+                      height={70}
+                      radius="md"
+                      animate={true}
+                    />
+                  </Group>
+
+                  <Textarea placeholder="Write your message here" size="sm" />
+                </Modal>
 
                 <UserInfoActio
                   name={creator == null ? null : creator.First_name}
                   job="Steir"
                   email={creator == null ? null : creator.Email}
                   avatar="/marenga.jpg"
+                  triggerModal={toggle}
                 />
 
-                <Checkoutpage />
+                <Checkoutpage price={house.Price} />
               </Grid>
               <Grid
                 item

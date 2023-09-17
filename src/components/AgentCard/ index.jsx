@@ -1,4 +1,4 @@
-import { Avatar, Text, Button, Paper } from "@mantine/core";
+import { Avatar, Text, Button, Paper, Modal } from "@mantine/core";
 
 export function UserInfoActio(props) {
   return (
@@ -10,8 +10,14 @@ export function UserInfoActio(props) {
       <Text ta="center" c="dimmed" fz="sm">
         {props.email} • {props.job}
       </Text>
-
-      <Button size="lg" color="teal" variant="default" fullWidth mt="md">
+      <Button
+        onClick={() => props.triggerModal(true)}
+        size="lg"
+        color="teal"
+        variant="default"
+        fullWidth
+        mt="md"
+      >
         Send message
       </Button>
     </Paper>

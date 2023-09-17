@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import { useState } from "react";
 import ButtonAppBar from "@/components/common/navbar";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer/footer";
 import { Button, Grid, Typography, Box } from "@mui/material";
 import SearchForm from "@/components/homeSearchForm";
 //import Card from "@/components/houseCard";
@@ -191,7 +191,7 @@ const Home = () => {
                 <span style={{ color: "#f4a261" }}>HOW</span> IT WORKS?
               </Typography>
             </Box>
-            <Box>
+            <Group position="center">
               <Grid container spacing={2}>
                 <Fade left duration={2000}>
                   <Grid item xs={12}>
@@ -199,7 +199,7 @@ const Home = () => {
                   </Grid>
                 </Fade>
               </Grid>
-            </Box>
+            </Group>
           </Box>
           <Box display="flex" justifyContent="start">
             <Typography
@@ -216,34 +216,42 @@ const Home = () => {
           </Box>
         </Container>
       </Box>
-
-      <Box className={styles.secondSectionInsideContents}>
-        <Box display="flex" justifyContent="center" paddingTop="5%">
-          <Typography className={styles.fontthree} variant="h4">
-            Have some House for sell/rent?
-          </Typography>
-        </Box>
-        <Box display="flex" justifyContent="center" paddingTop="2%">
-          <Typography className={styles.fontfour}>
-            Upload your house here
-          </Typography>
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="center"
-          paddingTop="5%"
-          paddingBottom="5%"
-        >
-          <button
-            className={styles.btn}
-            style={{ backgroundColor: "black", color: "white" }}
+      <Container
+        style={{ backgroundColor: "", borderRadius: "8px" }}
+        mb="xl"
+        pb="xl"
+        size="xl"
+      >
+        <Box>
+          <Group position="center" pt="lg">
+            <Typography className={styles.fontthree} variant="h4">
+              Have some houses to post?
+            </Typography>
+          </Group>
+          <Box display="flex" justifyContent="center" paddingTop="2%">
+            <Typography className={styles.fontfour}>
+              Upload your house here
+            </Typography>
+          </Box>
+          <Box
+            display="flex"
+            justifyContent="center"
+            paddingTop="5%"
+            paddingBottom="5%"
           >
-            <Link href="/Property/Submit">Submit your own property</Link>
-          </button>
+            <button
+              className={styles.btn}
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              <Link href="/Property/Submit">Submit your own property</Link>
+            </button>
+          </Box>
         </Box>
-      </Box>
+      </Container>
 
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </Box>
   );
 };

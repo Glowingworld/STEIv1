@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import ButtonAppBar from "@/components/common/navbar";
 import styles from "@/styles/Home.module.scss";
 import { Container } from "@mui/system";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer/footer";
 import { useContext, useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import userContext from "@/components/utils/context";
