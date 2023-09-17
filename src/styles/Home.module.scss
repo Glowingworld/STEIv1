@@ -51,10 +51,11 @@
 
   .btnSearch {
     border: 0px solid transparent;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1rem;
     transition-property: transform;
     transition-duration: 0.5s;
     transition-delay: 0.1s;
+
     &:hover {
       cursor: pointer;
       transform: translateY(-1vh);

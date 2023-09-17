@@ -11,6 +11,7 @@ import {
 import { Carousel } from "@mantine/carousel";
 import { IconStar } from "@tabler/icons-react";
 import Link from "next/link";
+import styles from "@/styles/Home.module.scss";
 
 const useStyles = createStyles((theme) => ({
   price: {
@@ -70,7 +71,7 @@ function CarouselCard(props) {
   });
 
   return (
-    <Card style={{ height: "auto" }} radius="md" withBorder>
+    <Card style={{ height: "" }} radius="md" withBorder>
       <Card.Section>
         <Carousel
           withIndicators
@@ -121,7 +122,9 @@ function CarouselCard(props) {
             },
           }}
         >
-          <Button radius="md">Book now</Button>
+          <button className=" text-white bg-secondary-100 p-2 bg-blue-500 hover:bg-blue-600 rounded transition duration-300 ease-in-out hover:translate-x-2 ">
+            Book now
+          </button>
         </Link>
       </Group>
     </Card>

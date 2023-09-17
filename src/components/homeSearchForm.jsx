@@ -118,7 +118,13 @@ export default function SearchForm() {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2, pt: 1, pb: 1, background: "#0000ff" }}
+                    sx={{
+                      mt: 3,
+                      mb: 2,
+                      pt: 1,
+                      pb: 1,
+                      backgroundColor: "#0000ff",
+                    }}
                   >
                     Search
                   </Button>
