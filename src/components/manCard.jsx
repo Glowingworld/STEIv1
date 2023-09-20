@@ -50,7 +50,7 @@ function CarouselCard(props) {
 
   if (props.imageUrl !== undefined) {
     props.imageUrl.map((image) => {
-      images.push(`http://localhost:8045/images/${image}`);
+      images.push(`${process.env.NEXT_PUBLIC_URL}/images/${image}`);
     });
   }
 
