@@ -17,7 +17,9 @@ let GetRegionsLocations = (city) => {
       // setDistricts([]);
 
       try {
-        const res = await fetch(`http://localhost:8045/district?city=${city}`);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/district?city=${city}`
+        );
 
         let _districts = await res.json();
         localCache[city] = _districts;

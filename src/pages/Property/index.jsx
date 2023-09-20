@@ -198,6 +198,8 @@ const Properties = () => {
                       price={c.Price}
                       imageUrl={c.imageUrls}
                       Description={c.Description}
+                      Purpose={c.Purpose}
+                      Duration={c.Duration}
                     />
                   </Grid>
                 );

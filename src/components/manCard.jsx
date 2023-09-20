@@ -7,6 +7,7 @@ import {
   Button,
   getStylesRef,
   rem,
+  Badge,
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { IconStar } from "@tabler/icons-react";
@@ -53,14 +54,6 @@ function CarouselCard(props) {
     });
   }
 
-  console.log(images);
-
-  // const images = [
-  //   "http://localhost:8045/images/1694353535915-311468040.png",
-  //   "http://localhost:8045/images/1694353535915-311468040.png",
-  // ];
-  console.log(images);
-
   const slides = images.map((image) => {
     console.log(image);
     return (
@@ -85,48 +78,52 @@ function CarouselCard(props) {
           {slides}
         </Carousel>
       </Card.Section>
+      <div style={{ height: "140px" }}>
+        <Group position="apart" mt="lg">
+          <Text fw={400} fz="lg">
+            {props.title}
+          </Text>
 
-      <Group position="apart" mt="lg">
-        <Text fw={400} fz="lg">
-          {props.title}
+          <Group spacing={5}>
+            <IconStar size="1rem" />
+            <Text fz="xs" fw={500}>
+              4.78
+            </Text>
+          </Group>
+        </Group>
+
+        <Text fz="sm" c="dimmed" mt="sm">
+          {props.Description}
         </Text>
 
-        <Group spacing={5}>
-          <IconStar size="1rem" />
-          <Text fz="xs" fw={500}>
-            4.78
-          </Text>
+        <Group position="apart" mt="md">
+          <Group position="center">
+            <Badge size="md">{props.Purpose}</Badge>
+          </Group>
+          <div>
+            <Text fz="xl" span fw={500} className={classes.price}>
+              {props.price}
+            </Text>
+            <Text span fz="sm" c="dimmed">
+              {" "}
+              {props.Duration}
+            </Text>
+          </div>
+
+          <Link
+            href={{
+              pathname: "/Property/Detail",
+              query: {
+                id: props.id,
+              },
+            }}
+          >
+            <button className=" text-white bg-secondary-100 p-2 bg-blue-500 hover:bg-blue-600 rounded transition duration-300 ease-in-out hover:translate-x-2 ">
+              Book now
+            </button>
+          </Link>
         </Group>
-      </Group>
-
-      <Text fz="sm" c="dimmed" mt="sm">
-        {props.Description}
-      </Text>
-
-      <Group position="apart" mt="md">
-        <div>
-          <Text fz="xl" span fw={500} className={classes.price}>
-            {props.price}
-          </Text>
-          <Text span fz="sm" c="dimmed">
-            {" "}
-            monthly
-          </Text>
-        </div>
-
-        <Link
-          href={{
-            pathname: "/Property/Detail",
-            query: {
-              id: props.id,
-            },
-          }}
-        >
-          <button className=" text-white bg-secondary-100 p-2 bg-blue-500 hover:bg-blue-600 rounded transition duration-300 ease-in-out hover:translate-x-2 ">
-            Book now
-          </button>
-        </Link>
-      </Group>
+      </div>
     </Card>
   );
 }

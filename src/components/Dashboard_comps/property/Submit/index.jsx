@@ -10,11 +10,14 @@ import {
   Container,
   Button,
   Checkbox,
+  LoadingOverlay,
+  Notification,
 } from "@mantine/core";
-import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
+import { IconUpload, IconPhoto, IconX, IconCheck } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { Delete } from "@mui/icons-material";
 import axios from "axios";
+import Router from "next/router";
 
 import {
   Box,
@@ -58,6 +61,10 @@ const Submit = () => {
   const [bathrooms, setBathrooms] = useState(null);
   const [description, setDescription] = useState("");
   const [water, setWater] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [errormsg, setErrormg] = useState("");
+
   const nextStep = () =>
     setActive((current) => (current < 4 ? current + 1 : current));
   const prevStep = () =>
@@ -71,17 +78,12 @@ const Submit = () => {
   let fname = userData?.First_name;
   let lastname = userData?.Last_name;
   let token = user?.token;
+  let errormessage = "";
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(Price);
-
     setLoading(true);
     try {
-      console.log(file);
-      console.log(fence);
-      console.log(umeme);
-      console.log(water);
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
@@ -101,6 +103,7 @@ const Submit = () => {
       formData.append("bedrooms", bedRooms);
 
       // Append each file to the formData as images
+
       file.forEach((image, index) => {
         formData.append(`images`, image);
       });
@@ -113,12 +116,29 @@ const Submit = () => {
           Authorization: `Bear ${token}`,
         },
       });
+      console.log(response.ok);
+      let res = await response.json();
 
+      console.log(res);
       // Handle the response here
+      if (response.ok && !res.status) {
+        setError(true);
+        setErrormg(res.message);
+      } else if (response.ok && res.status) {
+        setSuccess(true);
+        setErrormg(res.message);
+      }
 
-      setTimeout(() => setLoading(false), 500);
+      setLoading(false);
 
-      console.log(response.data); // File upload success message
+      console.log(errormessage);
+      setCity("");
+      setTimeout(() => {
+        setError(false);
+        setSuccess(false);
+      }, 3000);
+
+      //console.log(response.data); // File upload success message
     } catch (error) {
       console.error(error);
     }
@@ -137,7 +157,7 @@ const Submit = () => {
       mt="lg"
       size="xl"
     >
-      <Box component="form" onSubmit={handleSubmit}>
+      <Box component="form" validate onSubmit={handleSubmit}>
         <Stepper
           pb="lg"
           active={active}
@@ -200,9 +220,7 @@ const Submit = () => {
             </Grid>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={4}>
-                {status == "Sell" ? (
-                  <Box></Box>
-                ) : (
+                {statusroom == "Sell" ? null : (
                   <FormControl sx={{ mt: 2, minWidth: "100%" }}>
                     <InputLabel id="duration">DURATION </InputLabel>
                     <Select
@@ -220,9 +238,7 @@ const Submit = () => {
                 )}
               </Grid>
               <Grid item xs={12} sm={4}>
-                {status == "Sell" ? (
-                  <Box></Box>
-                ) : (
+                {statusroom == "Sell" ? null : (
                   <FormControl sx={{ mt: 2, minWidth: "100%" }}>
                     <InputLabel id="model">MODEL</InputLabel>
                     <Select
@@ -525,6 +541,7 @@ const Submit = () => {
             </Grid>
           </Stepper.Step>
           <Stepper.Completed>
+            <LoadingOverlay visible={loading} />
             <div
               style={{
                 paddingTop: "5%",
@@ -535,9 +552,23 @@ const Submit = () => {
               }}
             >
               <Group>
-                <Button type="submit" size="lg" variant="gradient">
+                <Button type="submit" size="lg" variant="outline">
                   Submit
                 </Button>
+              </Group>
+              <Group px="sm">
+                <div>
+                  {error && (
+                    <Notification icon={<IconX />} color="red">
+                      {errormsg}
+                    </Notification>
+                  )}
+                  {success && (
+                    <Notification icon={<IconCheck />} color="green">
+                      {errormsg}
+                    </Notification>
+                  )}
+                </div>
               </Group>
             </div>
           </Stepper.Completed>
