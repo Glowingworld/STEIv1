@@ -74,10 +74,10 @@ const Submit = () => {
   let test = [1, 1, 32, 3];
   const user = session?.user;
   let userData = user?.user;
-
+  let token = user?.token;
   let fname = userData?.First_name;
   let lastname = userData?.Last_name;
-  let token = user?.token;
+
   let errormessage = "";
 
   async function handleSubmit(event) {

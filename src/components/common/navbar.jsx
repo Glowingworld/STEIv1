@@ -304,7 +304,7 @@ function HeaderMegaMenu() {
   ));
 
   return (
-    <Box pb={50}>
+    <Box pb={0}>
       <Header position="fixed" height={80} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
           <IconUser size={30} />

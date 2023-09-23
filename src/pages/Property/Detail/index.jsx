@@ -15,6 +15,7 @@ import {
   Modal,
   LoadingOverlay,
   Button,
+  UnstyledButton,
 } from "@mantine/core";
 
 import styles from "@/styles/Home.module.scss";
@@ -79,14 +80,12 @@ const Detail = () => {
 
       res = await res.json();
       setHouse(res.post);
-      console.log(res.post);
-      console.log(res.post.Creator);
       setCreator(res.post.Creator);
       setImageArray([...res.post.imageUrls]);
       console.log(res.post.Creator);
       setLoading(false);
 
-      //console.log(res.properties);
+      console.log(house);
     } catch (error) {
       console.log(error);
     }
@@ -101,7 +100,7 @@ const Detail = () => {
   }
 
   return (
-    <Box style={{ paddingBottom: "0%" }}>
+    <Box>
       <ButtonAppBar />
       <Box className={styles.detail}>
         <section
@@ -231,7 +230,43 @@ const Detail = () => {
                     />
                   </Group>
 
-                  <Textarea placeholder="Write your message here" size="sm" />
+                  <div
+                    style={{
+                      height: "67px",
+                      border: "1px solid gray",
+                      borderRadius: "4px",
+                      margin: "4px",
+                      backgroundColor: "#e4e7eb",
+                    }}
+                  >
+                    <Grid container>
+                      <Grid sm={10}>
+                        <Textarea
+                          style={{ border: "0px solid transparent" }}
+                          placeholder="Write your message here"
+                          size="sm"
+                        />
+                      </Grid>
+                      <Grid
+                        p={1}
+                        sm={2}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <UnstyledButton
+                          style={{
+                            // border: "2px solid whit",
+                            borderRadius: "5%",
+                          }}
+                        >
+                          <IconSend size={34} />
+                        </UnstyledButton>
+                      </Grid>
+                    </Grid>
+                  </div>
                 </Modal>
 
                 <UserInfoActio
@@ -242,7 +277,11 @@ const Detail = () => {
                   triggerModal={toggle}
                 />
 
-                <Checkoutpage price={house.Price} />
+                <Checkoutpage
+                  ownerId={creator._id}
+                  id={house._id}
+                  price={house.Price}
+                />
               </Grid>
               <Grid
                 item

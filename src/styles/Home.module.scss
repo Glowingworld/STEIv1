@@ -1,6 +1,5 @@
 .main {
   background-color: rgba(246, 246, 246, 1);
-  height: 100%;
 }
 
 @media screen and (min-width: 600px) {
@@ -69,12 +68,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 85vh;
+    padding-top: 50px;
   }
 
   .insideFirstSection {
     padding-left: 20%;
     padding-right: 20%;
-    padding-bottom: 10%;
+    ////padding-bottom: 10%;
   }
 
   .secondSection {

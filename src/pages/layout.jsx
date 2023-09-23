@@ -105,7 +105,7 @@ const userLinks = [
   { link: "/Dashboard", label: "Dashboard", icon: IconHome2 },
   { link: "/Dashboard/Submit", label: "Submit", icon: IconPlus },
   {
-    link: "#",
+    link: "/Dashboard/Request",
     label: "Requests",
     icon: IconBell,
   },
