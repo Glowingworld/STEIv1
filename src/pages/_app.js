@@ -5,6 +5,7 @@ import { useState } from "react";
 import { MantineProvider, Button } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
 import { DefaultSeo } from "next-seo";
+import Head from "next/head";
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
@@ -12,7 +13,7 @@ export default function App({
   return (
     <>
       <DefaultSeo
-        title="Stei"
+        title="Stei Homes, Renting rooms, kupangisha nyumba "
         description="Stei is for renting house in Tanzania, nyumba za kupagisha Tanzania"
         openGraph={{
           type: "website",
@@ -21,6 +22,12 @@ export default function App({
           siteName: "SiteName",
         }}
       />
+      <Head
+        description="Nyumba ya kupaga, renting rooms "
+        title="Stei renting Homes"
+      >
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </Head>
 
       <SessionProvider session={pageProps.session}>
         <ProSidebarProvider>
