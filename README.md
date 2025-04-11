@@ -1,6 +1,6 @@
-# 🌍 STEI – Stellar Tanzania Empowerment Initiative
+# 🌍 STEI – How about staying with us
 
-**STEI** (Stellar Tanzania Empowerment Initiative) is a decentralized, tenant-to-tenant rental platform built on the [Stellar](https://stellar.org) blockchain. It connects **moving-in tenants** with **moving-out tenants** in Tanzania, helping them bypass exploitative real estate agencies and enabling secure, low-cost rental agreements using smart contracts and USDC escrow.
+**STEI**  is a decentralized, tenant-to-tenant rental platform built on the [Stellar](https://stellar.org) blockchain. It connects **moving-in tenants** with **moving-out tenants** in Tanzania, helping them bypass exploitative real estate agencies and enabling secure, low-cost rental agreements using smart contracts and USDC escrow.
 
 > 💡 "Why pay 300,000 TZS in commission to a broker for a 300,000 TZS apartment? STEI connects tenants directly—fairly, transparently, and affordably."
 
