@@ -1,4 +1,5 @@
 # 🌍 STEI – How about staying with us
+![stei](https://github.com/user-attachments/assets/f1ed978f-82be-4b2f-9a65-f33593467336)
 
 **STEI**  is a decentralized, tenant-to-tenant rental platform built on the [Stellar](https://stellar.org) blockchain. It connects **moving-in tenants** with **moving-out tenants** in Tanzania, helping them bypass exploitative real estate agencies and enabling secure, low-cost rental agreements using smart contracts and USDC escrow.
 
